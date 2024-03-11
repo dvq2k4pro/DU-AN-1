@@ -47,3 +47,4 @@ git config credential.username "tên người dùng"
 
 Tên biến dùng camelCase (Ví dụ: $tenBien)
 Tên file dùng PascalCase (Ví dụ: TenFile)
+Tên row trong CSDL dùng snake_case (Ví dụ: ten_row)
