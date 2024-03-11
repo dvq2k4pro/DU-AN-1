@@ -6,10 +6,10 @@ Dự án 1
 
 # Đẩy code lên git:
 
-Git clone
-Git add .
-Git commit -m "update"
-Git push
+git clone
+git add .
+git commit -m "update"
+git push
 
 # Tạo nhánh phụ:
 
@@ -42,3 +42,8 @@ git restore . : khôi phục toàn bộ file đã xoá
 
 git config user.name "tên người dùng"
 git config credential.username "tên người dùng"
+
+# Quy tắc đặt tên
+
+Tên biến dùng camelCase (Ví dụ: $tenBien)
+Tên file dùng PascalCase (Ví dụ: TenFile)
