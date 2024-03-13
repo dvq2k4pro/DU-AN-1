@@ -10,5 +10,10 @@ requireFile(PATH_CONTROLLER);
 requireFile(PATH_MODEL);
 
 // Điều hướng
+$act = $_GET['act'] ?? '/';
+
+match ($act) {
+    '/' => homeIndex(),
+};
 
 require_once './commons/disconnect-db.php';

@@ -2,5 +2,7 @@
 
 function homeIndex()
 {
-    echo 'Đây là trang chủ';
+    $dataUser = getAllUser();
+
+    require_once PATH_VIEW . 'home.php';
 }

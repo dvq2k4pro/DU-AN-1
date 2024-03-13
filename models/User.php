@@ -2,5 +2,14 @@
 
 function getAllUser()
 {
-    echo "Get thành công!";
+    return [
+        [
+            'id' => 1,
+            'name' => 'Ahihi'
+        ],
+        [
+            'id' => 2,
+            'name' => 'KKK'
+        ],
+    ];
 }
