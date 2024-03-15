@@ -1,14 +1,14 @@
 <?php
 
 // Require tất cả các trong commons
-require_once './commons/env.php';
-require_once './commons/helper.php';
-require_once './commons/connect-db.php';
-require_once './commons/model.php';
+require_once '../commons/env.php';
+require_once '../commons/helper.php';
+require_once '../commons/connect-db.php';
+require_once '../commons/model.php';
 
 // Require file trong controllers và views
-requireFile(PATH_CONTROLLER);
-requireFile(PATH_MODEL);
+requireFile(PATH_CONTROLLER_ADMIN);
+requireFile(PATH_MODEL_ADMIN);
 
 insert('users', [
     'name' => 'Hoppv04',
@@ -23,7 +23,7 @@ delete('users', 2);
 $act = $_GET['act'] ?? '/';
 
 match ($act) {
-    '/' => homeIndex(),
+    '/' => dashboard(),
 };
 
-require_once './commons/disconnect-db.php';
+require_once '../commons/disconnect-db.php';
