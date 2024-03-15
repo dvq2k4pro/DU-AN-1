@@ -10,15 +10,6 @@ require_once './commons/model.php';
 requireFile(PATH_CONTROLLER);
 requireFile(PATH_MODEL);
 
-insert('users', [
-    'name' => 'Hoppv04',
-    'email' => 'hoppv04@gmail.com',
-    'password' => 'hoppv04',
-    'type' => 1,
-]);
-
-delete('users', 2);
-
 // Điều hướng
 $act = $_GET['act'] ?? '/';
 
