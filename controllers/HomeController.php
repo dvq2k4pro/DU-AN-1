@@ -2,7 +2,7 @@
 
 function homeIndex()
 {
-    $dataUser = getAllUser();
-
-    require_once PATH_VIEW . 'home.php';
+    $view = 'home';
+    $title = 'T8 Book';
+    require_once PATH_VIEW . 'layouts/master.php';
 }
