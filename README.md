@@ -46,5 +46,6 @@ git config credential.username "tên người dùng"
 # Quy tắc đặt tên
 
 Tên biến, tên function dùng camelCase (Ví dụ: $tenBien)
-Tên file dùng PascalCase (Ví dụ: TenFile)
+Tên file trong folder controllers và models dùng PascalCase (Ví dụ: TenFile)
+Tên file trong các folder còn lại dùng kebab-case (ví dụ: ten-bien)
 Tên trường trong CSDL dùng snake_case (Ví dụ: ten_row)
