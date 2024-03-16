@@ -22,10 +22,10 @@
                         <td>
                             <?php
                             switch ($fieldName) {
-                                case 'password':
+                                case 'mat_khau':
                                     echo '*********';
                                     break;
-                                case 'type':
+                                case 'vai_tro':
                                     echo $value ? '<span class="badge badge-success">Admin</span>' : '<span class="badge badge-warning">Member</span>';
                                     break;
                                 default:

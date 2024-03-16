@@ -8,19 +8,19 @@ function userListAll()
     $script2 = 'users/script';
     $style = 'datatable';
 
-    $users = listAll('users');
+    $users = listAll('nguoi_dung');
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
 function userShowOne($id)
 {
-    $user = showOne('users', $id);
+    $user = showOne('nguoi_dung', $id);
     if (empty($user)) {
         e404();
     }
 
-    $title = 'Chi tiết User: ' . $user['name'];
+    $title = 'Chi tiết User: ' . $user['tai_khoan'];
     $view = 'users/show-one';
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
@@ -33,13 +33,16 @@ function userCreate()
 
     if (!empty($_POST)) {
         $data = [
-            "name" => $_POST['name'],
+            "ho_ten" => $_POST['ho_ten'],
+            "tai_khoan" => $_POST['tai_khoan'],
+            "dia_chi" => $_POST['dia_chi'],
+            "so_dien_thoai" => $_POST['so_dien_thoai'],
             "email" => $_POST['email'],
-            "password" => $_POST['password'],
-            "type" => $_POST['type'],
+            "mat_khau" => $_POST['mat_khau'],
+            "vai_tro" => $_POST['vai_tro'],
         ];
 
-        insert('users', $data);
+        insert('nguoi_dung', $data);
 
         header('location: ' . BASE_URL_ADMIN . '?act=users');
         exit();
@@ -49,7 +52,7 @@ function userCreate()
 
 function userUpdate($id)
 {
-    $user = showOne('users', $id);
+    $user = showOne('nguoi_dung', $id);
 
     if (empty($user)) {
         e404();
@@ -60,10 +63,13 @@ function userUpdate($id)
 
     if (!empty($_POST)) {
         $data = [
-            "name" => $_POST['name'],
+            "ho_ten" => $_POST['ho_ten'],
+            "tai_khoan" => $_POST['tai_khoan'],
+            "dia_chi" => $_POST['dia_chi'],
+            "so_dien_thoai" => $_POST['so_dien_thoai'],
             "email" => $_POST['email'],
-            "password" => $_POST['password'],
-            "type" => $_POST['type'],
+            "mat_khau" => $_POST['mat_khau'],
+            "vai_tro" => $_POST['vai_tro'],
         ];
 
         update('users', $id, $data);

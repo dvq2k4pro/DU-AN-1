@@ -18,18 +18,24 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>Họ tên</th>
                             <th>Email</th>
-                            <th>Type</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <th>Tài khoản</th>
+                            <th>Vai trò</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>Họ tên</th>
                             <th>Email</th>
-                            <th>Type</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <th>Tài khoản</th>
+                            <th>Vai trò</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -38,9 +44,12 @@
                         <?php foreach ($users as $user) : ?>
                             <tr>
                                 <td><?= $user['id'] ?></td>
-                                <td><?= $user['name'] ?></td>
+                                <td><?= $user['ho_ten'] ?></td>
                                 <td><?= $user['email'] ?></td>
-                                <td><?= $user['type'] ? '<span class="badge badge-success">Admin</span>' : '<span class="badge badge-warning">Member</span>' ?></td>
+                                <td><?= $user['so_dien_thoai'] ?></td>
+                                <td><?= $user['dia_chi'] ?></td>
+                                <td><?= $user['tai_khoan'] ?></td>
+                                <td><?= $user['vai_tro'] ? '<span class="badge badge-success">Admin</span>' : '<span class="badge badge-warning">Member</span>' ?></td>
                                 <td>
                                     <a class="btn btn-info" href="<?= BASE_URL_ADMIN ?>?act=user-detail&id=<?= $user['id'] ?>">Show</a>
                                     <a class="btn btn-warning" href="<?= BASE_URL_ADMIN ?>?act=user-update&id=<?= $user['id'] ?>">Update</a>
