@@ -16,7 +16,7 @@ git push
 git checkout -b hoppv04: tạo một nhánh phụ có tên hoppv04
 git pull origin main: cập nhật nhánh hiện tại
 git commit -m "update": tạo một commit mới để theo dõi lịch sử
-git push origin head: thay đổi nhánh hiện tại
+git push origin hoppv04: thay đổi nhánh hiện tại
 
 # Update code lên nhánh phụ:
 
