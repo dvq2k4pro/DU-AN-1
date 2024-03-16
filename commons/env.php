@@ -15,4 +15,4 @@ define('BASE_URL_ADMIN', 'http://localhost/website_ban_hang_nhom_8/admin/');
 define('DB_HOST', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_NAME', 'du-an-1');
+define('DB_NAME', 'du_an_1');
