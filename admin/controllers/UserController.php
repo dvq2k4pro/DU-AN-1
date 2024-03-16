@@ -49,8 +49,28 @@ function userCreate()
 
 function userUpdate($id)
 {
-    $title = 'Cập nhật thông tin User: ';
+    $user = showOne('users', $id);
+
+    if (empty($user)) {
+        e404();
+    }
+
+    $title = 'Cập nhật thông tin User: ' . $user['name'];
     $view = 'users/update';
+
+    if (!empty($_POST)) {
+        $data = [
+            "name" => $_POST['name'],
+            "email" => $_POST['email'],
+            "password" => $_POST['password'],
+            "type" => $_POST['type'],
+        ];
+
+        update('users', $id, $data);
+
+        header('location: ' . BASE_URL_ADMIN . '?act=user-update&id=' . $id);
+        exit();
+    }
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }

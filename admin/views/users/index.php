@@ -43,6 +43,7 @@
                                 <td><?= $user['type'] ? '<span class="badge badge-success">Admin</span>' : '<span class="badge badge-warning">Member</span>' ?></td>
                                 <td>
                                     <a class="btn btn-info" href="<?= BASE_URL_ADMIN ?>?act=user-detail&id=<?= $user['id'] ?>">Show</a>
+                                    <a class="btn btn-warning" href="<?= BASE_URL_ADMIN ?>?act=user-update&id=<?= $user['id'] ?>">Update</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
