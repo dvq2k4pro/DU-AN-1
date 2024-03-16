@@ -15,6 +15,13 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     '/' => dashboard(),
+
+    // CRUD User
+    'users' => userListAll(),
+    'user-detail' => userShowOne($_GET['id']),
+    'user-create' => userCreate(),
+    'user-update' => userUpdate($_GET['id']),
+    'user-delete' => userDelete($_GET['id']),
 };
 
 require_once '../commons/disconnect-db.php';

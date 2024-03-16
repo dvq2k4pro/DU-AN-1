@@ -16,6 +16,15 @@
     <!-- Custom styles for this template-->
     <link href="<?= BASE_URL ?>assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <?php
+    if (isset($style) && $style) {
+        require_once PATH_VIEW_ADMIN . 'styles/' . $style . '.php';
+    }
+
+    if (isset($style2) && $style2) {
+        require_once PATH_VIEW_ADMIN . $style2 . '.php';
+    }
+    ?>
 </head>
 
 <body id="page-top">
@@ -85,6 +94,10 @@
     <?php
     if (isset($script) && $script) {
         require_once PATH_VIEW_ADMIN . 'scripts/' . $script . '.php';
+    }
+
+    if (isset($script2) && $script2) {
+        require_once PATH_VIEW_ADMIN . $script2 . '.php';
     }
     ?>
 
