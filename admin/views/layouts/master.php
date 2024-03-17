@@ -16,6 +16,13 @@
     <!-- Custom styles for this template-->
     <link href="<?= BASE_URL ?>assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <style>
+        .error-message {
+            color: red;
+            display: inline-block;
+        }
+    </style>
+
     <?php
     if (isset($style) && $style) {
         require_once PATH_VIEW_ADMIN . 'styles/' . $style . '.php';

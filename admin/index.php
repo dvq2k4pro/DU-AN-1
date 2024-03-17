@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // Require tất cả các trong commons
 require_once '../commons/env.php';
