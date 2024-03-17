@@ -23,7 +23,9 @@
                             <?php
                             switch ($fieldName) {
                                 case 'mat_khau':
-                                    echo '*********';
+                                    for ($i = 0; $i < strlen($user['mat_khau']); $i++) {
+                                        echo '*';
+                                    }
                                     break;
                                 case 'vai_tro':
                                     echo $value ? '<span class="badge badge-success">Admin</span>' : '<span class="badge badge-warning">Member</span>';

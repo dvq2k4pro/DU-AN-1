@@ -13,6 +13,12 @@
             </h6>
         </div>
         <div class="card-body">
+            <?php if (isset($_SESSION['success'])) : ?>
+                <div class="alert alert-success">
+                    <?= $_SESSION['success'] ?>
+                    <?php unset($_SESSION['success']) ?>
+                </div>
+            <?php endif; ?>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>

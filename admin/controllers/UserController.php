@@ -52,6 +52,7 @@ function userCreate()
         }
 
         insert('nguoi_dung', $data);
+        $_SESSION['success'] = 'Thêm mới thành công!';
 
         header('location: ' . BASE_URL_ADMIN . '?act=users');
         exit();
@@ -118,7 +119,14 @@ function userUpdate($id)
             "vai_tro" => $_POST['vai_tro'] ?? null,
         ];
 
-        update('nguoi_dung', $id, $data);
+        $errors = validateUpdate($id, $data);
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+        } else {
+            update('nguoi_dung', $id, $data);
+            $_SESSION['success'] = 'Cập nhật thành công!';
+        }
+
 
         header('location: ' . BASE_URL_ADMIN . '?act=user-update&id=' . $id);
         exit();
@@ -127,9 +135,48 @@ function userUpdate($id)
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
+function validateUpdate($id, $data)
+{
+    // tai_khoan - bắt buộc, độ dài tối đa 50 ký tự
+    // email - bắt buộc, phải là email, không được trùng
+    // mat_khau - bắt buộc, độ dài nhỏ nhất là 8, lớn nhất là 20
+    // vai_trò - bắt buộc, phải là 0 hoặc 1
+    $errors = [];
+
+    if (empty($data['tai_khoan'])) {
+        $errors['tai_khoan'] = 'Trường tài khoản không được để trống!';
+    } else if (strlen($data['tai_khoan']) > 50) {
+        $errors['tai_khoan'] = 'Trường tài khoản độ dài tối đa 50 ký tự!';
+    }
+
+    if (empty($data['email'])) {
+        $errors['email'] = 'Trường email không được để trống!';
+    } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = 'Trường email không hợp lệ!';
+    } else if (!checkUniqueEmailForUpdate('nguoi_dung', $id, $data['email'])) {
+        $errors['email'] = 'Trường email đã được sử dụng!';
+    }
+
+    if (empty($data['mat_khau'])) {
+        $errors['mat_khau'] = 'Trường mật khẩu không được để trống!';
+    } else if (strlen($data['mat_khau']) < 8 || strlen($data['mat_khau']) > 20) {
+        $errors['mat_khau'] = 'Trường mật khẩu độ dài nhỏ nhất là 8, lớn nhất là 20!';
+    }
+
+    if ($data['vai_tro'] === null) {
+        $errors['vai_tro'] = 'Trường vai trò không được để trống!';
+    } else if (!in_array($data['vai_tro'], [0, 1])) {
+        $errors['vai_tro'] = 'Trường vai trò phải là 0 hoặc 1!';
+    }
+
+    return $errors;
+}
+
 function userDelete($id)
 {
     delete('nguoi_dung', $id);
+
+    $_SESSION['success'] = 'Xoá thành công!';
 
     header('location: ' . BASE_URL_ADMIN . '?act=users');
     exit();
