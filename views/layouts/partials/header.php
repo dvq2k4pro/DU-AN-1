@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3 ">
-                    <a href="index.html" class="site-brand">
+                    <a href="<?= BASE_URL ?>" class="site-brand">
                         <img src="<?= BASE_URL ?>/assets/client/image/logo.png" alt="">
                     </a>
                 </div>
