@@ -377,7 +377,7 @@
                                     <a href="#" class="author">
                                         Cpple
                                     </a>
-                                    <h3><a href="<?= PATH_VIEW ?> . '?act=chi-tiet-san-pham'">Beats EP Wired On-Ear Headphone-Black</a>
+                                    <h3><a href="<?= BASE_URL . '?act=chi-tiet-san-pham' ?> ">Beats EP Wired On-Ear Headphone-Black</a>
                                     </h3>
                                 </div>
                                 <div class="product-card--body">
