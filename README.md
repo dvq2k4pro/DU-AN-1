@@ -22,7 +22,7 @@ git push origin hoppv04: thay đổi nhánh hiện tại
 
 git add .
 git commit -m "update"
-git push origin head: đẩy commit từ nhánh hiện tại
+git push origin phamvanhop: đẩy commit từ nhánh hiện tại
 
 # Update code từ nhánh phụ lên nhánh chính:
 
