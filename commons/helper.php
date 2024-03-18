@@ -43,3 +43,18 @@ if (!function_exists('uploadFile')) {
         return null;
     }
 }
+
+if (!function_exists('middlewareAuthCheck')) {
+    function middlewareAuthCheck($act)
+    {
+        if ($act == 'login') {
+            if (!empty($_SESSION['user'])) {
+                header('location: ' . BASE_URL_ADMIN);
+                exit();
+            }
+        } else if (empty($_SESSION['user'])) {
+            header('location: ' . BASE_URL_ADMIN . '?act=login');
+            exit();
+        }
+    }
+}

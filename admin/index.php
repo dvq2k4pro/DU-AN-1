@@ -14,8 +14,14 @@ requireFile(PATH_MODEL_ADMIN);
 // Điều hướng
 $act = $_GET['act'] ?? '/';
 
+middlewareAuthCheck($act);
+
 match ($act) {
     '/' => dashboard(),
+
+    // Authen
+    'login' => authenShowFormLogin(),
+    'logout' => authenLogout(),
 
     // CRUD User
     'users' => userListAll(),
