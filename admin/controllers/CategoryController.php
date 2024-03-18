@@ -8,14 +8,14 @@ function categoryListAll()
     $script2 = 'categories/script';
     $style = 'datatable';
 
-    $categories = listAll('categories');
+    $categories = listAll('the_loai');
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
 function categoryShowOne($id)
 {
-    $category = showOne('categories', $id);
+    $category = showOne('the_loai', $id);
     if (empty($category)) {
         e404();
     }
@@ -34,10 +34,10 @@ function categoryCreate()
     if (!empty($_POST)) {
         $data = [
             "ten_the_loai" => $_POST['ten_the_loai'] ?? null,
-            
         ];
 
         $errors = validateCategoryCreate($data);
+
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
             $_SESSION['data'] = $data;
@@ -46,7 +46,7 @@ function categoryCreate()
             exit();
         }
 
-        insert('categories', $data);
+        insert('the_loai', $data);
         $_SESSION['success'] = 'Thêm mới thành công!';
 
         header('location: ' . BASE_URL_ADMIN . '?act=categories');
@@ -57,18 +57,15 @@ function categoryCreate()
 
 function validateCategoryCreate($data)
 {
-    // ten_the_loai - bắt buộc, độ dài tối đa 50 ký tự
-    // email - bắt buộc, phải là email, không được trùng
-    // mat_khau - bắt buộc, độ dài nhỏ nhất là 8, lớn nhất là 20
-    // vai_trò - bắt buộc, phải là 0 hoặc 1
+    // ten_the_loai - bắt buộc, độ dài tối đa 50 ký tự, không được trùng
     $errors = [];
 
     if (empty($data['ten_the_loai'])) {
-        $errors[] = 'Trường ten_the_loai không được để trống!';
+        $errors['ten_the_loai'] = 'Tên thể loại không được để trống!';
     } else if (strlen($data['ten_the_loai']) > 50) {
-        $errors['ten_the_loai'] = 'Trường tài khoản độ dài tối đa 50 ký tự!';
-    } else if (!checkUniqueten_the_loai('categories', $data['ten_the_loai'])) {
-        $errors['ten_the_loai'] = 'Trường ten_the_loai đã được sử dụng!';
+        $errors['ten_the_loai'] = 'Tên thể loại độ dài tối đa 50 ký tự!';
+    } else if (!checkUniqueNameTheLoai($data['ten_the_loai'])) {
+        $errors['ten_the_loai'] = 'Tên thể loại đã được sử dụng!';
     }
 
     return $errors;
@@ -76,7 +73,7 @@ function validateCategoryCreate($data)
 
 function categoryUpdate($id)
 {
-    $category = showOne('categories', $id);
+    $category = showOne('the_loai', $id);
 
     if (empty($category)) {
         e404();
@@ -88,14 +85,14 @@ function categoryUpdate($id)
     if (!empty($_POST)) {
         $data = [
             "ten_the_loai" => $_POST['ten_the_loai'] ?? null,
-            
+
         ];
 
         $errors = validateCategoryUpdate($id, $data);
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
         } else {
-            update('categories', $id, $data);
+            update('the_loai', $id, $data);
             $_SESSION['success'] = 'Cập nhật thành công!';
         }
 
@@ -109,18 +106,15 @@ function categoryUpdate($id)
 
 function validateCategoryUpdate($id, $data)
 {
-    // ten_the_loai - bắt buộc, độ dài tối đa 50 ký tự
-    // email - bắt buộc, phải là email, không được trùng
-    // mat_khau - bắt buộc, độ dài nhỏ nhất là 8, lớn nhất là 20
-    // vai_trò - bắt buộc, phải là 0 hoặc 1
+    // ten_the_loai - bắt buộc, độ dài tối đa 50 ký tự, không được trùng
     $errors = [];
 
     if (empty($data['ten_the_loai'])) {
-        $errors[] = 'Trường ten_the_loai không được để trống!';
+        $errors['ten_the_loai'] = 'Tên thể loại không được để trống!';
     } else if (strlen($data['ten_the_loai']) > 50) {
-        $errors['ten_the_loai'] = 'Trường tài khoản độ dài tối đa 50 ký tự!';
-    } else if (!checkUniqueten_the_loai('categories', $data['ten_the_loai'])) {
-        $errors['ten_the_loai'] = 'Trường ten_the_loai đã được sử dụng!';
+        $errors['ten_the_loai'] = 'Tên thể loại độ dài tối đa 50 ký tự!';
+    } else if (!checkUniqueNameTheLoaiForUpdate($id, $data['ten_the_loai'])) {
+        $errors['ten_the_loai'] = 'Tên thể loại đã được sử dụng!';
     }
 
     return $errors;
@@ -128,7 +122,7 @@ function validateCategoryUpdate($id, $data)
 
 function categoryDelete($id)
 {
-    delete('categories', $id);
+    delete('the_loai', $id);
 
     $_SESSION['success'] = 'Xoá thành công!';
 

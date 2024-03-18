@@ -16,13 +16,13 @@
                         <div class="mb-3 mt-3">
                             <label for="ten_the_loai" class="form-label">ten_the_loai:</label>
                             <input type="text" class="form-control" id="ten_the_loai" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['ten_the_loai'] : null ?>" placeholder="VD: truyện kinh dị" name="ten_the_loai">
-                            <span class='error-message'></span>
+                            <span class='error-message'><?= isset($_SESSION['errors']['ten_the_loai']) ? $_SESSION['errors']['ten_the_loai'] : '' ?></span>
                         </div>
-                        
+
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=users">Back to list</a>
+                <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=categories">Back to list</a>
             </form>
         </div>
     </div>

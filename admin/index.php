@@ -25,7 +25,7 @@ match ($act) {
     'user-delete' => userDelete($_GET['id']),
 
     // CRUD Category
-    'categorys' => categoryListAll(),
+    'categories' => categoryListAll(),
     'category-detail' => categoryShowOne($_GET['id']),
     'category-create' => categoryCreate(),
     'category-update' => categoryUpdate($_GET['id']),

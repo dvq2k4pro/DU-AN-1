@@ -25,17 +25,19 @@
                         <tr>
                             <th>ID</th>
                             <th>Tên thể loại</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                        <th>ID</th>
+                            <th>ID</th>
                             <th>Tên thể loại</th>
+                            <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
 
-                        <?php foreach ($categorys as $category) : ?>
+                        <?php foreach ($categories as $category) : ?>
                             <tr>
                                 <td><?= $category['id'] ?></td>
                                 <td><?= $category['ten_the_loai'] ?></td>
