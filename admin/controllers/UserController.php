@@ -42,7 +42,7 @@ function userCreate()
             "vai_tro" => $_POST['vai_tro'] ?? null,
         ];
 
-        $errors = validateCreate($data);
+        $errors = validateUserCreate($data);
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
             $_SESSION['data'] = $data;
@@ -60,7 +60,7 @@ function userCreate()
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function validateCreate($data)
+function validateUserCreate($data)
 {
     // tai_khoan - bắt buộc, độ dài tối đa 50 ký tự
     // email - bắt buộc, phải là email, không được trùng
@@ -119,7 +119,7 @@ function userUpdate($id)
             "vai_tro" => $_POST['vai_tro'] ?? null,
         ];
 
-        $errors = validateUpdate($id, $data);
+        $errors = validateUserUpdate($id, $data);
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
         } else {
@@ -135,7 +135,7 @@ function userUpdate($id)
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function validateUpdate($id, $data)
+function validateUserUpdate($id, $data)
 {
     // tai_khoan - bắt buộc, độ dài tối đa 50 ký tự
     // email - bắt buộc, phải là email, không được trùng
