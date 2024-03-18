@@ -71,31 +71,14 @@
             </div>
             <div class="col-lg-7">
                 <div class="product-details-info pl-lg--30 ">
-                    <p class="tag-block">Tags: <a href="#">Movado</a>, <a href="#">Omega</a></p>
                     <h3 class="product-title">Beats EP Wired On-Ear Headphone-Black</h3>
                     <ul class="list-unstyled">
-                        <li>Ex Tax: <span class="list-value"> £60.24</span></li>
-                        <li>Brands: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
-                        <li>Product Code: <span class="list-value"> model1</span></li>
-                        <li>Reward Points: <span class="list-value"> 200</span></li>
-                        <li>Availability: <span class="list-value"> In Stock</span></li>
+                        <li>Mã sách: <span class="list-value"> book-1</span></li>
+                        <li>Thể loại: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
+                        <li>Tác giả: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
                     </ul>
                     <div class="price-block">
                         <span class="price-new">£73.79</span>
-                        <del class="price-old">£91.86</del>
-                    </div>
-                    <div class="rating-widget">
-                        <div class="rating-block">
-                            <span class="fas fa-star star_on"></span>
-                            <span class="fas fa-star star_on"></span>
-                            <span class="fas fa-star star_on"></span>
-                            <span class="fas fa-star star_on"></span>
-                            <span class="fas fa-star "></span>
-                        </div>
-                        <div class="review-widget">
-                            <a href="#">(1 Reviews)</a> <span>|</span>
-                            <a href="#">Write a review</a>
-                        </div>
                     </div>
                     <article class="product-details-article">
                         <h4 class="sr-only">Product Summery</h4>
@@ -112,10 +95,6 @@
                             <a href="#" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Add to
                                 Cart</a>
                         </div>
-                    </div>
-                    <div class="compare-wishlist-row">
-                        <a href="#" class="add-link"><i class="fas fa-heart"></i>Add to Wish List</a>
-                        <a href="#" class="add-link"><i class="fas fa-random"></i>Add to Compare</a>
                     </div>
                 </div>
             </div>
