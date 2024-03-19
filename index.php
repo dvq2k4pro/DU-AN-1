@@ -15,6 +15,7 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     '/' => homeIndex(),
+    'chi-tiet-san-pham' => productDetails(),
 };
 
 require_once './commons/disconnect-db.php';
