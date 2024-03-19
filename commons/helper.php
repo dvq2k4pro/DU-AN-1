@@ -66,6 +66,10 @@ if (!function_exists('getFileUpload')) {
             return $_FILES[$field];
         }
 
-        return $default ?? null;
+        if (file_exists(PATH_UPLOAD . $default)) {
+            return $default;
+        }
+
+        return null;
     }
 }

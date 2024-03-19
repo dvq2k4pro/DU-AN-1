@@ -60,7 +60,7 @@
                                 <td>
                                     <img src="<?= BASE_URL . $book['s_hinh_nen'] ?>" alt="" width="100px">
                                 </td>
-                                <td><?= $book['s_gia'] ?>Đ</td>
+                                <td><?= $book['s_gia'] ?></td>
                                 <td><?= $book['s_mo_ta'] ?></td>
                                 <td><?= $book['s_luot_xem'] ?></td>
                                 <td><?= $book['s_san_pham_dac_sac'] ? '<span class="badge badge-success">Đúng</span>' : '<span class="badge badge-warning">Sai</span>' ?></td>

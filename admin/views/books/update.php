@@ -1,3 +1,9 @@
+<style>
+    .form-control:focus {
+        box-shadow: none;
+    }
+</style>
+
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800"><?= $title ?></h1>
@@ -10,49 +16,59 @@
             </h6>
         </div>
         <div class="card-body">
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3 mt-3">
-                            <label for="ho_ten" class="form-label">Họ tên:</label>
-                            <input type="text" class="form-control" id="ho_ten" value="<?= $user['ho_ten'] ?>" placeholder="VD: Trần Văn A" name="ho_ten">
-                            <span class='error-message'></span>
+                            <label for="ten-sach" class="form-label">Tên sách:*</label>
+                            <input type="text" class="form-control" id="ten-sach" value="<?= $book['s_ten_sach'] ?>" placeholder="VD: Dragon Balls" name="ten-sach">
+                            <span class='error-message'><?= isset($_SESSION['errors']['ten_sach']) ? $_SESSION['errors']['ten_sach'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
-                            <label for="tai_khoan" class="form-label">Tài khoản:*</label>
-                            <input type="text" class="form-control" id="tai_khoan" value="<?= $user['tai_khoan'] ?>" placeholder="Vui lòng nhập tài khoản" name="tai_khoan">
-                            <span class='error-message'><?= isset($_SESSION['errors']['tai_khoan']) ? $_SESSION['errors']['tai_khoan'] : '' ?></span>
+                            <label for="gia" class="form-label">Giá:*</label>
+                            <input type="text" class="form-control" id="gia" value="<?= $book['s_gia'] ?>" placeholder="Vui lòng nhập giá" name="gia">
+                            <span class='error-message'><?= isset($_SESSION['errors']['gia']) ? $_SESSION['errors']['gia'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
-                            <label for="dia_chi" class="form-label">Địa chỉ:</label>
-                            <input type="text" class="form-control" id="dia_chi" value="<?= $user['dia_chi'] ?>" placeholder="Vui lòng nhập địa chỉ" name="dia_chi">
-                            <span class='error-message'></span>
-                        </div>
-                        <div class="mb-3 mt-3">
-                            <label for="so_dien_thoai" class="form-label">Số điện thoại:</label>
-                            <input type="text" class="form-control" id="so_dien_thoai" value="<?= $user['so_dien_thoai'] ?>" placeholder="Vui lòng nhập số điện thoại" name="so_dien_thoai">
-                            <span class='error-message'></span>
+                            <label for="hinh-nen" class="form-label">Hình nền:*</label>
+                            <input style="border: none; padding: 0; border-radius: 0;" type="file" class="form-control" id="hinh-nen" name="hinh-nen">
+                            <img src="<?= BASE_URL . $book['s_hinh_nen'] ?>" alt="" width="100px">
+                            <span class='error-message'><?= isset($_SESSION['errors']['hinh_nen']) ? $_SESSION['errors']['hinh_nen'] : '' ?></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3 mt-3">
-                            <label for="email" class="form-label">Email:*</label>
-                            <input type="email" class="form-control" id="email" value="<?= $user['email'] ?>" placeholder="VD: example@gmail.com" name="email">
-                            <span class='error-message'><?= isset($_SESSION['errors']['email']) ? $_SESSION['errors']['email'] : '' ?></span>
+                            <label for="category_id" class="form-label">Thể loại:*</label>
+                            <select style="width: 50%;" class="form-control" id="category_id" name="id-the-loai">
+                                <?php foreach ($categories as $category) : ?>
+                                    <option <?= $book['s_id_the_loai'] == $category['id'] ? 'selected' : null ?> value="<?= $category['id'] ?>"><?= $category['ten_the_loai'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <span class='error-message'><?= isset($_SESSION['errors']['id_the_loai']) ? $_SESSION['errors']['id_the_loai'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
-                            <label for="password" class="form-label">Mật khẩu:*</label>
-                            <input type="password" class="form-control" id="password" value="<?= $user['mat_khau'] ?>" placeholder="Vui lòng nhập mật khẩu" name="mat_khau">
-                            <span class='error-message'><?= isset($_SESSION['errors']['mat_khau']) ? $_SESSION['errors']['mat_khau'] : '' ?></span>
+                            <label for="id-tac-gia" class="form-label">Tác giả:*</label>
+                            <select style="width: 50%;" class="form-control" id="id-tac-gia" name="id-tac-gia">
+                                <?php foreach ($authors as $author) : ?>
+                                    <option <?= $book['s_id_tac_gia'] == $author['id'] ? 'selected' : null ?> value="<?= $author['id'] ?>"><?= $author['ten_tac_gia'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <span class='error-message'><?= isset($_SESSION['errors']['id_tac_gia']) ? $_SESSION['errors']['id_tac_gia'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
-                            <label for="vai_tro" class="form-label">Vai trò:*</label>
-                            <select style="width: 30%;" name="vai_tro" id="vai_tro" class="form-control">
-                                <option <?= $user['vai_tro'] == 1 ? 'selected' : null ?> value="1">Admin</option>
-                                <option <?= $user['vai_tro'] == 0 ? 'selected' : null ?> value="0">Member</option>
+                            <label for="san-pham-dac-sac" class="form-label">Sản phẩm đặc sắc:*</label>
+                            <select style="width: 30%;" name="san-pham-dac-sac" id="san-pham-dac-sac" class="form-control">
+                                <option <?= $book['s_san_pham_dac_sac'] == 1 ? 'selected' : null ?> value="1">Đúng</option>
+                                <option <?= $book['s_san_pham_dac_sac'] == 0 ? 'selected' : null ?> value="0">Sai</option>
                             </select>
                             <span class='error-message'><?= isset($_SESSION['errors']['vai_tro']) ? $_SESSION['errors']['vai_tro'] : '' ?></span>
                         </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3 mt-3">
+                        <label for="content" class="form-label">Mô tả:</label>
+                        <textarea id="content" name="mo-ta"><?= $book['s_mo_ta'] ?? null ?></textarea>
                     </div>
                 </div>
                 <?php if (isset($_SESSION['success'])) : ?>
@@ -62,7 +78,7 @@
                     </div>
                 <?php endif; ?>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=users">Back to list</a>
+                <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=books">Back to list</a>
             </form>
         </div>
     </div>

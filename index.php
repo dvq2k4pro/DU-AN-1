@@ -15,7 +15,8 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     '/' => homeIndex(),
-    'chi-tiet-san-pham' => productDetails(),
+    'chi-tiet-san-pham' => productDetails($_GET['id']),
+    'danh-sach-san-pham' => loadBookByCategory($_GET['id']),
 };
 
 require_once './commons/disconnect-db.php';

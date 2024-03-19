@@ -40,6 +40,8 @@ if (!function_exists('showOneForBook')) {
             $sql = "
                 SELECT
                 s.id as s_id,
+                s.id_the_loai as s_id_the_loai,
+                s.id_tac_gia as s_id_tac_gia,
                 s.ten_sach as s_ten_sach,
                 s.hinh_nen as s_hinh_nen,
                 s.gia as s_gia,
