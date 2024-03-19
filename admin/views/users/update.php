@@ -15,34 +15,34 @@
                     <div class="col-md-6">
                         <div class="mb-3 mt-3">
                             <label for="ho_ten" class="form-label">Họ tên:</label>
-                            <input type="text" class="form-control" id="ho_ten" value="<?= $user['ho_ten'] ?>" placeholder="VD: Trần Văn A" name="ho_ten">
+                            <input disabled type="text" class="form-control" id="ho_ten" value="<?= $user['ho_ten'] ?>" name="ho_ten">
                             <span class='error-message'></span>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="tai_khoan" class="form-label">Tài khoản:*</label>
-                            <input type="text" class="form-control" id="tai_khoan" value="<?= $user['tai_khoan'] ?>" placeholder="Vui lòng nhập tài khoản" name="tai_khoan">
+                            <input disabled type="text" class="form-control" id="tai_khoan" value="<?= $user['tai_khoan'] ?>" name="tai_khoan">
                             <span class='error-message'><?= isset($_SESSION['errors']['tai_khoan']) ? $_SESSION['errors']['tai_khoan'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="dia_chi" class="form-label">Địa chỉ:</label>
-                            <input type="text" class="form-control" id="dia_chi" value="<?= $user['dia_chi'] ?>" placeholder="Vui lòng nhập địa chỉ" name="dia_chi">
+                            <input disabled type="text" class="form-control" id="dia_chi" value="<?= $user['dia_chi'] ?>" name="dia_chi">
                             <span class='error-message'></span>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="so_dien_thoai" class="form-label">Số điện thoại:</label>
-                            <input type="text" class="form-control" id="so_dien_thoai" value="<?= $user['so_dien_thoai'] ?>" placeholder="Vui lòng nhập số điện thoại" name="so_dien_thoai">
+                            <input disabled type="text" class="form-control" id="so_dien_thoai" value="<?= $user['so_dien_thoai'] ?>" name="so_dien_thoai">
                             <span class='error-message'></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3 mt-3">
                             <label for="email" class="form-label">Email:*</label>
-                            <input type="email" class="form-control" id="email" value="<?= $user['email'] ?>" placeholder="VD: example@gmail.com" name="email">
+                            <input type="email" class="form-control" id="email" value="<?= $user['email'] ?>" disabled name="email">
                             <span class='error-message'><?= isset($_SESSION['errors']['email']) ? $_SESSION['errors']['email'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="password" class="form-label">Mật khẩu:*</label>
-                            <input type="password" class="form-control" id="password" value="<?= $user['mat_khau'] ?>" placeholder="Vui lòng nhập mật khẩu" name="mat_khau">
+                            <input type="password" class="form-control" id="password" value="<?= $user['mat_khau'] ?>" disabled name="mat_khau">
                             <span class='error-message'><?= isset($_SESSION['errors']['mat_khau']) ? $_SESSION['errors']['mat_khau'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
