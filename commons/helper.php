@@ -58,3 +58,14 @@ if (!function_exists('middlewareAuthCheck')) {
         }
     }
 }
+
+if (!function_exists('getFileUpload')) {
+    function getFileUpload($field, $default = null)
+    {
+        if (isset($_FILES[$field]) && $_FILES[$field]['size'] > 0) {
+            return $_FILES[$field];
+        }
+
+        return $default ?? null;
+    }
+}

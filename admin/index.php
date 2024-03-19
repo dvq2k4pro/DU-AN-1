@@ -43,6 +43,13 @@ match ($act) {
     'author-create' => authorCreate(),
     'author-update' => authorUpdate($_GET['id']),
     'author-delete' => authorDelete($_GET['id']),
+
+    // CRUD Book
+    'books' => bookListAll(),
+    'book-detail' => bookShowOne($_GET['id']),
+    'book-create' => bookCreate(),
+    'book-update' => bookUpdate($_GET['id']),
+    'book-delete' => bookDelete($_GET['id']),
 };
 
 require_once '../commons/disconnect-db.php';
