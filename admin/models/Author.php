@@ -3,7 +3,7 @@
 if (!function_exists('checkUniqueNameTacGia')) {
     // Nếu không trùng thì trả về True
     // Nếu trùng thì trả về False
-    function checkUniqueNameTacGia($name)
+    function checkUniqueNameAuthor($name)
     {
         try {
             $sql = "SELECT * FROM tac_gia WHERE ten_tac_gia = :name LIMIT 1";
@@ -26,7 +26,7 @@ if (!function_exists('checkUniqueNameTacGia')) {
 if (!function_exists('checkUniqueNameForUpdate')) {
     // Nếu không trùng thì trả về True
     // Nếu trùng thì trả về False
-    function checkUniqueNameTacGiaForUpdate($id, $name)
+    function checkUniqueNameAuthorForUpdate($id, $name)
     {
         try {
             $sql = "SELECT * FROM tac_gia WHERE ten_tac_gia = :name AND id <> :id LIMIT 1";

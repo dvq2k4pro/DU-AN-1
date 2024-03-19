@@ -61,11 +61,11 @@ function validateAuthorCreate($data)
     $errors = [];
 
     if (empty($data['ten_tac_gia'])) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả không được để trống!';
+        $errors['ten_tac_gia'] = 'Tên tác giả không được để trống!';
     } else if (strlen($data['ten_tac_gia']) > 50) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả độ dài tối đa 50 ký tự!';
-    } else if (!checkUniqueNameTheLoai($data['ten_tac_gia'])) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả đã được sử dụng!';
+        $errors['ten_tac_gia'] = 'Tên tác giả độ dài tối đa 50 ký tự!';
+    } else if (!checkUniqueNameAuthor($data['ten_tac_gia'])) {
+        $errors['ten_tac_gia'] = 'Tên tác giả đã được sử dụng!';
     }
 
     return $errors;
@@ -79,7 +79,7 @@ function authorUpdate($id)
         e404();
     }
 
-    $title = 'Cập nhật thông tin tác_giả: ' . $author['ten_tac_gia'];
+    $title = 'Cập nhật thông tin tác giả: ' . $author['ten_tac_gia'];
     $view = 'authors/update';
 
     if (!empty($_POST)) {
@@ -104,17 +104,17 @@ function authorUpdate($id)
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function validateauthorUpdate($id, $data)
+function validateAuthorUpdate($id, $data)
 {
     // ten_tac_gia - bắt buộc, độ dài tối đa 50 ký tự, không được trùng
     $errors = [];
 
     if (empty($data['ten_tac_gia'])) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả không được để trống!';
+        $errors['ten_tac_gia'] = 'Tên tác giả không được để trống!';
     } else if (strlen($data['ten_tac_gia']) > 50) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả độ dài tối đa 50 ký tự!';
-    } else if (!checkUniqueNameTheLoaiForUpdate($id, $data['ten_tac_gia'])) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả đã được sử dụng!';
+        $errors['ten_tac_gia'] = 'Tên tác giả độ dài tối đa 50 ký tự!';
+    } else if (!checkUniqueNameAuthorForUpdate($id, $data['ten_tac_gia'])) {
+        $errors['ten_tac_gia'] = 'Tên tác giả đã được sử dụng!';
     }
 
     return $errors;
