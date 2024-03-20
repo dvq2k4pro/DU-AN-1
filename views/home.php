@@ -189,7 +189,7 @@
                                                 </div>
                                             </div>
                                             <div class="price-block">
-                                                <span class="price">£<?= $sanPhamDacSac['gia'] ?></span>
+                                                <span class="price">£ <?= $sanPhamDacSac['gia'] ?></span>
                                             </div>
                                         </div>
                                     </div>
