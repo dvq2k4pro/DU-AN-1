@@ -4,8 +4,8 @@
         <div class="breadcrumb-contents">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Product Details</li>
+                    <li class="breadcrumb-item"><a href="<?= BASE_URL ?>">Home</a></li>
+                    <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
                 </ol>
             </nav>
         </div>
@@ -48,8 +48,7 @@
                             <input type="number" class="form-control text-center" value="1">
                         </div>
                         <div class="add-cart-btn">
-                            <a href="#" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Add to
-                                Cart</a>
+                            <a href="#" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Thêm vào giỏ hàng</a>
                         </div>
                     </div>
                 </div>
@@ -59,12 +58,12 @@
             <ul class="nav nav-tabs nav-style-2" id="myTab2" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="tab1" data-bs-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">
-                        DESCRIPTION
+                        Mô tả
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="tab2" data-bs-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="true">
-                        REVIEWS (1)
+                        Đánh giá (1)
                     </a>
                 </li>
             </ul>
@@ -156,7 +155,7 @@
     <section class="">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>RELATED PRODUCTS</h2>
+                <h2>Sản phẩm tương tự</h2>
             </div>
             <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
                 "autoplay": true,
