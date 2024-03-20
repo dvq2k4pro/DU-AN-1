@@ -77,8 +77,8 @@
                         <i class="fas fa-redo-alt"></i>
                     </div>
                     <div class="text">
-                        <h5>Đảm bảo hoàn trả tiền</h5>
-                        <p>100% hoàn lại tiền</p>
+                        <h5>Đổi trả miễn phí</h5>
+                        <p>Nếu sản phẩm lỗi</p>
                     </div>
                 </div>
             </div>
@@ -88,8 +88,8 @@
                         <i class="fas fa-piggy-bank"></i>
                     </div>
                     <div class="text">
-                        <h5>Thanh toán</h5>
-                        <p>Nhiều loại thanh toán</p>
+                        <h5>Được hoàn tiền 111%</h5>
+                        <p>Nếu là hàng giả</p>
                     </div>
                 </div>
             </div>
@@ -136,26 +136,26 @@
         <div class="sb-custom-tab">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="shop-tab" data-bs-toggle="tab" href="#shop" role="tab" aria-controls="shop" aria-selected="true">
+                    <a class="nav-link active" id="san-pham-noi-bat-tab" data-bs-toggle="tab" href="#san-pham-noi-bat" role="tab" aria-controls="san-pham-noi-bat" aria-selected="true">
                         Sản phẩm nổi bật
                     </a>
                     <span class="arrow-icon"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="men-tab" data-bs-toggle="tab" href="#men" role="tab" aria-controls="men" aria-selected="true">
+                    <a class="nav-link" id="san-pham-moi-cap-nhat-tab" data-bs-toggle="tab" href="#san-pham-moi-cap-nhat" role="tab" aria-controls="san-pham-moi-cap-nhat" aria-selected="true">
                         Sản phẩm mới cập nhật
                     </a>
                     <span class="arrow-icon"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="woman-tab" data-bs-toggle="tab" href="#woman" role="tab" aria-controls="woman" aria-selected="false">
-                        Sản phẩm nhiều lượt theo giõi
+                    <a class="nav-link" id="san-pham-nhieu-luot-theo-doi-tab" data-bs-toggle="tab" href="#san-pham-nhieu-luot-theo-doi" role="tab" aria-controls="san-pham-nhieu-luot-theo-doi" aria-selected="false">
+                        Sản phẩm nhiều lượt theo dõi
                     </a>
                     <span class="arrow-icon"></span>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane show active" id="shop" role="tabpanel" aria-labelledby="shop-tab">
+                <div class="tab-pane show active" id="san-pham-noi-bat" role="tabpanel" aria-labelledby="san-pham-noi-bat-tab">
                     <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider" data-slick-setting='{
                             "autoplay": true,
                             "autoplaySpeed": 8000,
@@ -199,7 +199,7 @@
                         <!-- End Featured Products -->
                     </div>
                 </div>
-                <div class="tab-pane" id="men" role="tabpanel" aria-labelledby="men-tab">
+                <div class="tab-pane" id="san-pham-moi-cap-nhat" role="tabpanel" aria-labelledby="san-pham-moi-cap-nhat-tab">
                     <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider" data-slick-setting='{
                                         "autoplay": true,
                                         "autoplaySpeed": 8000,
@@ -243,7 +243,7 @@
                         <!-- End New Arrivals -->
                     </div>
                 </div>
-                <div class="tab-pane" id="woman" role="tabpanel" aria-labelledby="woman-tab">
+                <div class="tab-pane" id="san-pham-nhieu-luot-theo-doi" role="tabpanel" aria-labelledby="san-pham-nhieu-luot-theo-doi-tab">
                     <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider" data-slick-setting='{
                                         "autoplay": true,
                                         "autoplaySpeed": 8000,
