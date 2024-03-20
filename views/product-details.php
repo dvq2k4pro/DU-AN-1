@@ -19,72 +19,28 @@
                 <div class="product-details-slider sb-slick-slider arrow-type-two" data-slick-setting='{
               "slidesToShow": 1,
               "arrows": false,
-              "fade": true,
+              "fade": false,
               "draggable": false,
               "swipe": false,
-              "asNavFor": ".product-slider-nav"
               }'>
                     <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-1.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-2.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-3.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-4.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-5.jpg" alt="">
-                    </div>
-                </div>
-                <!-- Product Details Slider Nav -->
-                <div class="mt--30 product-slider-nav sb-slick-slider arrow-type-two" data-slick-setting='{
-            "infinite":true,
-              "autoplay": true,
-              "autoplaySpeed": 8000,
-              "slidesToShow": 4,
-              "arrows": true,
-              "prevArrow":{"buttonClass": "slick-prev","iconClass":"fa fa-chevron-left"},
-              "nextArrow":{"buttonClass": "slick-next","iconClass":"fa fa-chevron-right"},
-              "asNavFor": ".product-details-slider",
-              "focusOnSelect": true
-              }'>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-1.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-2.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-3.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-4.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-5.jpg" alt="">
+                        <img src="<?= BASE_URL . $book['hinh_nen'] ?>" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-lg-7">
                 <div class="product-details-info pl-lg--30 ">
-                    <h3 class="product-title">Beats EP Wired On-Ear Headphone-Black</h3>
+                    <h3 class="product-title"><?= $book['ten_sach'] ?></h3>
                     <ul class="list-unstyled">
-                        <li>Mã sách: <span class="list-value"> book-1</span></li>
-                        <li>Thể loại: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
-                        <li>Tác giả: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
+                        <li>Mã sách: <span class="list-value"> book-<?= $book['s_id'] ?></span></li>
+                        <li>Thể loại: <a href="#" class="list-value font-weight-bold"> <?= $book['tl_ten_the_loai'] ?></a></li>
+                        <li>Tác giả: <a href="#" class="list-value font-weight-bold"> <?= $book['tg_ten_tac_gia'] ?></a></li>
                     </ul>
                     <div class="price-block">
-                        <span class="price-new">£73.79</span>
+                        <span class="price-new">£<?= $book['gia'] ?></span>
                     </div>
                     <article class="product-details-article">
                         <h4 class="sr-only">Product Summery</h4>
-                        <p>Long printed dress with thin adjustable straps. V-neckline and wiring under the Dust
-                            with ruffles at the bottom of the
-                            dress.</p>
                     </article>
                     <div class="add-to-cart-row">
                         <div class="count-input-block">
@@ -116,21 +72,7 @@
                 <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab1">
                     <article class="review-article">
                         <h1 class="sr-only">Tab Article</h1>
-                        <p>Fashion has been creating well-designed collections since 2010. The brand offers
-                            feminine designs delivering
-                            stylish
-                            separates and statement dresses which have since evolved into a full ready-to-wear
-                            collection in which every
-                            item is
-                            a
-                            vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful
-                            elegance and unmistakable
-                            signature
-                            style. All the beautiful pieces are made in Italy and manufactured with the greatest
-                            attention. Now Fashion
-                            extends
-                            to
-                            a range of accessories including shoes, hats, belts and more!</p>
+                        <p><?= $book['mo_ta'] ?></p>
                     </article>
                 </div>
                 <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab2">
@@ -207,24 +149,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="tab-product-details">
-  <div class="brand">
-    <img src="<?= BASE_URL ?>/assets/client/image/others/review-tab-product-details.jpg" alt="">
-  </div>
-  <h5 class="meta">Reference <span class="small-text">demo_5</span></h5>
-  <h5 class="meta">In stock <span class="small-text">297 Items</span></h5>
-  <section class="product-features">
-    <h3 class="title">Data sheet</h3>
-    <dl class="data-sheet">
-      <dt class="name">Compositions</dt>
-      <dd class="value">Viscose</dd>
-      <dt class="name">Styles</dt>
-      <dd class="value">Casual</dd>
-      <dt class="name">Properties</dt>
-      <dd class="value">Maxi Dress</dd>
-    </dl>
-  </section>
-</div> -->
     </div>
     <!--=================================
     RELATED PRODUCTS BOOKS
@@ -245,203 +169,31 @@
                 {"breakpoint":768, "settings": {"slidesToShow": 2} },
                 {"breakpoint":480, "settings": {"slidesToShow": 1} }
             ]'>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Lpple
-                            </a>
-                            <h3><a href="product-details.html">Revolutionize Your BOOK With</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="<?= BASE_URL ?>/assets/client/image/products/product-10.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-1.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
+                <?php foreach ($listBookCungTheLoai as $bookCungTheLoai) : ?>
+                    <div class="single-slide">
+                        <div class="product-card">
+                            <div class="product-header">
+                                <a href="#!" class="author">
+                                    <?= $bookCungTheLoai['tg_ten_tac_gia'] ?>
+                                </a>
+                                <h3><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $bookCungTheLoai['s_id'] ?>"><?= $bookCungTheLoai['s_ten_sach'] ?></a></h3>
+                            </div>
+                            <div class="product-card--body">
+                                <div class="card-image">
+                                    <img src="<?= BASE_URL . $bookCungTheLoai['s_hinh_nen'] ?>" alt="">
+                                    <div class="hover-contents">
+                                        <a href="product-details.html" class="hover-image">
+                                            <img src="<?= BASE_URL . $bookCungTheLoai['s_hinh_nen'] ?>" alt="">
                                         </a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Jpple
-                            </a>
-                            <h3><a href="product-details.html">Turn Your BOOK Into High Machine</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="<?= BASE_URL ?>/assets/client/image/products/product-2.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-1.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
+                                <div class="price-block">
+                                    <span class="price">£<?= $bookCungTheLoai['s_gia'] ?></span>
                                 </div>
                             </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Wpple
-                            </a>
-                            <h3><a href="product-details.html">3 Ways Create Better BOOK With</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="<?= BASE_URL ?>/assets/client/image/products/product-3.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-2.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Epple
-                            </a>
-                            <h3><a href="product-details.html">What You Can Learn From Bill Gates</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="<?= BASE_URL ?>/assets/client/image/products/product-5.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-4.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Hpple
-                            </a>
-                            <h3><a href="product-details.html">a Half Very Simple Things You To</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="<?= BASE_URL ?>/assets/client/image/products/product-6.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-4.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>

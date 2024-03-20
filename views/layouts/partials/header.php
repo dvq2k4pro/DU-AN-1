@@ -22,7 +22,7 @@
                     <div class="main-navigation flex-lg-right">
                         <ul class="main-menu menu-right ">
                             <li class="menu-item">
-                                <a href="contact.html">Trang chủ</a>
+                                <a href="<?= BASE_URL ?>">Trang chủ</a>
                             </li>
                             <li class="menu-item">
                                 <a href="contact.html">Giới thiệu</a>
@@ -49,7 +49,7 @@
                             <ul class="category-menu">
                                 <?php foreach ($categories as $category) : ?>
                                     <li class="cat-item">
-                                        <a href="#!"><?= $category['ten_the_loai'] ?></a>
+                                        <a href="<?= BASE_URL . '?act=danh-sach-san-pham&id=' . $category['id'] ?>"><?= $category['ten_the_loai'] ?></a>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
