@@ -158,6 +158,7 @@ function bookUpdate($id)
                 !empty($hinhNen)
                 && !empty($book['s_hinh_nen'])
                 && !empty($data['hinh_nen'])
+                && ($data['hinh_nen'] != $book['s_hinh_nen'])
                 && file_exists(PATH_UPLOAD . $book['s_hinh_nen'])
             ) {
                 unlink(PATH_UPLOAD . $book['s_hinh_nen']);
