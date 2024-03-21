@@ -13,7 +13,7 @@
                             <i class="fas fa-headphones-alt"></i>
                         </div>
                         <div class="text">
-                            <p>Free Support 24/7</p>
+                            <p>Hỗ trợ miễn phí 24/7</p>
                             <p class="font-weight-bold number">+01-202-555-0181</p>
                         </div>
                     </div>
@@ -58,16 +58,16 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="header-search-block">
-                        <input type="text" placeholder="Search entire store here">
-                        <button>Search</button>
+                        <input type="text" placeholder="Tìm kiếm sách tại đây">
+                        <button>Tìm kiếm</button>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="main-navigation flex-lg-right">
                         <div class="cart-widget">
                             <div class="login-block">
-                                <a href="login-register.html" class="font-weight-bold">Login</a> <br>
-                                <span>or</span><a href="login-register.html">Register</a>
+                                <a href="login-register.html" class="font-weight-bold">Đăng nhập</a> <br>
+                                <span>hoặc</span><a href="login-register.html">Đăng ký</a>
                             </div>
                             <div class="cart-block">
                                 <div class="cart-total">
@@ -75,7 +75,7 @@
                                         1
                                     </span>
                                     <span class="text-item">
-                                        Shopping Cart
+                                        Giỏ hàng
                                     </span>
                                     <span class="price">
                                         £0.00
@@ -99,8 +99,8 @@
                                     </div>
                                     <div class=" single-cart-block ">
                                         <div class="btn-block">
-                                            <a href="cart.html" class="btn">View Cart <i class="fas fa-chevron-right"></i></a>
-                                            <a href="checkout.html" class="btn btn--primary">Check Out <i class="fas fa-chevron-right"></i></a>
+                                            <a href="cart.html" class="btn">Xem giỏ hàng <i class="fas fa-chevron-right"></i></a>
+                                            <a href="checkout.html" class="btn btn--primary">Thanh toán <i class="fas fa-chevron-right"></i></a>
                                         </div>
                                     </div>
                                 </div>

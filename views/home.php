@@ -21,9 +21,9 @@
                             <div class="home-content-inner content-left-side text-start">
                                 <h1>H.G. Wells<br>
                                     De Vengeance</h1>
-                                <h2>Cover Up Front Of Books and Leave Summary</h2>
+                                <h2>Che mặt trước của cuốn sách và để lại phần tóm tắt</h2>
                                 <a href="shop-grid.html" class="btn btn-outlined--primary">
-                                    $78.09 - Order Now!
+                                    $78.09 - Mua ngay!
                                 </a>
                             </div>
                         </div>
@@ -42,9 +42,9 @@
                             <div class="home-content-inner content-right-side text-start">
                                 <h1>J.D. Kurtness <br>
                                     De Vengeance</h1>
-                                <h2>Cover Up Front Of Books and Leave Summary</h2>
+                                <h2>Che mặt trước của cuốn sách và để lại phần tóm tắt</h2>
                                 <a href="shop-grid.html" class="btn btn-outlined--primary">
-                                    $78.09 - Learn More
+                                    $78.09 - Tìm hiểu thêm
                                 </a>
                             </div>
                         </div>
@@ -66,8 +66,8 @@
                         <i class="fas fa-shipping-fast"></i>
                     </div>
                     <div class="text">
-                        <h5>Free Shipping Item</h5>
-                        <p> Orders over $500</p>
+                        <h5>Miễn phí vận chuyển</h5>
+                        <p> Đơn hàng trên $500</p>
                     </div>
                 </div>
             </div>
@@ -77,8 +77,8 @@
                         <i class="fas fa-redo-alt"></i>
                     </div>
                     <div class="text">
-                        <h5>Money Back Guarantee</h5>
-                        <p>100% money back</p>
+                        <h5>Đổi trả miễn phí</h5>
+                        <p>Nếu sản phẩm lỗi</p>
                     </div>
                 </div>
             </div>
@@ -88,8 +88,8 @@
                         <i class="fas fa-piggy-bank"></i>
                     </div>
                     <div class="text">
-                        <h5>Cash On Delivery</h5>
-                        <p>Lorem ipsum dolor amet</p>
+                        <h5>Được hoàn tiền 111%</h5>
+                        <p>Nếu là hàng giả</p>
                     </div>
                 </div>
             </div>
@@ -99,8 +99,8 @@
                         <i class="fas fa-life-ring"></i>
                     </div>
                     <div class="text">
-                        <h5>Help & Support</h5>
-                        <p>Call us : + 0123.4567.89</p>
+                        <h5>Trợ giúp & hỗ trợ</h5>
+                        <p>Gọi : + 0123.4567.89</p>
                     </div>
                 </div>
             </div>
@@ -136,26 +136,26 @@
         <div class="sb-custom-tab">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="shop-tab" data-bs-toggle="tab" href="#shop" role="tab" aria-controls="shop" aria-selected="true">
-                        Featured Products
+                    <a class="nav-link active" id="san-pham-noi-bat-tab" data-bs-toggle="tab" href="#san-pham-noi-bat" role="tab" aria-controls="san-pham-noi-bat" aria-selected="true">
+                        Sản phẩm nổi bật
                     </a>
                     <span class="arrow-icon"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="men-tab" data-bs-toggle="tab" href="#men" role="tab" aria-controls="men" aria-selected="true">
-                        New Arrivals
+                    <a class="nav-link" id="san-pham-moi-cap-nhat-tab" data-bs-toggle="tab" href="#san-pham-moi-cap-nhat" role="tab" aria-controls="san-pham-moi-cap-nhat" aria-selected="true">
+                        Sản phẩm mới cập nhật
                     </a>
                     <span class="arrow-icon"></span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="woman-tab" data-bs-toggle="tab" href="#woman" role="tab" aria-controls="woman" aria-selected="false">
-                        Most view products
+                    <a class="nav-link" id="san-pham-nhieu-luot-theo-doi-tab" data-bs-toggle="tab" href="#san-pham-nhieu-luot-theo-doi" role="tab" aria-controls="san-pham-nhieu-luot-theo-doi" aria-selected="false">
+                        Sản phẩm nhiều lượt theo dõi
                     </a>
                     <span class="arrow-icon"></span>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane show active" id="shop" role="tabpanel" aria-labelledby="shop-tab">
+                <div class="tab-pane show active" id="san-pham-noi-bat" role="tabpanel" aria-labelledby="san-pham-noi-bat-tab">
                     <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider" data-slick-setting='{
                             "autoplay": true,
                             "autoplaySpeed": 8000,
@@ -199,7 +199,7 @@
                         <!-- End Featured Products -->
                     </div>
                 </div>
-                <div class="tab-pane" id="men" role="tabpanel" aria-labelledby="men-tab">
+                <div class="tab-pane" id="san-pham-moi-cap-nhat" role="tabpanel" aria-labelledby="san-pham-moi-cap-nhat-tab">
                     <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider" data-slick-setting='{
                                         "autoplay": true,
                                         "autoplaySpeed": 8000,
@@ -243,7 +243,7 @@
                         <!-- End New Arrivals -->
                     </div>
                 </div>
-                <div class="tab-pane" id="woman" role="tabpanel" aria-labelledby="woman-tab">
+                <div class="tab-pane" id="san-pham-nhieu-luot-theo-doi" role="tabpanel" aria-labelledby="san-pham-nhieu-luot-theo-doi-tab">
                     <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider" data-slick-setting='{
                                         "autoplay": true,
                                         "autoplaySpeed": 8000,
@@ -292,44 +292,6 @@
     </div>
 </section>
 <!--=================================
-        Promotion Section Two
-        ===================================== -->
-<div class="section-margin">
-    <div class="container">
-        <div class="row space-db--30">
-            <div class="col-lg-8 mb--30">
-                <div class="promo-wrapper promo-type-one">
-                    <a href="#" class="promo-image  promo-overlay bg-image" data-bg="<?= BASE_URL ?>/assets/client/image/bg-images/promo-banner-mid.jpg">
-                        <img src="<?= BASE_URL ?>/assets/client/image/bg-images/promo-banner-mid.jpg" alt="">
-                    </a>
-                    <div class="promo-text">
-                        <div class="promo-text-inner">
-                            <h2>Buy 3. Get Free 1.</h2>
-                            <h3>50% off for selected products in Pustok.</h3>
-                            <a href="#" class="btn btn-outlined--red-faded">See More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb--30">
-                <div class="promo-wrapper promo-type-two ">
-                    <a href="#" class="promo-image promo-overlay bg-image" data-bg="<?= BASE_URL ?>/assets/client/image/bg-images/promo-banner-small.jpg">
-                        <img src="<?= BASE_URL ?>/assets/client/image/bg-images/promo-banner-small.jpg" alt="">
-                    </a>
-                    <div class="promo-text">
-                        <div class="promo-text-inner">
-                            <span class="d-block price">$26.00</span>
-                            <h2>Praise for <br>
-                                The Night Child</h2>
-                            <a href="#" class="btn btn-outlined--primary">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--=================================
             Promotion Section Three
         ===================================== -->
 <section class="section-margin">
@@ -340,116 +302,9 @@
             <div class="container">
                 <div class="row w-100">
                     <div class="col-lg-7">
-                        <h2>I Love This Idea!</h2>
-                        <h3>Cover up front of book and
-                            leave summary</h3>
-                        <a href="#" class="btn btn--yellow">$78.09 - Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--=================================
-        Home Blog Slider
-        ===================================== -->
-<!--=================================
-        Home Blog
-        ===================================== -->
-<section class="section-margin">
-    <div class="container">
-        <div class="section-title">
-            <h2>LATEST BLOGS</h2>
-        </div>
-        <div class="blog-slider sb-slick-slider" data-slick-setting='{
-                "autoplay": true,
-                "autoplaySpeed": 8000,
-                "slidesToShow": 2,
-                "dots": true
-            }' data-slick-responsive='[
-                {"breakpoint":1200, "settings": {"slidesToShow": 1} }
-            ]'>
-            <div class="single-slide">
-                <div class="blog-card">
-                    <div class="image">
-                        <img src="<?= BASE_URL ?>/assets/client/image/others/blog-grid-1.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="content-header">
-                            <div class="date-badge">
-                                <span class="date">
-                                    13
-                                </span>
-                                <span class="month">
-                                    Aug
-                                </span>
-                            </div>
-                            <h3 class="title"><a href="blog-details.html">How to Water and Care for Mounted</a>
-                            </h3>
-                        </div>
-                        <p class="meta-para"><i class="fas fa-user-edit"></i>Post by <a href="#">Hastech</a></p>
-                        <article class="blog-paragraph">
-                            <h2 class="sr-only">blog-paragraph</h2>
-                            <p>Virtual reality and 3-D technology are already well-established in the
-                                entertainment...</p>
-                        </article>
-                        <a href="blog-details.html" class="card-link">Read More <i class="fas fa-chevron-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slide">
-                <div class="blog-card">
-                    <div class="image">
-                        <img src="<?= BASE_URL ?>/assets/client/image/others/blog-grid-2.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="content-header">
-                            <div class="date-badge">
-                                <span class="date">
-                                    19
-                                </span>
-                                <span class="month">
-                                    Jan
-                                </span>
-                            </div>
-                            <h3 class="title"><a href="blog-details.html">Why You Never See BLOG TITLE That </a>
-                            </h3>
-                        </div>
-                        <p class="meta-para"><i class="fas fa-user-edit"></i>Post by <a href="#">Hastech</a></p>
-                        <article class="blog-paragraph">
-                            <h2 class="sr-only">blog-paragraph</h2>
-                            <p>Virtual reality and 3-D technology are already well-established in the
-                                entertainment...</p>
-                        </article>
-                        <a href="blog-details.html" class="card-link">Read More <i class="fas fa-chevron-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slide">
-                <div class="blog-card">
-                    <div class="image">
-                        <img src="<?= BASE_URL ?>/assets/client/image/others/blog-grid-3.jpg" alt="">
-                    </div>
-                    <div class="content">
-                        <div class="content-header">
-                            <div class="date-badge">
-                                <span class="date">
-                                    31
-                                </span>
-                                <span class="month">
-                                    Aug
-                                </span>
-                            </div>
-                            <h3 class="title"><a href="blog-details.html">What Everyone Must Know About </a>
-                            </h3>
-                        </div>
-                        <p class="meta-para"><i class="fas fa-user-edit"></i>Post by <a href="#">Hastech</a></p>
-                        <article class="blog-paragraph">
-                            <h2 class="sr-only">blog-paragraph</h2>
-                            <p>Virtual reality and 3-D technology are already well-established in the
-                                entertainment...</p>
-                        </article>
-                        <a href="blog-details.html" class="card-link">Read More <i class="fas fa-chevron-circle-right"></i></a>
+                        <h2>Tôi thích ý tưởng này!</h2>
+                        <h3>Che mặt trước của cuốn sách và để lại phần tóm tắt</h3>
+                        <a href="#" class="btn btn--yellow">$78.09 - Tìm hiểu thêm</a>
                     </div>
                 </div>
             </div>
