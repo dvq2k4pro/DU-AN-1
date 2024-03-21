@@ -34,6 +34,15 @@
                     </tr>
                 <?php endforeach; ?>
 
+                <tr>
+                    <td>Authors</td>
+                    <td>
+                        <?php foreach ($authors as $author) : ?>
+                            <span class="badge badge-info"><?= $author['tg_ten_tac_gia'] ?></span>
+                        <?php endforeach; ?>
+                    </td>
+                </tr>
+
             </table>
 
             <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=books">Back to list</a>

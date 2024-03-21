@@ -30,6 +30,20 @@
                             <span class='error-message'><?= isset($_SESSION['errors']['gia']) ? $_SESSION['errors']['gia'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
+                            <label for="so-trang" class="form-label">Số trang:*</label>
+                            <input type="text" class="form-control" id="so-trang" value="<?= $book['s_so_trang'] ?>" placeholder="Vui lòng nhập số trang" name="so-trang">
+                            <span class='error-message'><?= isset($_SESSION['errors']['so_trang']) ? $_SESSION['errors']['so_trang'] : '' ?></span>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="id_nha_xuat_ban" class="form-label">Nhà xuất bản:*</label>
+                            <select style="width: 50%;" class="form-control" id="id_nha_xuat_ban" name="id-nha-xuat-ban">
+                                <?php foreach ($publishers as $publisher) : ?>
+                                    <option <?= $book['s_id_nha_xuat_ban'] == $publisher['id'] ? 'selected' : null ?> value="<?= $publisher['id'] ?>"><?= $publisher['ten_nha_xuat_ban'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <span class='error-message'><?= isset($_SESSION['errors']['id_the_loai']) ? $_SESSION['errors']['id_the_loai'] : '' ?></span>
+                        </div>
+                        <div class="mb-3 mt-3">
                             <label for="hinh-nen" class="form-label">Hình nền:*</label>
                             <input style="border: none; padding: 0; border-radius: 0;" type="file" class="form-control" id="hinh-nen" name="hinh-nen">
                             <img src="<?= BASE_URL . $book['s_hinh_nen'] ?>" alt="" width="100px">
@@ -47,15 +61,6 @@
                             <span class='error-message'><?= isset($_SESSION['errors']['id_the_loai']) ? $_SESSION['errors']['id_the_loai'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
-                            <label for="id-tac-gia" class="form-label">Tác giả:*</label>
-                            <select style="width: 50%;" class="form-control" id="id-tac-gia" name="id-tac-gia">
-                                <?php foreach ($authors as $author) : ?>
-                                    <option <?= $book['s_id_tac_gia'] == $author['id'] ? 'selected' : null ?> value="<?= $author['id'] ?>"><?= $author['ten_tac_gia'] ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <span class='error-message'><?= isset($_SESSION['errors']['id_tac_gia']) ? $_SESSION['errors']['id_tac_gia'] : '' ?></span>
-                        </div>
-                        <div class="mb-3 mt-3">
                             <label for="san-pham-dac-sac" class="form-label">Sản phẩm đặc sắc:*</label>
                             <select style="width: 30%;" name="san-pham-dac-sac" id="san-pham-dac-sac" class="form-control">
                                 <option <?= $book['s_san_pham_dac_sac'] == 1 ? 'selected' : null ?> value="1">Đúng</option>
@@ -63,6 +68,24 @@
                             </select>
                             <span class='error-message'><?= isset($_SESSION['errors']['vai_tro']) ? $_SESSION['errors']['vai_tro'] : '' ?></span>
                         </div>
+                        <div class="mb-3 mt-3">
+                            <label for="loai-bia" class="form-label">Loại bìa:*</label>
+                            <select style="width: 30%;" name="loai-bia" id="loai-bia" class="form-control">
+                                <option <?= $book['s_loai_bia'] == 1 ? 'selected' : null ?> value="1">Bìa cứng</option>
+                                <option <?= $book['s_loai_bia'] == 0 ? 'selected' : null ?> value="0">Bìa mềm</option>
+                            </select>
+                            <span class='error-message'><?= isset($_SESSION['errors']['loai_bia']) ? $_SESSION['errors']['loai_bia'] : '' ?></span>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="id-tac-gia" class="form-label">Tác giả:*</label>
+                            <select style="width: 50%;" class="form-control" id="id-tac-gia" name="id-tac-gia[]" multiple>
+                                <?php foreach ($authors as $author) : ?>
+                                    <option <?= in_array($author['id'], $authorIdsForBook) ? 'selected' : null ?> value="<?= $author['id'] ?>"><?= $author['ten_tac_gia'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <span class='error-message'><?= isset($_SESSION['errors']['id_tac_gia']) ? $_SESSION['errors']['id_tac_gia'] : '' ?></span>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-md-12">

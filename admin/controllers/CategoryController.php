@@ -64,7 +64,7 @@ function validateCategoryCreate($data)
         $errors['ten_the_loai'] = 'Tên thể loại không được để trống!';
     } else if (strlen($data['ten_the_loai']) > 50) {
         $errors['ten_the_loai'] = 'Tên thể loại độ dài tối đa 50 ký tự!';
-    } else if (!checkUniqueNameTheLoai($data['ten_the_loai'])) {
+    } else if (!checkUniqueName('the_loai', 'ten_the_loai', $data['ten_the_loai'])) {
         $errors['ten_the_loai'] = 'Tên thể loại đã được sử dụng!';
     }
 
@@ -84,7 +84,7 @@ function categoryUpdate($id)
 
     if (!empty($_POST)) {
         $data = [
-            "ten_the_loai" => $_POST['ten_the_loai'] ?? null,
+            "ten_the_loai" => $_POST['ten_the_loai'] ?? $category['ten_the_loai'],
 
         ];
 
@@ -113,7 +113,7 @@ function validateCategoryUpdate($id, $data)
         $errors['ten_the_loai'] = 'Tên thể loại không được để trống!';
     } else if (strlen($data['ten_the_loai']) > 50) {
         $errors['ten_the_loai'] = 'Tên thể loại độ dài tối đa 50 ký tự!';
-    } else if (!checkUniqueNameTheLoaiForUpdate($id, $data['ten_the_loai'])) {
+    } else if (!checkUniqueNameForUpdate('the_loai', $id, 'ten_the_loai', $data['ten_the_loai'])) {
         $errors['ten_the_loai'] = 'Tên thể loại đã được sử dụng!';
     }
 
