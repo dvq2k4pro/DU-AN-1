@@ -16,14 +16,14 @@
                     <th>Dữ liệu</th>
                 </tr>
 
-                <?php foreach ($publisher as $fieldName => $value) : ?>
-                    <tr>
-                        <td><?= ucfirst($fieldName) ?></td>
-                        <td>
-                            <?= $value ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+                <tr>
+                    <td>Id</td>
+                    <td><?= $publisher['id'] ?></td>
+                </tr>
+                <tr>
+                    <td>Tên nhà xuất bản</td>
+                    <td><?= $publisher['ten_nha_xuat_ban'] ?></td>
+                </tr>
 
             </table>
 

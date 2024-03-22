@@ -16,28 +16,14 @@
                     <th>Dữ liệu</th>
                 </tr>
 
-                <?php foreach ($author as $fieldName => $value) : ?>
-                    <tr>
-                        <td><?= ucfirst($fieldName) ?></td>
-                        <td>
-                            <?php
-                            switch ($fieldName) {
-                                case 'mat_khau':
-                                    for ($i = 0; $i < strlen($user['mat_khau']); $i++) {
-                                        echo '*';
-                                    }
-                                    break;
-                                case 'vai_tro':
-                                    echo $value ? '<span class="badge badge-success">Admin</span>' : '<span class="badge badge-warning">Member</span>';
-                                    break;
-                                default:
-                                    echo $value;
-                                    break;
-                            }
-                            ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+                <tr>
+                    <td>Id</td>
+                    <td><?= $author['id'] ?></td>
+                </tr>
+                <tr>
+                    <td>Tên tác giả</td>
+                    <td><?= $author['ten_tac_gia'] ?></td>
+                </tr>
 
             </table>
 

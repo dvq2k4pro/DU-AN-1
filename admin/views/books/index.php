@@ -70,7 +70,7 @@
                                 <td><?= $book['s_mo_ta'] ?></td>
                                 <td><?= $book['s_luot_xem'] ?></td>
                                 <td><?= $book['s_san_pham_dac_sac'] ? '<span class="badge badge-success">Đúng</span>' : '<span class="badge badge-warning">Sai</span>' ?></td>
-                                <td><?= $book['s_ngay_ra_mat'] ?></td>
+                                <td><?= getDateFromDatabase($book['s_ngay_ra_mat']) ?></td>
                                 <td><?= $book['tl_ten_the_loai'] ?></td>
                                 <td><?= $book['nxb_ten_nha_xuat_ban'] ?></td>
 

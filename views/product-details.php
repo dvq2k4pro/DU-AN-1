@@ -34,10 +34,30 @@
                     <ul class="list-unstyled">
                         <li>Mã sách: <span class="list-value"> book-<?= $book['s_id'] ?></span></li>
                         <li>Thể loại: <a href="#" class="list-value font-weight-bold"> <?= $book['tl_ten_the_loai'] ?></a></li>
+                        <li>Tác giả: <a href="#" class="list-value font-weight-bold">
+                                <?php
+                                // Đếm số lượng phần tử trong mảng
+                                $totalAuthors = count($authors);
+                                $i = 0; // Biến để theo dõi vị trí của phần tử
+
+                                foreach ($authors as $author) {
+                                    echo $author['tg_ten_tac_gia'];
+
+                                    if (++$i !== $totalAuthors) {
+                                        echo ', ';
+                                    }
+                                }
+
+                                ?>
+                            </a></li>
+                        <li>Số trang: <span class="list-value"> <?= $book['s_so_trang'] ?></span></li>
+                        <li>Loại bìa: <span class="list-value"> <?= $book['s_loai_bia'] ? 'Bìa cứng' : 'Bìa mềm' ?></span></li>
+                        <li>Ngày ra mắt: <span class="list-value"> <?= getDateFromDatabase($book['s_ngay_ra_mat']) ?></span></li>
+                        <li>Lượt xem: <span class="list-value"> <?= $book['s_luot_xem'] ?></span></li>
                         <li>Nhà xuất bản: <a href="#" class="list-value font-weight-bold"> <?= $book['nxb_ten_nha_xuat_ban'] ?></a></li>
                     </ul>
                     <div class="price-block">
-                        <span class="price-new">£<?= $book['gia'] ?></span>
+                        <span class="price-new"><?= formatCurrencyToVND($book['gia']) ?></span>
                     </div>
                     <article class="product-details-article">
                         <h4 class="sr-only">Product Summery</h4>

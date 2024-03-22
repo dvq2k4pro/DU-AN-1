@@ -205,3 +205,49 @@ if (!function_exists('insertGetLastId')) {
         }
     }
 }
+
+if (!function_exists('getAuthorsForBook')) {
+    function getAuthorsForBook($bookId)
+    {
+        try {
+            $sql = "
+                SELECT 
+                    tg.id    tg_id,
+                    tg.ten_tac_gia  tg_ten_tac_gia
+                FROM tac_gia as tg
+                INNER JOIN sach_tac_gia as stg ON tg.id = stg.id_tac_gia
+                WHERE stg.id_sach = :id_sach;
+            ";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(':id_sach', $bookId);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('increaseViewCount')) {
+    function increaseViewCount($bookId)
+    {
+        try {
+            $sql = "
+                UPDATE sach
+                SET luot_xem = luot_xem + 1 WHERE id = :id
+            ";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(':id', $bookId);
+
+            $stmt->execute();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}

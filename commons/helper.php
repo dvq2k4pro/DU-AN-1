@@ -81,3 +81,12 @@ if (!function_exists('formatCurrencyToVND')) {
         return $formattedAmount . ' ₫';
     }
 }
+
+if (!function_exists('getDateFromDatabase')) {
+    function getDateFromDatabase($dateTimeFromDatabase)
+    {
+        $date = new DateTime($dateTimeFromDatabase);
+
+        return $date->format("Y-m-d");;
+    }
+}
