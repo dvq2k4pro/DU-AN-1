@@ -13,7 +13,7 @@ function bookListAll()
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function bookshowOne($id)
+function bookShowOne($id)
 {
     $book = showOneForBook($id);
 
@@ -23,6 +23,8 @@ function bookshowOne($id)
 
     $title = 'Chi tiết sách: ' . $book['s_ten_sach'];
     $view = 'books/show-one';
+
+    $authors = getAuthorsForBook($id);
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
@@ -35,14 +37,17 @@ function bookCreate()
     $script2    = 'books/script';
 
     $categories = listAll('the_loai');
+    $publishers = listAll('nha_xuat_ban');
     $authors = listAll('tac_gia');
 
     if (!empty($_POST)) {
         $data = [
             "ten_sach" => $_POST['ten-sach'] ?? null,
-            "id_tac_gia" => $_POST['id-tac-gia'] ?? null,
+            "id_nha_xuat_ban" => $_POST['id-nha-xuat-ban'] ?? null,
             "id_the_loai" => $_POST['id-the-loai'] ?? null,
             "hinh_nen" => getFileUpload('hinh-nen'),
+            "so_trang" => $_POST['so-trang'] ?? null,
+            "loai_bia" => $_POST['loai-bia'] ?? null,
             "gia" => $_POST['gia'] ?? null,
             "mo_ta" => $_POST['mo-ta'] ?? null,
             "san_pham_dac_sac" => $_POST['san-pham-dac-sac'] ?? 0,
@@ -50,8 +55,8 @@ function bookCreate()
 
         $errors = validateBookCreate($data);
 
-        $hinhNen = $data['hinh_nen'];
-        if (is_array($hinhNen)) {
+        $hinhNen = $data['hinh_nen'] ?? null;
+        if (is_array($hinhNen) && $hinhNen['size'] > 0) {
             $data['hinh_nen'] = uploadFile($hinhNen, 'uploads/books/');
         }
 
@@ -63,7 +68,36 @@ function bookCreate()
             exit();
         }
 
-        insert('sach', $data);
+        try {
+            $GLOBALS['conn']->beginTransaction();
+
+            $bookId = insertGetLastId('sach', $data);
+
+            // Xử lý Sach - Tac gia
+            if (!empty($_POST['id-tac-gia'])) {
+                foreach ($_POST['id-tac-gia'] as $idTacGia) {
+                    insert('sach_tac_gia', [
+                        'id_sach' => $bookId,
+                        'id_tac_gia' => $idTacGia,
+                    ]);
+                }
+            }
+
+            $GLOBALS['conn']->commit();
+        } catch (Exception $e) {
+            $GLOBALS['conn']->rollBack();
+
+            if (
+                is_array($hinhNen)
+                && !empty($data['hinh_nen'])
+                && file_exists(PATH_UPLOAD . $data['hinh_nen'])
+            ) {
+                unlink(PATH_UPLOAD . $data['hinh_nen']);
+            }
+
+            debug($e);
+        }
+
         $_SESSION['success'] = 'Thêm mới thành công!';
 
         header('location: ' . BASE_URL_ADMIN . '?act=books');
@@ -77,12 +111,18 @@ function validateBookCreate($data)
     $errors = [];
 
     if (empty($data['ten_sach'])) {
-        $errors['ten_sach'] = 'Tên tác giả không được để trống!';
+        $errors['ten_sach'] = 'Tên sách không được để trống!';
     } else if (strlen($data['ten_sach']) > 50) {
-        $errors['ten_sach'] = 'Tên tác giả độ dài tối đa 50 ký tự!';
+        $errors['ten_sach'] = 'Tên sách độ dài tối đa 50 ký tự!';
+    } else if (!checkUniqueNameBookByCategory($data['ten_sach'], $data['id_the_loai'])) {
+        $errors['ten_sach'] = 'Tên sách đã được sử dụng trong thể loại';
     }
 
-    if ($data['id_tac_gia'] === null) {
+    if ($data['id_nha_xuat_ban'] === null) {
+        $errors['id_nha_xuat_ban'] = 'Vui lòng chọn nhà xuất bản!';
+    }
+
+    if (empty($_POST['id-tac-gia'])) {
         $errors['id_tac_gia'] = 'Vui lòng chọn tác giả!';
     }
 
@@ -94,13 +134,23 @@ function validateBookCreate($data)
         $errors['san_pham_dac_sac'] = 'Vui lòng chọn trạng thái sản phẩm đặc sắc!';
     }
 
+    if ($data['loai_bia'] === null) {
+        $errors['loai_bia'] = 'Vui lòng chọn loại bìa!';
+    }
+
     if (empty($data['gia'])) {
         $errors['gia'] = 'Giá không được để trống!';
     } else if ($data['gia'] < 0) {
         $errors['gia'] = 'Giá không hợp lệ!';
     }
 
-    if (empty($data['hinh_nen'])) {
+    if (empty($data['so_trang'])) {
+        $errors['so_trang'] = 'Số trang không được để trống!';
+    } else if ($data['so_trang'] < 0) {
+        $errors['so_trang'] = 'Số trang không hợp lệ!';
+    }
+
+    if (empty($data['hinh_nen']) && $data['hinh_nen']['size'] <= 0) {
         $errors['hinh_nen'] = 'Hình nền là bắt buộc';
     } elseif (is_array($data['hinh_nen'])) {
         $typeImage = ['image/png', 'image/jpg', 'image/jpeg'];
@@ -129,43 +179,75 @@ function bookUpdate($id)
     $script2    = 'books/script';
 
     $categories = listAll('the_loai');
+    $publishers = listAll('nha_xuat_ban');
     $authors = listAll('tac_gia');
+
+    $authorsForBook = getAuthorsForBook($id);
+    $authorIdsForBook = array_column($authorsForBook, 'tg_id');
 
     if (!empty($_POST)) {
         $data = [
             "ten_sach" => $_POST['ten-sach'] ?? $book['s_ten_sach'],
-            "id_tac_gia" => $_POST['id-tac-gia'] ?? $book['s_id_tac_gia'],
+            "id_nha_xuat_ban" => $_POST['id-nha-xuat-ban'] ?? $book['s_id_nha_xuat_ban'],
             "id_the_loai" => $_POST['id-the-loai'] ?? $book['s_id_the_loai'],
             "hinh_nen" => getFileUpload('hinh-nen', $book['s_hinh_nen']),
+            "so_trang" => $_POST['so-trang'] ?? $book['so_trang'],
+            "loai_bia" => $_POST['loai-bia'] ?? $book['loai_bia'],
             "gia" => $_POST['gia'] ?? $book['s_gia'],
             "mo_ta" => $_POST['mo-ta'] ?? $book['s_mo_ta'],
             "san_pham_dac_sac" => $_POST['san-pham-dac-sac'] ?? $book['s_san_pham_dac_sac'],
         ];
 
-        $errors = validateBookUpdate($data);
+        $errors = validateBookUpdate($id, $data);
 
         $hinhNen = $data['hinh_nen'] ?? null;
-        if (is_array($hinhNen)) {
+        if (is_array($hinhNen) && is_array($hinhNen) && $hinhNen['size'] > 0) {
             $data['hinh_nen'] = uploadFile($hinhNen, 'uploads/books/');
         }
 
-        if (!empty($errors)) {
-            $_SESSION['errors'] = $errors;
-        } else {
+        try {
+            $GLOBALS['conn']->beginTransaction();
+
             update('sach', $id, $data);
 
-            if (
-                !empty($hinhNen)
-                && !empty($book['s_hinh_nen'])
-                && !empty($data['hinh_nen'])
-                && ($data['hinh_nen'] != $book['s_hinh_nen'])
-                && file_exists(PATH_UPLOAD . $book['s_hinh_nen'])
-            ) {
-                unlink(PATH_UPLOAD . $book['s_hinh_nen']);
+            // Xử lý Sách - Tác giả
+
+            deleteAuthorsByBookId($id);
+
+            if (!empty($_POST['id-tac-gia'])) {
+                foreach ($_POST['id-tac-gia'] as $idTacGia) {
+                    insert('sach_tac_gia', [
+                        'id_sach' => $id,
+                        'id_tac_gia' => $idTacGia,
+                    ]);
+                }
             }
 
-            $_SESSION['success'] = 'Cập nhật thành công!';
+            $GLOBALS['conn']->commit();
+        } catch (Exception $e) {
+            $GLOBALS['conn']->rollBack();
+
+            // Kiểm tra nếu người dùng tải lên ảnh mới
+            if (isset($hinhNen) && is_array($hinhNen) && $hinhNen['size'] > 0) {
+                // Nếu có ảnh mới được tải lên, thực hiện việc xóa ảnh cũ nếu tồn tại
+                if (!empty($book['s_hinh_nen']) && file_exists(PATH_UPLOAD . $book['s_hinh_nen'])) {
+                    unlink(PATH_UPLOAD . $book['s_hinh_nen']);
+                }
+            }
+
+            debug($e);
         }
+
+        // Kiểm tra nếu người dùng tải lên ảnh mới
+        if (isset($hinhNen) && is_array($hinhNen) && $hinhNen['size'] > 0) {
+            // Nếu có ảnh mới được tải lên, thực hiện việc xóa ảnh cũ nếu tồn tại
+            if (!empty($book['s_hinh_nen']) && file_exists(PATH_UPLOAD . $book['s_hinh_nen'])) {
+                unlink(PATH_UPLOAD . $book['s_hinh_nen']);
+            }
+        }
+
+        $_SESSION['success'] = 'Cập nhật thành công!';
+
 
         header('location: ' . BASE_URL_ADMIN . '?act=book-update&id=' . $id);
         exit();
@@ -174,23 +256,35 @@ function bookUpdate($id)
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function validateBookUpdate($data)
+function validateBookUpdate($id, $data)
 {
     // ten_sach - bắt buộc, độ dài tối đa 50 ký tự, không được trùng
     $errors = [];
 
     if (empty($data['ten_sach'])) {
-        $errors['ten_sach'] = 'Tên tác giả không được để trống!';
+        $errors['ten_sach'] = 'Tên sách không được để trống!';
     } else if (strlen($data['ten_sach']) > 50) {
-        $errors['ten_sach'] = 'Tên tác giả độ dài tối đa 50 ký tự!';
+        $errors['ten_sach'] = 'Tên sách có độ dài tối đa 50 ký tự!';
+    } else if (!checkUniqueNameBookByCategoryForUpdate($data['ten_sach'], $data['id_the_loai'], $id)) {
+        $errors['ten_sach'] = 'Tên sách đã được sử dụng trong thể loại';
     }
 
-    if ($data['id_tac_gia'] === null) {
+    if (empty($_POST['id-tac-gia'])) {
         $errors['id_tac_gia'] = 'Vui lòng chọn tác giả!';
     }
 
     if ($data['id_the_loai'] === null) {
         $errors['id_the_loai'] = 'Vui lòng chọn thể loại!';
+    }
+
+    if ($data['loai_bia'] === null) {
+        $errors['loai_bia'] = 'Vui lòng chọn loại bìa!';
+    }
+
+    if (empty($data['so_trang'])) {
+        $errors['so_trang'] = 'Số trang không được để trống!';
+    } else if ($data['so_trang'] < 0) {
+        $errors['so_trang'] = 'Số trang không hợp lệ!';
     }
 
     if ($data['san_pham_dac_sac'] === null) {
@@ -203,7 +297,7 @@ function validateBookUpdate($data)
         $errors['gia'] = 'Giá không hợp lệ!';
     }
 
-    if (empty($data['hinh_nen'])) {
+    if (empty($data['hinh_nen']) && !is_array($data['hinh_nen']) && $data['hinh_nen']['size'] <= 0) {
         $errors['hinh_nen'] = 'Hình nền là bắt buộc';
     } elseif (is_array($data['hinh_nen'])) {
         $typeImage = ['image/png', 'image/jpg', 'image/jpeg'];
@@ -215,14 +309,30 @@ function validateBookUpdate($data)
         }
     }
 
-    return $errors;
+    if (!empty($errors)) {
+        $_SESSION['errors'] = $errors;
+
+        header('Location: ' . BASE_URL_ADMIN . '?act=book-update&id=' . $id);
+        exit();
+    }
 }
 
 function bookDelete($id)
 {
     $book = showOne('sach', $id);
 
-    delete('sach', $id);
+    try {
+        $GLOBALS['conn']->beginTransaction();
+
+        deleteAuthorsByBookId($id);
+
+        delete('sach', $id);
+        $GLOBALS['conn']->commit();
+    } catch (Exception $e) {
+        $GLOBALS['conn']->rollBack();
+
+        debug($e);
+    }
 
     if (
         !empty($book['hinh_nen'])                       // có giá trị

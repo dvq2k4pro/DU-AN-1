@@ -27,12 +27,14 @@
                             <th>Tên sách</th>
                             <th>Hình ảnh</th>
                             <th>Giá</th>
+                            <th>Loại bìa</th>
+                            <th>Số trang</th>
                             <th>Mô tả</th>
                             <th>Lượt xem</th>
                             <th>Sản phẩm đặc sắc</th>
                             <th>Ngày ra mắt</th>
                             <th>Tên thể loại</th>
-                            <th>Tên tác giả</th>
+                            <th>Tên nhà xuất bản</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -42,12 +44,14 @@
                             <th>Tên sách</th>
                             <th>Hình ảnh</th>
                             <th>Giá</th>
+                            <th>Loại bìa</th>
+                            <th>Số trang</th>
                             <th>Mô tả</th>
                             <th>Lượt xem</th>
                             <th>Sản phẩm đặc sắc</th>
                             <th>Ngày ra mắt</th>
                             <th>Tên thể loại</th>
-                            <th>Tên tác giả</th>
+                            <th>Tên nhà xuất bản</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -61,12 +65,14 @@
                                     <img src="<?= BASE_URL . $book['s_hinh_nen'] ?>" alt="" width="100px">
                                 </td>
                                 <td><?= $book['s_gia'] ?></td>
+                                <td><?= $book['s_loai_bia'] ? '<span class="badge badge-success">Bìa cứng</span>' : '<span class="badge badge-warning">Bìa mềm</span>' ?></td>
+                                <td><?= $book['s_so_trang'] ?></td>
                                 <td><?= $book['s_mo_ta'] ?></td>
                                 <td><?= $book['s_luot_xem'] ?></td>
                                 <td><?= $book['s_san_pham_dac_sac'] ? '<span class="badge badge-success">Đúng</span>' : '<span class="badge badge-warning">Sai</span>' ?></td>
                                 <td><?= $book['s_ngay_ra_mat'] ?></td>
                                 <td><?= $book['tl_ten_the_loai'] ?></td>
-                                <td><?= $book['tg_ten_tac_gia'] ?></td>
+                                <td><?= $book['nxb_ten_nha_xuat_ban'] ?></td>
 
                                 <td>
                                     <a class="btn btn-info mb-1" href="<?= BASE_URL_ADMIN ?>?act=book-detail&id=<?= $book['s_id'] ?>">Show</a>

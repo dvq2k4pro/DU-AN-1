@@ -174,22 +174,21 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="#" class="author"> <?= $sanPhamDacSac['tg_ten_tac_gia'] ?> </a>
                                             <h3>
-                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sanPhamDacSac['s_id'] ?>"><?= $sanPhamDacSac['ten_sach'] ?></a>
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sanPhamDacSac['id'] ?>"><?= $sanPhamDacSac['ten_sach'] ?></a>
                                             </h3>
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
                                                 <img src="<?= BASE_URL . $sanPhamDacSac['hinh_nen'] ?>" alt="" />
                                                 <div class="hover-contents">
-                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sanPhamDacSac['s_id'] ?>" class="hover-image">
+                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sanPhamDacSac['id'] ?>" class="hover-image">
                                                         <img src="<?= BASE_URL . $sanPhamDacSac['hinh_nen'] ?>" alt="" />
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="price-block">
-                                                <span class="price">£ <?= $sanPhamDacSac['gia'] ?></span>
+                                                <span class="price"><?= formatCurrencyToVND($sanPhamDacSac['gia']) ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -218,22 +217,21 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="#" class="author"> <?= $sachMoi['tg_ten_tac_gia'] ?> </a>
                                             <h3>
-                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sachMoi['s_id'] ?>"><?= $sachMoi['ten_sach'] ?></a>
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sachMoi['id'] ?>"><?= $sachMoi['ten_sach'] ?></a>
                                             </h3>
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
                                                 <img src="<?= BASE_URL . $sachMoi['hinh_nen'] ?>" alt="" />
                                                 <div class="hover-contents">
-                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sachMoi['s_id'] ?>" class="hover-image">
+                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sachMoi['id'] ?>" class="hover-image">
                                                         <img src="<?= BASE_URL . $sachMoi['hinh_nen'] ?>" alt="" />
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="price-block">
-                                                <span class="price">£<?= $sachMoi['gia'] ?></span>
+                                                <span class="price"><?= formatCurrencyToVND($sachMoi['gia']) ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -262,22 +260,21 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="#" class="author"> <?= $sachNhieuLuotXem['tg_ten_tac_gia'] ?> </a>
                                             <h3>
-                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sachNhieuLuotXem['s_id'] ?>"><?= $sachNhieuLuotXem['ten_sach'] ?></a>
+                                                <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sachNhieuLuotXem['id'] ?>"><?= $sachNhieuLuotXem['ten_sach'] ?></a>
                                             </h3>
                                         </div>
                                         <div class="product-card--body">
                                             <div class="card-image">
                                                 <img src="<?= BASE_URL . $sachNhieuLuotXem['hinh_nen'] ?>" alt="" />
                                                 <div class="hover-contents">
-                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sachNhieuLuotXem['s_id'] ?>" class="hover-image">
+                                                    <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sachNhieuLuotXem['id'] ?>" class="hover-image">
                                                         <img src="<?= BASE_URL . $sachNhieuLuotXem['hinh_nen'] ?>" alt="" />
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="price-block">
-                                                <span class="price">£<?= $sachNhieuLuotXem['gia'] ?></span>
+                                                <span class="price"><?= formatCurrencyToVND($sachNhieuLuotXem['gia']) ?></span>
                                             </div>
                                         </div>
                                     </div>

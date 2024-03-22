@@ -68,6 +68,19 @@
     </li>
 
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-upload"></i>
+            <span>Quản lý nhà xuất bản</span>
+        </a>
+        <div id="collapse6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=publishers">Danh sách</a>
+                <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=publisher-create">Thêm mới</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-book"></i>
             <span>Quản lý sách</span>
@@ -79,6 +92,8 @@
             </div>
         </div>
     </li>
+
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

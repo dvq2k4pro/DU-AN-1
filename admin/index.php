@@ -50,6 +50,13 @@ match ($act) {
     'book-create' => bookCreate(),
     'book-update' => bookUpdate($_GET['id']),
     'book-delete' => bookDelete($_GET['id']),
+
+    // CRUD Publisher
+    'publishers' => publisherListAll(),
+    'publisher-detail' => publisherShowOne($_GET['id']),
+    'publisher-create' => publisherCreate(),
+    'publisher-update' => publisherUpdate($_GET['id']),
+    'publisher-delete' => publisherDelete($_GET['id']),
 };
 
 require_once '../commons/disconnect-db.php';

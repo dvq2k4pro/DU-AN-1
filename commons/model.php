@@ -9,8 +9,8 @@ if (!function_exists('getStrKeys')) {
     }
 }
 
-if (!function_exists('getVirtualPrams')) {
-    function getVirtualPrams($data)
+if (!function_exists('getVirtualParams')) {
+    function getVirtualParams($data)
     {
         $keys = array_keys($data);
 
@@ -42,7 +42,7 @@ if (!function_exists('insert')) {
     {
         try {
             $strKeys = getStrKeys($data);
-            $virtualPrams = getVirtualPrams($data);
+            $virtualPrams = getVirtualParams($data);
 
             $sql = "INSERT INTO $tableName($strKeys) VALUES($virtualPrams)";
 
@@ -129,6 +129,77 @@ if (!function_exists('delete')) {
             $stmt->bindParam(":id", $id);
 
             $stmt->execute();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('checkUniqueName')) {
+    // Nếu không trùng thì trả về True
+    // Nếu trùng thì trả về False
+    function checkUniqueName($tableName, $rowName, $name)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName WHERE $rowName = :name LIMIT 1";
+            // debug($sql);
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":name", $name);
+
+            $stmt->execute();
+
+            $data = $stmt->fetch();
+
+            return empty($data) ? true : false;
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('checkUniqueNameForUpdate')) {
+    // Nếu không trùng thì trả về True
+    // Nếu trùng thì trả về False
+    function checkUniqueNameForUpdate($tableName, $id, $rowName, $name)
+    {
+        try {
+            $sql = "SELECT * FROM $tableName WHERE $rowName = :name AND id <> :id LIMIT 1";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":name", $name);
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            $data = $stmt->fetch();
+
+            return empty($data) ? true : false;
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('insertGetLastId')) {
+    function insertGetLastId($tableName, $data = [])
+    {
+        try {
+            $strKeys = getStrKeys($data);
+            $virtualParams = getVirtualParams($data);
+
+            $sql = "INSERT INTO $tableName($strKeys) VALUES ($virtualParams)";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            foreach ($data as $fieldName => &$value) {
+                $stmt->bindParam(":$fieldName", $value);
+            }
+
+            $stmt->execute();
+
+            return $GLOBALS['conn']->lastInsertId();
         } catch (\Exception $e) {
             debug($e);
         }

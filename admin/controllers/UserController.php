@@ -110,7 +110,7 @@ function userUpdate($id)
 
     if (!empty($_POST)) {
         $data = [
-            "vai_tro" => $_POST['vai_tro'] ?? null
+            "vai_tro" => $_POST['vai_tro'] ?? $user['vai_tro']
         ];
 
         $errors = validateUserUpdate($id, $data);
