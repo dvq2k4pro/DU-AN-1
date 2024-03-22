@@ -17,10 +17,14 @@ if (!function_exists('listAllForBook')) {
                 s.san_pham_dac_sac as s_san_pham_dac_sac,
                 s.ngay_ra_mat as s_ngay_ra_mat,
                 tl.ten_the_loai as tl_ten_the_loai,
-                nxb.ten_nha_xuat_ban as nxb_ten_nha_xuat_ban 
+                nxb.ten_nha_xuat_ban as nxb_ten_nha_xuat_ban,
+                ctph.ten_cong_ty_phat_hanh as ctph_ten_cong_ty_phat_hanh,
+                kt.ten_kich_thuoc as kt_ten_kich_thuoc
                 FROM sach as s
                 INNER JOIN the_loai as tl ON tl.id = s.id_the_loai
                 INNER JOIN nha_xuat_ban as nxb ON nxb.id = s.id_nha_xuat_ban
+                INNER JOIN cong_ty_phat_hanh as ctph ON ctph.id = s.id_cong_ty_phat_hanh 
+                INNER JOIN kich_thuoc as kt ON kt.id = s.id_kich_thuoc
                 ORDER BY s_id DESC
             ";
 
@@ -54,10 +58,14 @@ if (!function_exists('showOneForBook')) {
                 s.san_pham_dac_sac as s_san_pham_dac_sac,
                 s.ngay_ra_mat as s_ngay_ra_mat,
                 tl.ten_the_loai as tl_ten_the_loai,
-                nxb.ten_nha_xuat_ban as nxb_ten_nha_xuat_ban 
+                nxb.ten_nha_xuat_ban as nxb_ten_nha_xuat_ban,
+                ctph.ten_cong_ty_phat_hanh as ctph_ten_cong_ty_phat_hanh,
+                kt.ten_kich_thuoc as kt_ten_kich_thuoc
                 FROM sach as s
                 INNER JOIN the_loai as tl ON tl.id = s.id_the_loai
                 INNER JOIN nha_xuat_ban as nxb ON nxb.id = s.id_nha_xuat_ban
+                INNER JOIN cong_ty_phat_hanh as ctph ON ctph.id = s.id_cong_ty_phat_hanh 
+                INNER JOIN kich_thuoc as kt ON kt.id = s.id_kich_thuoc
                 WHERE
                 s.id = :id
                 LIMIT 1

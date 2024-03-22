@@ -66,6 +66,16 @@
                 </tr>
 
                 <tr>
+                    <td>Công ty phát hành</td>
+                    <td><?= $book['ctph_ten_cong_ty_phat_hanh'] ?></td>
+                </tr>
+
+                <tr>
+                    <td>Kích thước</td>
+                    <td><?= $book['kt_ten_kich_thuoc'] ?> Cm</td>
+                </tr>
+
+                <tr>
                     <td>Tác giả</td>
                     <td>
                         <?php foreach ($authors as $author) : ?>

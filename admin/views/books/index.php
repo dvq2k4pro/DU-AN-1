@@ -35,6 +35,8 @@
                             <th>Ngày ra mắt</th>
                             <th>Tên thể loại</th>
                             <th>Tên nhà xuất bản</th>
+                            <th>Tên công ty phát hành</th>
+                            <th>Kích thước</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -52,6 +54,8 @@
                             <th>Ngày ra mắt</th>
                             <th>Tên thể loại</th>
                             <th>Tên nhà xuất bản</th>
+                            <th>Tên công ty phát hành</th>
+                            <th>Kích thước</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -73,6 +77,8 @@
                                 <td><?= getDateFromDatabase($book['s_ngay_ra_mat']) ?></td>
                                 <td><?= $book['tl_ten_the_loai'] ?></td>
                                 <td><?= $book['nxb_ten_nha_xuat_ban'] ?></td>
+                                <td><?= $book['ctph_ten_cong_ty_phat_hanh'] ?></td>
+                                <td><?= $book['kt_ten_kich_thuoc'] ?> Cm</td>
 
                                 <td>
                                     <a class="btn btn-info mb-1" href="<?= BASE_URL_ADMIN ?>?act=book-detail&id=<?= $book['s_id'] ?>">Show</a>

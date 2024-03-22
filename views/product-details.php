@@ -52,9 +52,12 @@
                             </a></li>
                         <li>Số trang: <span class="list-value"> <?= $book['s_so_trang'] ?></span></li>
                         <li>Loại bìa: <span class="list-value"> <?= $book['s_loai_bia'] ? 'Bìa cứng' : 'Bìa mềm' ?></span></li>
+                        <li>Công ty phát hành: <a href="#" class="list-value font-weight-bold"> <?= $book['ctph_ten_cong_ty_phat_hanh'] ?></a></li>
                         <li>Ngày ra mắt: <span class="list-value"> <?= getDateFromDatabase($book['s_ngay_ra_mat']) ?></span></li>
                         <li>Lượt xem: <span class="list-value"> <?= $book['s_luot_xem'] ?></span></li>
                         <li>Nhà xuất bản: <a href="#" class="list-value font-weight-bold"> <?= $book['nxb_ten_nha_xuat_ban'] ?></a></li>
+                        <li>Kích thước: <span class="list-value"> <?= $book['kt_ten_kich_thuoc'] ?> Cm</span></li>
+
                     </ul>
                     <div class="price-block">
                         <span class="price-new"><?= formatCurrencyToVND($book['gia']) ?></span>
