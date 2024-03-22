@@ -55,7 +55,7 @@ if (!function_exists('showOneBook')) {
     function showOneBook($id)
     {
         try {
-            $sql = "SELECT *, s.id as s_id, nxb.ten_nha_xuat_ban as nxb_ten_nha_xuat_ban, tl.ten_the_loai as tl_ten_the_loai FROM sach s INNER JOIN nha_xuat_ban nxb ON nxb.id = s.id_nha_xuat_ban INNER JOIN the_loai tl ON tl.id = s.id_the_loai WHERE s.id = :id";
+            $sql = "SELECT *, s.id as s_id, s.so_trang as s_so_trang, s.loai_bia as s_loai_bia, s.ngay_ra_mat as s_ngay_ra_mat, s.luot_xem as s_luot_xem, nxb.ten_nha_xuat_ban as nxb_ten_nha_xuat_ban, tl.ten_the_loai as tl_ten_the_loai FROM sach s INNER JOIN nha_xuat_ban nxb ON nxb.id = s.id_nha_xuat_ban INNER JOIN the_loai tl ON tl.id = s.id_the_loai WHERE s.id = :id";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 

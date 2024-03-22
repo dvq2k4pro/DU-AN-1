@@ -16,26 +16,57 @@
                     <th>Dữ liệu</th>
                 </tr>
 
-                <?php foreach ($book as $fieldName => $value) : ?>
-                    <tr>
-                        <td><?= ucfirst($fieldName) ?></td>
-                        <td>
-                            <?php
-                            switch ($fieldName) {
-                                case 's_hinh_nen':
-                                    echo '<img src="' . BASE_URL . $value . '" alt="" width="100px">';
-                                    break;
-                                default:
-                                    echo $value;
-                                    break;
-                            }
-                            ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+                <tr>
+                    <td>Id</td>
+                    <td><?= $book['s_id'] ?></td>
+                </tr>
+                <tr>
+                    <td>Tên sách</td>
+                    <td><?= $book['s_ten_sach'] ?></td>
+                </tr>
+                <tr>
+                    <td>Hình nền</td>
+                    <td><?= '<img src="' . BASE_URL . $book['s_hinh_nen'] . '" alt="" width="100px">' ?></td>
+                </tr>
+                <tr>
+                    <td>Giá</td>
+                    <td><?= formatCurrencyToVND($book['s_gia']) ?></td>
+                </tr>
+                <tr>
+                    <td>Loại bìa</td>
+                    <td><?= $book['s_loai_bia'] ? 'Bìa cứng' : 'Bìa mềm' ?></td>
+                </tr>
+                <tr>
+                    <td>Số trang</td>
+                    <td><?= $book['s_so_trang'] ?></td>
+                </tr>
+                <tr>
+                    <td>Mô tả</td>
+                    <td><?= $book['s_mo_ta'] ?></td>
+                </tr>
+                <tr>
+                    <td>Lượt xem</td>
+                    <td><?= $book['s_luot_xem'] ?></td>
+                </tr>
+                <tr>
+                    <td>Sản phẩm đặc sắc</td>
+                    <td><?= $book['s_san_pham_dac_sac'] ? '<span class="badge badge-success">Đúng</span>' : '<span class="badge badge-warning">Sai</span>' ?></td>
+                </tr>
+                <tr>
+                    <td>Ngày ra mắt</td>
+                    <td><?= getDateFromDatabase($book['s_ngay_ra_mat']) ?></td>
+                </tr>
+                <tr>
+                    <td>Thể loại</td>
+                    <td><?= $book['tl_ten_the_loai'] ?></td>
+                </tr>
+                <tr>
+                    <td>Nhà xuất bản</td>
+                    <td><?= $book['nxb_ten_nha_xuat_ban'] ?></td>
+                </tr>
 
                 <tr>
-                    <td>Authors</td>
+                    <td>Tác giả</td>
                     <td>
                         <?php foreach ($authors as $author) : ?>
                             <span class="badge badge-info"><?= $author['tg_ten_tac_gia'] ?></span>
