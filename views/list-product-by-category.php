@@ -5,7 +5,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?= BASE_URL ?>">Home</a></li>
-                    <li class="breadcrumb-item active"><?= $listAllSachCungTheLoai[0]['tl_ten_the_loai'] ?></li>
+                    <li class="breadcrumb-item active"><?= $listAllSachCungTheLoai[0]['tl_ten_the_loai'] ?? 'Danh sách trống' ?></li>
                 </ol>
             </nav>
         </div>
@@ -59,7 +59,6 @@
                                 <div class="single-slide">
                                     <div class="product-card">
                                         <div class="product-header">
-                                            <a href="#" class="author"> <?= $sanPhamDacSac['tg_ten_tac_gia'] ?> </a>
                                             <h3>
                                                 <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $sanPhamDacSac['s_id'] ?>"><?= $sanPhamDacSac['s_ten_sach'] ?></a>
                                             </h3>
@@ -74,7 +73,7 @@
                                                 </div>
                                             </div>
                                             <div class="price-block">
-                                                <span class="price">£<?= $sanPhamDacSac['s_gia'] ?></span>
+                                                <span class="price"><?= formatCurrencyToVND($sanPhamDacSac['s_gia']) ?></span>
                                             </div>
                                         </div>
                                     </div>

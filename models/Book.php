@@ -4,7 +4,7 @@ if (!function_exists('loadAllBookBySanPhamDacSac')) {
     function loadAllBookBySanPhamDacSac()
     {
         try {
-            $sql = "SELECT *, s.id as s_id, tg.ten_tac_gia as tg_ten_tac_gia FROM sach s INNER JOIN tac_gia tg ON tg.id = s.id_tac_gia WHERE san_pham_dac_sac = 1 ORDER BY s.id DESC";
+            $sql = "SELECT * FROM sach WHERE san_pham_dac_sac = 1 ORDER BY id DESC";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
@@ -21,7 +21,7 @@ if (!function_exists('loadAllBookByNgayRaMat')) {
     function loadAllBookByNgayRaMat()
     {
         try {
-            $sql = "SELECT *, s.id as s_id, tg.ten_tac_gia as tg_ten_tac_gia FROM sach s INNER JOIN tac_gia tg ON tg.id = s.id_tac_gia ORDER BY s.ngay_ra_mat DESC LIMIT 12";
+            $sql = "SELECT * FROM sach ORDER BY ngay_ra_mat DESC LIMIT 12";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
@@ -38,7 +38,7 @@ if (!function_exists('loadAllBookByLuotXem')) {
     function loadAllBookByLuotXem()
     {
         try {
-            $sql = "SELECT *, s.id as s_id, tg.ten_tac_gia as tg_ten_tac_gia FROM sach s INNER JOIN tac_gia tg ON tg.id = s.id_tac_gia ORDER BY s.luot_xem DESC LIMIT 12";
+            $sql = "SELECT * FROM sach WHERE luot_xem > 0 ORDER BY luot_xem DESC LIMIT 12";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
@@ -55,7 +55,7 @@ if (!function_exists('showOneBook')) {
     function showOneBook($id)
     {
         try {
-            $sql = "SELECT *, s.id as s_id, tg.ten_tac_gia as tg_ten_tac_gia, tl.ten_the_loai as tl_ten_the_loai FROM sach s INNER JOIN tac_gia tg ON tg.id = s.id_tac_gia INNER JOIN the_loai tl ON tl.id = s.id_the_loai WHERE s.id = :id";
+            $sql = "SELECT *, s.id as s_id, nxb.ten_nha_xuat_ban as nxb_ten_nha_xuat_ban, tl.ten_the_loai as tl_ten_the_loai FROM sach s INNER JOIN nha_xuat_ban nxb ON nxb.id = s.id_nha_xuat_ban INNER JOIN the_loai tl ON tl.id = s.id_the_loai WHERE s.id = :id";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
@@ -74,7 +74,7 @@ if (!function_exists('loadBookCungTheLoai')) {
     function loadBookCungTheLoai($id, $idTheLoai)
     {
         try {
-            $sql = "SELECT s.id as s_id, s.ten_sach as s_ten_sach, s.hinh_nen as s_hinh_nen, s.gia as s_gia, tg.ten_tac_gia as tg_ten_tac_gia FROM sach s INNER JOIN tac_gia tg ON tg.id = s.id_tac_gia WHERE s.id <> :id AND s.id_the_loai = :idTheLoai ORDER BY s.id DESC LIMIT 5";
+            $sql = "SELECT * FROM sach WHERE id <> :id AND id_the_loai = :idTheLoai ORDER BY id DESC LIMIT 5";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
@@ -94,7 +94,7 @@ if (!function_exists('loadAllBookByCategory')) {
     function loadAllBookByCategory($id)
     {
         try {
-            $sql = "SELECT s.id as s_id, s.ten_sach as s_ten_sach, s.hinh_nen as s_hinh_nen, s.gia as s_gia, tg.ten_tac_gia as tg_ten_tac_gia, tl.ten_the_loai as tl_ten_the_loai FROM sach s INNER JOIN tac_gia tg ON tg.id = s.id_tac_gia INNER JOIN the_loai tl ON tl.id = s.id_the_loai WHERE s.id_the_loai = :id  ORDER BY s.id DESC";
+            $sql = "SELECT s.id as s_id, s.ten_sach as s_ten_sach, s.hinh_nen as s_hinh_nen, s.gia as s_gia, tl.ten_the_loai as tl_ten_the_loai FROM sach s INNER JOIN the_loai tl ON tl.id = s.id_the_loai WHERE s.id_the_loai = :id  ORDER BY s.id DESC";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 

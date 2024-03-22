@@ -34,7 +34,7 @@
                     <ul class="list-unstyled">
                         <li>Mã sách: <span class="list-value"> book-<?= $book['s_id'] ?></span></li>
                         <li>Thể loại: <a href="#" class="list-value font-weight-bold"> <?= $book['tl_ten_the_loai'] ?></a></li>
-                        <li>Tác giả: <a href="#" class="list-value font-weight-bold"> <?= $book['tg_ten_tac_gia'] ?></a></li>
+                        <li>Nhà xuất bản: <a href="#" class="list-value font-weight-bold"> <?= $book['nxb_ten_nha_xuat_ban'] ?></a></li>
                     </ul>
                     <div class="price-block">
                         <span class="price-new">£<?= $book['gia'] ?></span>
@@ -172,22 +172,19 @@
                     <div class="single-slide">
                         <div class="product-card">
                             <div class="product-header">
-                                <a href="#!" class="author">
-                                    <?= $bookCungTheLoai['tg_ten_tac_gia'] ?>
-                                </a>
-                                <h3><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $bookCungTheLoai['s_id'] ?>"><?= $bookCungTheLoai['s_ten_sach'] ?></a></h3>
+                                <h3><a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $bookCungTheLoai['id'] ?>"><?= $bookCungTheLoai['ten_sach'] ?></a></h3>
                             </div>
                             <div class="product-card--body">
                                 <div class="card-image">
-                                    <img src="<?= BASE_URL . $bookCungTheLoai['s_hinh_nen'] ?>" alt="">
+                                    <img src="<?= BASE_URL . $bookCungTheLoai['hinh_nen'] ?>" alt="">
                                     <div class="hover-contents">
                                         <a href="product-details.html" class="hover-image">
-                                            <img src="<?= BASE_URL . $bookCungTheLoai['s_hinh_nen'] ?>" alt="">
+                                            <img src="<?= BASE_URL . $bookCungTheLoai['hinh_nen'] ?>" alt="">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="price-block">
-                                    <span class="price">£<?= $bookCungTheLoai['s_gia'] ?></span>
+                                    <span class="price"><?= formatCurrencyToVND($bookCungTheLoai['gia']) ?></span>
                                 </div>
                             </div>
                         </div>

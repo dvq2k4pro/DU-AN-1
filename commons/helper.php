@@ -73,3 +73,11 @@ if (!function_exists('getFileUpload')) {
         return null;
     }
 }
+
+if (!function_exists('formatCurrencyToVND')) {
+    function formatCurrencyToVND($amount)
+    {
+        $formattedAmount = number_format($amount, 0, '.', ',');
+        return $formattedAmount . ' ₫';
+    }
+}
