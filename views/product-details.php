@@ -198,7 +198,7 @@
                                 <div class="card-image">
                                     <img src="<?= BASE_URL . $bookCungTheLoai['hinh_nen'] ?>" alt="">
                                     <div class="hover-contents">
-                                        <a href="product-details.html" class="hover-image">
+                                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $bookCungTheLoai['id'] ?>" class="hover-image">
                                             <img src="<?= BASE_URL . $bookCungTheLoai['hinh_nen'] ?>" alt="">
                                         </a>
                                     </div>
