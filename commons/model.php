@@ -251,3 +251,18 @@ if (!function_exists('increaseViewCount')) {
         }
     }
 }
+
+if (!function_exists('middlewareAuthCheckClient')) {
+    function middlewareAuthCheckClient($act, $arrRouteNeedAuth)
+    {
+        if ($act == 'login') {
+            if (!empty($_SESSION['user'])) {
+                header('Location: ' . BASE_URL);
+                exit();
+            }
+        } elseif (empty($_SESSION['user']) && in_array($act, $arrRouteNeedAuth)) {
+            header('Location: ' . BASE_URL . '?act=login');
+            exit();
+        }
+    }
+}

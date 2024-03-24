@@ -49,7 +49,7 @@
                             <ul class="category-menu">
                                 <?php foreach ($categories as $category) : ?>
                                     <li class="cat-item">
-                                        <a href="<?= BASE_URL . '?act=danh-sach-san-pham&id=' . $category['id'] ?>"><?= $category['ten_the_loai'] ?></a>
+                                        <a href="<?= BASE_URL . '?act=book-list-by-category&id=' . $category['id'] ?>"><?= $category['ten_the_loai'] ?></a>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
@@ -58,8 +58,10 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="header-search-block">
-                        <input type="text" placeholder="Tìm kiếm sách tại đây">
-                        <button>Tìm kiếm</button>
+                        <form action='?act=book-search' method="post" onsubmit="return validateForm()">
+                            <input type="text" id="keyword" value="<?= isset($_SESSION['search-keyword']) ? $_SESSION['search-keyword'] : null ?>" name="keyword" placeholder="Tìm kiếm sách tại đây">
+                            <button type="submit">Tìm kiếm</button>
+                        </form>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -112,3 +114,12 @@
         </div>
     </div>
 </div>
+<script>
+    function validateForm() {
+        var searchKeyword = document.getElementById("keyword").value;
+        if (searchKeyword == "") {
+            return false;
+        }
+        return true;
+    }
+</script>
