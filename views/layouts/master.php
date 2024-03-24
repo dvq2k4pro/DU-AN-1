@@ -25,6 +25,14 @@
         <?php
         require_once PATH_VIEW . $view . '.php';
         ?>
+        <!-- Modal -->
+        <?php
+        require_once PATH_VIEW . 'components/modal.php';
+        ?>
+        <!-- Brands Slider -->
+        <?php
+        require_once PATH_VIEW . 'components/brands-slider.php';
+        ?>
         <!-- Footer -->
         <?php
         require_once PATH_VIEW . 'layouts/partials/footer.php';
