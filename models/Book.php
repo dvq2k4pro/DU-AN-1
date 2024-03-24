@@ -118,3 +118,23 @@ if (!function_exists('loadAllBookByCategory')) {
         }
     }
 }
+
+if (!function_exists('searchBooksByName')) {
+    function searchBooksByName($name)
+    {
+        try {
+            $sql = "SELECT * FROM sach WHERE ten_sach LIKE :name";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $name = "%" . $name . "%";
+            $stmt->bindParam(":name", $name);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            debug($e);
+        }
+    }
+}
