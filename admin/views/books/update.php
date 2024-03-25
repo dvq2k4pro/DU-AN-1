@@ -44,6 +44,15 @@
                             <span class='error-message'><?= isset($_SESSION['errors']['id_the_loai']) ? $_SESSION['errors']['id_the_loai'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
+                            <label for="id_cong_ty_phat_hanh" class="form-label">Công ty phát hành:*</label>
+                            <select style="width: 50%;" class="form-control" id="id_cong_ty_phat_hanh" name="id-cong-ty-phat-hanh">
+                                <?php foreach ($companies as $company) : ?>
+                                    <option value="<?= $company['id'] ?>"><?= $company['ten_cong_ty_phat_hanh'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <span class='error-message'><?= isset($_SESSION['errors']['id_cong_ty_phat_hanh']) ? $_SESSION['errors']['id_cong_ty_phat_hanh'] : '' ?></span>
+                        </div>
+                        <div class="mb-3 mt-3">
                             <label for="hinh-nen" class="form-label">Hình nền:*</label>
                             <input style="border: none; padding: 0; border-radius: 0;" type="file" class="form-control" id="hinh-nen" name="hinh-nen">
                             <img src="<?= BASE_URL . $book['s_hinh_nen'] ?>" alt="" width="100px">
@@ -59,6 +68,15 @@
                                 <?php endforeach; ?>
                             </select>
                             <span class='error-message'><?= isset($_SESSION['errors']['id_the_loai']) ? $_SESSION['errors']['id_the_loai'] : '' ?></span>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="kich-thuoc" class="form-label">Kích thước:*</label>
+                            <select style="width: 30%;" name="id-kich-thuoc" id="kich-thuoc" class="form-control">
+                                <?php foreach ($sizes as $size) : ?>
+                                    <option value="<?= $size['id'] ?>"><?= $size['ten_kich_thuoc'] . ' cm' ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <span class='error-message'><?= isset($_SESSION['errors']['id_kich_thuoc']) ? $_SESSION['errors']['id_kich_thuoc'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="san-pham-dac-sac" class="form-label">Sản phẩm đặc sắc:*</label>

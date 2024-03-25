@@ -58,20 +58,19 @@ match ($act) {
     'publisher-update' => publisherUpdate($_GET['id']),
     'publisher-delete' => publisherDelete($_GET['id']),
 
-    // CRUD company
+    // CRUD Company
     'companies' => companyListAll(),
     'company-detail' => companyShowOne($_GET['id']),
     'company-create' => companyCreate(),
     'company-update' => companyUpdate($_GET['id']),
     'company-delete' => companyDelete($_GET['id']),
 
-    // CRUD size
+    // CRUD Size
     'sizes' => sizeListAll(),
     'size-detail' => sizeShowOne($_GET['id']),
     'size-create' => sizeCreate(),
     'size-update' => sizeUpdate($_GET['id']),
     'size-delete' => sizeDelete($_GET['id']),
-
 };
 
 require_once '../commons/disconnect-db.php';

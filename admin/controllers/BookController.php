@@ -39,12 +39,16 @@ function bookCreate()
     $categories = listAll('the_loai');
     $publishers = listAll('nha_xuat_ban');
     $authors = listAll('tac_gia');
+    $companies = listAll('cong_ty_phat_hanh');
+    $sizes = listAll('kich_thuoc');
 
     if (!empty($_POST)) {
         $data = [
             "ten_sach" => $_POST['ten-sach'] ?? null,
             "id_nha_xuat_ban" => $_POST['id-nha-xuat-ban'] ?? null,
             "id_the_loai" => $_POST['id-the-loai'] ?? null,
+            "id_cong_ty_phat_hanh" => $_POST['id-cong-ty-phat-hanh'] ?? null,
+            "id_kich_thuoc" => $_POST['id-kich-thuoc'] ?? null,
             "hinh_nen" => getFileUpload('hinh-nen'),
             "so_trang" => $_POST['so-trang'] ?? null,
             "loai_bia" => $_POST['loai-bia'] ?? null,
@@ -122,6 +126,14 @@ function validateBookCreate($data)
         $errors['id_nha_xuat_ban'] = 'Vui lòng chọn nhà xuất bản!';
     }
 
+    if ($data['id_kich_thuoc'] === null) {
+        $errors['id_kich_thuoc'] = 'Vui lòng chọn kích thước!';
+    }
+
+    if ($data['id_cong_ty_phat_hanh'] === null) {
+        $errors['id_cong_ty_phat_hanh'] = 'Vui lòng chọn công ty phát hành!';
+    }
+
     if (empty($_POST['id-tac-gia'])) {
         $errors['id_tac_gia'] = 'Vui lòng chọn tác giả!';
     }
@@ -181,6 +193,8 @@ function bookUpdate($id)
     $categories = listAll('the_loai');
     $publishers = listAll('nha_xuat_ban');
     $authors = listAll('tac_gia');
+    $companies = listAll('cong_ty_phat_hanh');
+    $sizes = listAll('kich_thuoc');
 
     $authorsForBook = getAuthorsForBook($id);
     $authorIdsForBook = array_column($authorsForBook, 'tg_id');
@@ -190,6 +204,8 @@ function bookUpdate($id)
             "ten_sach" => $_POST['ten-sach'] ?? $book['s_ten_sach'],
             "id_nha_xuat_ban" => $_POST['id-nha-xuat-ban'] ?? $book['s_id_nha_xuat_ban'],
             "id_the_loai" => $_POST['id-the-loai'] ?? $book['s_id_the_loai'],
+            "id_cong_ty_phat_hanh" => $_POST['id-cong-ty-phat-hanh'] ?? $book['s_id_cong_ty_phat_hanh'],
+            "id_kich_thuoc" => $_POST['id-kich-thuoc'] ?? $book['s_id_kich_thuoc'],
             "hinh_nen" => getFileUpload('hinh-nen', $book['s_hinh_nen']),
             "so_trang" => $_POST['so-trang'] ?? $book['so_trang'],
             "loai_bia" => $_POST['loai-bia'] ?? $book['loai_bia'],
@@ -271,6 +287,14 @@ function validateBookUpdate($id, $data)
 
     if (empty($_POST['id-tac-gia'])) {
         $errors['id_tac_gia'] = 'Vui lòng chọn tác giả!';
+    }
+
+    if ($data['id_kich_thuoc'] === null) {
+        $errors['id_kich_thuoc'] = 'Vui lòng chọn kích thước!';
+    }
+
+    if ($data['id_cong_ty_phat_hanh'] === null) {
+        $errors['id_cong_ty_phat_hanh'] = 'Vui lòng chọn công ty phát hành!';
     }
 
     if ($data['id_the_loai'] === null) {

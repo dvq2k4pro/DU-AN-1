@@ -95,10 +95,10 @@
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-eye"></i>
-            <span>Quản lý công ty phát hành</span>
+            <i class="fas fa-building"></i>
+            <span>Công ty phát hành</span>
         </a>
-        <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapse7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=companies">Danh sách</a>
                 <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=company-create">Thêm mới</a>
@@ -107,11 +107,11 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-eye"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-ruler-vertical"></i>
             <span>Quản lý kích thước</span>
         </a>
-        <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapse8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=sizes">Danh sách</a>
                 <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=size-create">Thêm mới</a>
@@ -119,7 +119,7 @@
         </div>
     </li>
 
-    
+
 
 
     <!-- Divider -->

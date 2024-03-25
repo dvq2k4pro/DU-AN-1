@@ -49,6 +49,8 @@ if (!function_exists('showOneForBook')) {
                 s.ten_sach as s_ten_sach,
                 s.hinh_nen as s_hinh_nen,
                 s.id_nha_xuat_ban as s_id_nha_xuat_ban,
+                s.id_cong_ty_phat_hanh as s_id_cong_ty_phat_hanh,
+                s.id_kich_thuoc as s_id_kich_thuoc,
                 s.id_the_loai as s_id_the_loai,
                 s.gia as s_gia,
                 s.loai_bia as s_loai_bia,
