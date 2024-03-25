@@ -40,12 +40,12 @@
                         <?php foreach ($sizes as $size) : ?>
                             <tr>
                                 <td><?= $size['id'] ?></td>
-                                <td><?= $size['ten_kich_thuoc'] ?> Cm</td>
+                                <td><?= $size['ten_kich_thuoc'] ?></td>
 
                                 <td>
                                     <a class="btn btn-info" href="<?= BASE_URL_ADMIN ?>?act=size-detail&id=<?= $size['id'] ?>">Show</a>
                                     <a class="btn btn-warning" href="<?= BASE_URL_ADMIN ?>?act=size-update&id=<?= $size['id'] ?>">Update</a>
-                                    <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=size-delete&id=<?= $size['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</a>
+                                    <a class="btn btn-danger <?= $size['id'] == 1 ? 'disabled' : null ?>" href="<?= BASE_URL_ADMIN ?>?act=size-delete&id=<?= $size['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

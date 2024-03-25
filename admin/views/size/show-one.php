@@ -21,7 +21,7 @@
                 </tr>
                 <tr>
                     <td>Tên kích thước</td>
-                    <td><?= $size['ten_kich_thuoc'] ?> Cm</td>
+                    <td><?= $size['ten_kich_thuoc'] ?></td>
                 </tr>
             </table>
 

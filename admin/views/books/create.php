@@ -72,7 +72,7 @@
                             <label for="kich-thuoc" class="form-label">Kích thước:*</label>
                             <select style="width: 30%;" name="id-kich-thuoc" id="kich-thuoc" class="form-control">
                                 <?php foreach ($sizes as $size) : ?>
-                                    <option value="<?= $size['id'] ?>"><?= $size['ten_kich_thuoc'] . ' cm' ?></option>
+                                    <option value="<?= $size['id'] ?>"><?= $size['ten_kich_thuoc'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <span class='error-message'><?= isset($_SESSION['errors']['id_kich_thuoc']) ? $_SESSION['errors']['id_kich_thuoc'] : '' ?></span>

@@ -134,6 +134,7 @@ function validateCompanyUpdate($id, $data)
 
 function companyDelete($id)
 {
+    updateWhyDeleteCompany($id);
     delete('cong_ty_phat_hanh', $id);
 
     $_SESSION['success'] = 'Xoá thành công!';

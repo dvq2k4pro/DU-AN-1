@@ -36,15 +36,19 @@
                         <li>Thể loại: <a href="#!" class="list-value font-weight-bold"> <?= $book['tl_ten_the_loai'] ?></a></li>
                         <li>Tác giả: <a href="#!" class="list-value font-weight-bold">
                                 <?php
-                                // Đếm số lượng phần tử trong mảng
-                                $totalAuthors = count($authors);
-                                $i = 0; // Biến để theo dõi vị trí của phần tử
+                                if (empty($authors)) {
+                                    echo 'Không có tác giả';
+                                } else {
+                                    // Đếm số lượng phần tử trong mảng
+                                    $totalAuthors = count($authors);
+                                    $i = 0; // Biến để theo dõi vị trí của phần tử
 
-                                foreach ($authors as $author) {
-                                    echo $author['tg_ten_tac_gia'];
+                                    foreach ($authors as $author) {
+                                        echo $author['tg_ten_tac_gia'];
 
-                                    if (++$i !== $totalAuthors) {
-                                        echo ', ';
+                                        if (++$i !== $totalAuthors) {
+                                            echo ', ';
+                                        }
                                     }
                                 }
 
@@ -52,11 +56,11 @@
                             </a></li>
                         <li>Số trang: <span class="list-value"> <?= $book['s_so_trang'] ?></span></li>
                         <li>Loại bìa: <span class="list-value"> <?= $book['s_loai_bia'] ? 'Bìa cứng' : 'Bìa mềm' ?></span></li>
-                        <li>Công ty phát hành: <a href="#" class="list-value font-weight-bold"> <?= $book['ctph_ten_cong_ty_phat_hanh'] ?></a></li>
+                        <li>Kích thước: <span class="list-value"> <?= $book['kt_ten_kich_thuoc'] ?></span></li>
                         <li>Ngày ra mắt: <span class="list-value"> <?= getDateFromDatabase($book['s_ngay_ra_mat']) ?></span></li>
                         <li>Lượt xem: <span class="list-value"> <?= $book['s_luot_xem'] ?></span></li>
                         <li>Nhà xuất bản: <a href="#!" class="list-value font-weight-bold"> <?= $book['nxb_ten_nha_xuat_ban'] ?></a></li>
-                        <li>Kích thước: <span class="list-value"> <?= $book['kt_ten_kich_thuoc'] ?> Cm</span></li>
+                        <li>Công ty phát hành: <a href="#" class="list-value font-weight-bold"> <?= $book['ctph_ten_cong_ty_phat_hanh'] ?></a></li>
 
                     </ul>
                     <div class="price-block">

@@ -68,7 +68,7 @@
                     <div class="main-navigation flex-lg-right">
                         <div class="cart-widget">
                             <div class="login-block">
-                                <a href="login-register.html" class="font-weight-bold">Đăng nhập</a> <br>
+                                <a href="<?= BASE_URL . '?act=login' ?>" class="font-weight-bold">Đăng nhập</a> <br>
                                 <span>hoặc</span><a href="login-register.html">Đăng ký</a>
                             </div>
                             <div class="cart-block">

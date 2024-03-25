@@ -25,6 +25,7 @@ if (!function_exists('listAllForBook')) {
                 INNER JOIN nha_xuat_ban as nxb ON nxb.id = s.id_nha_xuat_ban
                 INNER JOIN cong_ty_phat_hanh as ctph ON ctph.id = s.id_cong_ty_phat_hanh 
                 INNER JOIN kich_thuoc as kt ON kt.id = s.id_kich_thuoc
+                WHERE xoa_mem = 0
                 ORDER BY s_id DESC
             ";
 

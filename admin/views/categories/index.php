@@ -45,7 +45,7 @@
                                 <td>
                                     <a class="btn btn-info" href="<?= BASE_URL_ADMIN ?>?act=category-detail&id=<?= $category['id'] ?>">Show</a>
                                     <a class="btn btn-warning" href="<?= BASE_URL_ADMIN ?>?act=category-update&id=<?= $category['id'] ?>">Update</a>
-                                    <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=category-delete&id=<?= $category['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</a>
+                                    <a class="btn btn-danger <?= $category['id'] == 1 ? 'disabled' : null ?>" href="<?= BASE_URL_ADMIN ?>?act=category-delete&id=<?= $category['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -135,6 +135,7 @@ function validateSizeUpdate($id, $data)
 
 function sizeDelete($id)
 {
+    updateWhyDeleteSize($id);
     delete('kich_thuoc', $id);
 
     $_SESSION['success'] = 'Xoá thành công!';

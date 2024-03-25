@@ -122,6 +122,7 @@ function validatePublisherUpdate($id, $data)
 
 function publisherDelete($id)
 {
+    updateWhyDeletePublisher($id);
     delete('nha_xuat_ban', $id);
 
     $_SESSION['success'] = 'Xoá thành công!';

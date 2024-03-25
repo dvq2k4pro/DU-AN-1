@@ -122,6 +122,7 @@ function validateCategoryUpdate($id, $data)
 
 function categoryDelete($id)
 {
+    updateWhyDeleteCategory($id);
     delete('the_loai', $id);
 
     $_SESSION['success'] = 'Xoá thành công!';

@@ -45,7 +45,7 @@
                                 <td>
                                     <a class="btn btn-info" href="<?= BASE_URL_ADMIN ?>?act=publisher-detail&id=<?= $publisher['id'] ?>">Show</a>
                                     <a class="btn btn-warning" href="<?= BASE_URL_ADMIN ?>?act=publisher-update&id=<?= $publisher['id'] ?>">Update</a>
-                                    <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=publisher-delete&id=<?= $publisher['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</a>
+                                    <a class="btn btn-danger <?= $publisher['id'] == 1 ? 'disabled' : null ?>" href="<?= BASE_URL_ADMIN ?>?act=publisher-delete&id=<?= $publisher['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

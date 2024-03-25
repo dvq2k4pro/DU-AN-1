@@ -1,15 +1,15 @@
 <?php
-if (!function_exists('updateWhyDeletePublisher')) {
+if (!function_exists('updateWhyDeleteSize')) {
     // Nếu không trùng thì trả về True
     // Nếu trùng thì trả về False
-    function updateWhyDeletePublisher($idNhaXuatBan)
+    function updateWhyDeleteSize($idKichThuoc)
     {
         try {
-            $sql = "UPDATE sach SET id_nha_xuat_ban = 1 WHERE id_nha_xuat_ban = :idNhaXuatBan";
+            $sql = "UPDATE sach SET id_kich_thuoc = 1 WHERE id_kich_thuoc = :idKichThuoc";
             $stmt = $GLOBALS['conn']->prepare($sql);
 
 
-            $stmt->bindParam(":idNhaXuatBan", $idNhaXuatBan);
+            $stmt->bindParam(":idKichThuoc", $idKichThuoc);
 
 
             $stmt->execute();
