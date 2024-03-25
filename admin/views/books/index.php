@@ -78,7 +78,7 @@
                                 <td><?= $book['tl_ten_the_loai'] ?></td>
                                 <td><?= $book['nxb_ten_nha_xuat_ban'] ?></td>
                                 <td><?= $book['ctph_ten_cong_ty_phat_hanh'] ?></td>
-                                <td><?= $book['kt_ten_kich_thuoc'] ?> Cm</td>
+                                <td><?= $book['kt_ten_kich_thuoc'] ?></td>
 
                                 <td>
                                     <a class="btn btn-info mb-1" href="<?= BASE_URL_ADMIN ?>?act=book-detail&id=<?= $book['s_id'] ?>">Show</a>
