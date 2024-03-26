@@ -43,7 +43,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-3">
-                    <nav class="category-nav   ">
+                    <nav class="category-nav">
                         <div>
                             <a href="javascript:void(0)" class="category-trigger"><i class="fa fa-bars"></i>Thể loại</a>
                             <ul class="category-menu">
@@ -68,8 +68,25 @@
                     <div class="main-navigation flex-lg-right">
                         <div class="cart-widget">
                             <div class="login-block">
-                                <a href="<?= BASE_URL . '?act=login' ?>" class="font-weight-bold">Đăng nhập</a> <br>
-                                <span>hoặc</span><a href="login-register.html">Đăng ký</a>
+                                <?php if (isset($_SESSION['user'])) : ?>
+                                    <div class='btn-group'>
+                                        <button class='btn btn-warning btn-sm dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                                            <?= $_SESSION['user']['tai_khoan'] ?>
+                                        </button>
+                                        <ul class='dropdown-menu'>
+                                            <li><a class='dropdown-item' href='<?= BASE_URL . '?act=user-detail&id=' . $_SESSION['user']['id'] ?>'>Hồ sơ</a></li>
+                                            <?= ($_SESSION['user']['vai_tro'] == 1) ? "<li><a class='dropdown-item' href=" . BASE_URL_ADMIN . ">Quản trị Admin</a></li>" : null ?>
+                                            <li>
+                                                <hr class='dropdown-divider'>
+                                            </li>
+                                            <li><a class='dropdown-item' href='<?= BASE_URL . '?act=logout' ?>'>Đăng xuất</a></li>
+                                        </ul>
+                                    </div>
+                                <?php else : ?>
+                                    <a href='<?= BASE_URL . '?act=login' ?>' class='font-weight-bold'>Đăng nhập</a> <br>
+                                    <span>hoặc</span><a href='<?= BASE_URL . '?act=login' ?>'>Đăng ký</a>
+                                <?php endif ?>
+
                             </div>
                             <div class="cart-block">
                                 <div class="cart-total">

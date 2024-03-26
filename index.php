@@ -23,7 +23,15 @@ middlewareAuthCheckClient($act, $arrRouteNeedAuth);
 
 match ($act) {
     '/' => homeIndex(),
+
+    // Authen
     'login' => authenShowFormLoginClient(),
+    'logout' => authenLogoutClient(),
+
+    'register' => userRegister(),
+    'forgot-password' => forgotPassword(),
+    'change-password' => changePassword($_GET['id']),
+    'user-detail' => userDetail($_GET['id']),
     'book-detail' => productDetails($_GET['id']),
     'book-list-by-category' => loadBookByCategory($_GET['id']),
     'book-search' => searchBook(),

@@ -19,3 +19,40 @@ if (!function_exists('getUserClientByEmailAndPassword')) {
         }
     }
 }
+
+if (!function_exists('getPasswordByAccountAndEmail')) {
+    function getPasswordByAccountAndEmail($taiKhoan, $email)
+    {
+        try {
+            $sql = "SELECT * FROM nguoi_dung WHERE tai_khoan = :taiKhoan AND email = :email LIMIT 1";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":taiKhoan", $taiKhoan);
+            $stmt->bindParam(":email", $email);
+
+            $stmt->execute();
+
+            return $stmt->fetch();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('changePasswordForClient')) {
+    function changePasswordForClient($id, $newPassword)
+    {
+        try {
+            $sql = "UPDATE nguoi_dung SET mat_khau = $newPassword WHERE id = :id";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}

@@ -74,6 +74,10 @@ function validateUserCreate($data)
         $errors['tai_khoan'] = 'Trường tài khoản độ dài tối đa 50 ký tự!';
     }
 
+    if (empty($data['ho_ten'])) {
+        $errors['ho_ten'] = 'Trường họ tên không được để trống!';
+    }
+
     if (empty($data['email'])) {
         $errors['email'] = 'Trường email không được để trống!';
     } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
@@ -85,7 +89,7 @@ function validateUserCreate($data)
     if (empty($data['mat_khau'])) {
         $errors['mat_khau'] = 'Trường mật khẩu không được để trống!';
     } else if (strlen($data['mat_khau']) < 8 || strlen($data['mat_khau']) > 20) {
-        $errors['mat_khau'] = 'Trường mật khẩu độ dài nhỏ nhất là 8, lớn nhất là 20!';
+        $errors['mat_khau'] = 'Trường mật khẩu có độ dài nhỏ nhất là 8, lớn nhất là 20!';
     }
 
     if ($data['vai_tro'] === null) {

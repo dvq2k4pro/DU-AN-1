@@ -2,19 +2,22 @@
 
 function authenShowFormLoginClient()
 {
+    $view = 'authen/login';
+    $title = 'Đăng ký / Đăng nhập';
+
     if ($_POST) {
         authenLoginClient();
     }
 
-    require_once PATH_VIEW . 'authen/login.php';
+    require_once PATH_VIEW . 'layouts/master.php';
 }
 
 function authenLoginClient()
 {
-    $user = getUserClientByEmailAndPassword($_POST['account'], $_POST['password']);
+    $user = getUserByAccountAndPasswordClient($_POST['tai-khoan-dang-nhap'], $_POST['mat-khau-dang-nhap']);
 
     if (empty($user)) {
-        $_SESSION['error'] = 'Tài khoản hoặc mật khẩu chưa đúng!';
+        $_SESSION['error-login'] = 'Tài khoản hoặc mật khẩu chưa đúng!';
 
         header('Location: ' . BASE_URL . '?act=login');
         exit();
