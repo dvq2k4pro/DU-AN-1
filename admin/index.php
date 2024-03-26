@@ -26,6 +26,7 @@ match ($act) {
     // CRUD User
     'users' => userListAll(),
     'user-detail' => userShowOne($_GET['id']),
+    'user-detail1' => userShowOne1($_GET['id']),
     'user-create' => userCreate(),
     'user-update' => userUpdate($_GET['id']),
     'user-delete' => userDelete($_GET['id']),

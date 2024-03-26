@@ -26,6 +26,19 @@ function userShowOne($id)
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
+function userShowOne1($id)
+{
+    $user = showOne('nguoi_dung', $id);
+    if (empty($user)) {
+        e404();
+    }
+
+    $title = 'Chi tiết người dùng: ' . $user['tai_khoan'];
+    $view = 'users/show-one1';
+
+    require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+}
+
 function userCreate()
 {
     $title = 'Thêm mới người dùng';
