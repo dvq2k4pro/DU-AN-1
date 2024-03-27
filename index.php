@@ -35,6 +35,8 @@ match ($act) {
     'book-detail' => productDetails($_GET['id']),
     'book-list-by-category' => loadBookByCategory($_GET['id']),
     'book-search' => searchBook(),
+    'filter-book-by-category' => filterBookByCategory($_GET['id'], $_GET['search-keyword']),
+    'filter-book-by-price' => filterBookByPrice($_GET['search-keyword']),
 };
 
 require_once './commons/disconnect-db.php';

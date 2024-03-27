@@ -44,3 +44,62 @@ function loadBookByCategory($id)
 
     require_once PATH_VIEW . 'layouts/master.php';
 }
+
+function filterBookByCategory($id, $searchKeyword)
+{
+    $_SESSION['search-keyword'] = $searchKeyword;
+    $view = 'search-book';
+    $title = 'T8 Book';
+
+    $categories = listAll('the_loai');
+
+    if (!empty($id) && !empty($searchKeyword)) {
+        $books = filterBookByCategoryAndSearchKeyword($id, $searchKeyword);
+    }
+
+    require_once PATH_VIEW . 'layouts/master.php';
+}
+
+function filterBookByPrice($searchKeyword)
+{
+    $_SESSION['search-keyword'] = $searchKeyword;
+    $view = 'search-book';
+    $title = 'T8 Book';
+
+    $categories = listAll('the_loai');
+
+    if (!empty($_POST)) {
+        $minPrice = $_POST['min-price'] ?? null;
+        $maxPrice = $_POST['max-price'] ?? null;
+
+        $errors = validatePrice($minPrice, $maxPrice);
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+        } else {
+            if (!empty($searchKeyword)) {
+                $books = filterBookByPriceAndSearchKeyword($searchKeyword, $minPrice, $maxPrice);
+            }
+        }
+    }
+
+
+    require_once PATH_VIEW . 'layouts/master.php';
+}
+
+function validatePrice($minPrice, $maxPrice)
+{
+    $errors = [];
+    if ($minPrice == '') {
+        $errors['min_price'] = 'Vui lòng nhập giá';
+    } else if ($minPrice < 0 || ($minPrice > $maxPrice) || !is_numeric($minPrice)) {
+        $errors['min_price'] = 'Giá không hợp lệ!';
+    }
+
+    if ($maxPrice == '') {
+        $errors['max_price'] = 'Vui lòng nhập giá';
+    } else if ($maxPrice < 0 || ($maxPrice < $minPrice) || !is_numeric($maxPrice)) {
+        $errors['max_price'] = 'Giá không hợp lệ!';
+    }
+
+    return $errors;
+}

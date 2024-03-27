@@ -138,3 +138,75 @@ if (!function_exists('searchBooksByName')) {
         }
     }
 }
+
+if (!function_exists('filterBookByCategoryAndSearchKeyword')) {
+    function filterBookByCategoryAndSearchKeyword($idTheLoai, $searchKeyword)
+    {
+        try {
+            $sql = "SELECT * FROM sach WHERE ten_sach LIKE :searchKeyword AND id_the_loai = :idTheLoai";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $searchKeyword = "%" . $searchKeyword . "%";
+            $stmt->bindParam(":searchKeyword", $searchKeyword);
+            $stmt->bindParam(":idTheLoai", $idTheLoai);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('filterBookByPriceAndSearchKeyword')) {
+    function filterBookByPriceAndSearchKeyword($searchKeyword, $minPrice = null, $maxPrice = null)
+    {
+        try {
+            $sql = "SELECT * FROM sach WHERE ten_sach LIKE :searchKeyword";
+
+            // Thêm điều kiện lọc theo giá cao nhất và giá thấp nhất (nếu được chỉ định)
+            if (!empty($minPrice)) {
+                $sql .= " AND gia >= :minPrice";
+            }
+            if (!empty($maxPrice)) {
+                $sql .= " AND gia <= :maxPrice";
+            }
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $searchKeyword = "%" . $searchKeyword . "%";
+            $stmt->bindParam(":searchKeyword", $searchKeyword);
+            if (!empty($minPrice)) {
+                $stmt->bindParam(":minPrice", $minPrice);
+            }
+            if (!empty($maxPrice)) {
+                $stmt->bindParam(":maxPrice", $maxPrice);
+            }
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('getQuantityRow')) {
+    function getQuantityRow($categoryId)
+    {
+        try {
+            $sql = "SELECT COUNT(*) AS count FROM sach WHERE id_the_loai = :categoryId";
+            $stmt = $GLOBALS['conn']->prepare($sql);
+            $stmt->bindParam(':categoryId', $categoryId);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['count'];
+        } catch (\Exception $e) {
+            debug($e);
+            return false;
+        }
+    }
+}
