@@ -10,6 +10,7 @@ if (!function_exists('listAllForBook')) {
                 s.ten_sach as s_ten_sach,
                 s.hinh_nen as s_hinh_nen,
                 s.gia as s_gia,
+                s.xoa_mem as s_xoa_mem,
                 s.loai_bia as s_loai_bia,
                 s.so_trang as s_so_trang,
                 s.mo_ta as s_mo_ta,
@@ -25,7 +26,6 @@ if (!function_exists('listAllForBook')) {
                 INNER JOIN nha_xuat_ban as nxb ON nxb.id = s.id_nha_xuat_ban
                 INNER JOIN cong_ty_phat_hanh as ctph ON ctph.id = s.id_cong_ty_phat_hanh 
                 INNER JOIN kich_thuoc as kt ON kt.id = s.id_kich_thuoc
-                WHERE xoa_mem = 0
                 ORDER BY s_id DESC
             ";
 
@@ -54,6 +54,7 @@ if (!function_exists('showOneForBook')) {
                 s.id_kich_thuoc as s_id_kich_thuoc,
                 s.id_the_loai as s_id_the_loai,
                 s.gia as s_gia,
+                s.xoa_mem as s_xoa_mem,
                 s.loai_bia as s_loai_bia,
                 s.so_trang as s_so_trang,
                 s.mo_ta as s_mo_ta,

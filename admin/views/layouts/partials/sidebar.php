@@ -119,6 +119,18 @@
         </div>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse9" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-comment"></i>
+            <span>Quản lý bình luận</span>
+        </a>
+        <div id="collapse9" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=comments">Danh sách</a>
+            </div>
+        </div>
+    </li>
+
 
 
 

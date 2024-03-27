@@ -90,7 +90,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="tab2" data-bs-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="true">
-                        Đánh giá (1)
+                        Đánh giá (<?= getQuantityRowForComment($book['s_id']) ?>)
                     </a>
                 </li>
             </ul>
@@ -103,39 +103,45 @@
                 </div>
                 <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab2">
                     <div class="review-wrapper">
-                        <div class="review-comment mb--20">
-                            <div class="avatar">
-                                <img src="<?= BASE_URL ?>/assets/client/image/icon/author-logo.png" alt="">
-                            </div>
-                            <div class="text">
-                                <div class="rating-block mb--15">
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline"></span>
-                                    <span class="ion-android-star-outline"></span>
+                        <?php foreach ($listComments as $comment) : ?>
+                            <div class="review-comment mb--20">
+                                <div class="avatar">
+                                    <img src="<?= BASE_URL ?>/assets/client/image/icon/author-logo.png" alt="">
                                 </div>
-                                <h6 class="author">ADMIN – <span class="font-weight-400">March 23, 2015</span>
-                                </h6>
-                                <p>Lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio
-                                    quis mi.</p>
+                                <div class="text">
+                                    <div class="rating-block mb--15">
+                                        <?php
+                                        for ($i = 0; $i < 5; ++$i) {
+                                            if ($i < $comment['bl_danh_gia']) {
+                                                echo "<span class='ion-android-star-outline star_on'></span>";
+                                            } else {
+                                                echo "<span class='ion-android-star-outline'></span>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                    <h6 class="author"><?= $comment['nd_ho_ten'] ?> –– <span class="font-weight-400"><?= getDateFromDatabase($comment['bl_ngay_binh_luan']) ?></span>
+                                    </h6>
+                                    <p><?= $comment['bl_noi_dung'] ?></p>
+                                </div>
                             </div>
-                        </div>
+                        <?php endforeach; ?>
                         <h2 class="title-lg mb--20 pt--15">Viết bình luận</h2>
-                        <div class="rating-row pt-2">
+                        <div class="rating-row pt-2" id='comment-form'>
                             <form action="" method="post">
+                                <input type="hidden" name="id-sach" value="<?= $book['id'] ?>">
                                 <div class="rating-row pt-2">
                                     <p class="d-block">Đánh giá của bạn</p>
                                     <span class="rating-widget-block">
-                                        <input type="radio" name="star" id="star1">
+                                        <input type="radio" name="star" value='5' id="star1">
                                         <label for="star1"></label>
-                                        <input type="radio" name="star" id="star2">
+                                        <input type="radio" name="star" value='4' id="star2">
                                         <label for="star2"></label>
-                                        <input type="radio" name="star" id="star3">
+                                        <input type="radio" name="star" value='3' id="star3">
                                         <label for="star3"></label>
-                                        <input type="radio" name="star" id="star4">
+                                        <input type="radio" name="star" value='2' id="star4">
                                         <label for="star4"></label>
-                                        <input type="radio" name="star" id="star5">
+                                        <input type="radio" name="star" value='1' id="star5">
                                         <label for="star5"></label>
                                     </span>
                                 </div>
@@ -143,13 +149,20 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="message">Nội dung</label>
-                                            <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                                            <textarea name="message" id="message" cols="30" rows="5" class="form-control"></textarea>
+                                            <?= isset($_SESSION['errors']['noi_dung']) ? "<span class='error-message'>{$_SESSION['errors']['noi_dung']}</span>" : null ?>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="submit-btn">
-                                            <button type="submit" class="btn btn-black">Đăng</button>
-                                        </div>
+                                        <?php if (isset($_SESSION['user'])) : ?>
+                                            <div class="submit-btn">
+                                                <button type="submit" class="btn btn-black">Đăng</button>
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="submit-btn">
+                                                <a href="<?= BASE_URL . '?act=login' ?>" class="btn btn-black">Bạn phải đăng nhập để sử dụng chức năng này</a>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </form>
@@ -206,3 +219,8 @@
     </section>
 </main>
 </div>
+<?php
+if (isset($_SESSION['errors'])) {
+    unset($_SESSION['errors']);
+}
+?>

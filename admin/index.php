@@ -72,6 +72,11 @@ match ($act) {
     'size-create' => sizeCreate(),
     'size-update' => sizeUpdate($_GET['id']),
     'size-delete' => sizeDelete($_GET['id']),
+
+    // CRUD Size
+    'comments' => commentListAll(),
+    'comment-detail' => commentShowOne($_GET['id']),
+    'comment-update' => commentUpdate($_GET['id'])
 };
 
 require_once '../commons/disconnect-db.php';

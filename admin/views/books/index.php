@@ -31,6 +31,7 @@
                             <th>Số trang</th>
                             <th>Mô tả</th>
                             <th>Lượt xem</th>
+                            <th>Xoá mềm</th>
                             <th>Sản phẩm đặc sắc</th>
                             <th>Ngày ra mắt</th>
                             <th>Tên thể loại</th>
@@ -50,6 +51,7 @@
                             <th>Số trang</th>
                             <th>Mô tả</th>
                             <th>Lượt xem</th>
+                            <th>Xoá mềm</th>
                             <th>Sản phẩm đặc sắc</th>
                             <th>Ngày ra mắt</th>
                             <th>Tên thể loại</th>
@@ -73,6 +75,7 @@
                                 <td><?= $book['s_so_trang'] ?></td>
                                 <td><?= $book['s_mo_ta'] ?></td>
                                 <td><?= $book['s_luot_xem'] ?></td>
+                                <td><?= $book['s_xoa_mem'] ? '<span class="badge badge-success">Có</span>' : '<span class="badge badge-warning">Không</span>' ?></td>
                                 <td><?= $book['s_san_pham_dac_sac'] ? '<span class="badge badge-success">Đúng</span>' : '<span class="badge badge-warning">Sai</span>' ?></td>
                                 <td><?= getDateFromDatabase($book['s_ngay_ra_mat']) ?></td>
                                 <td><?= $book['tl_ten_the_loai'] ?></td>

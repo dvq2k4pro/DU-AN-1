@@ -208,6 +208,7 @@ function bookUpdate($id)
             "id_kich_thuoc" => $_POST['id-kich-thuoc'] ?? $book['s_id_kich_thuoc'],
             "hinh_nen" => getFileUpload('hinh-nen', $book['s_hinh_nen']),
             "so_trang" => $_POST['so-trang'] ?? $book['so_trang'],
+            "xoa_mem" => $_POST['xoa-mem'] ?? $book['xoa_mem'],
             "loai_bia" => $_POST['loai-bia'] ?? $book['loai_bia'],
             "gia" => $_POST['gia'] ?? $book['s_gia'],
             "mo_ta" => $_POST['mo-ta'] ?? $book['s_mo_ta'],

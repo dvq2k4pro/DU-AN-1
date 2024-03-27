@@ -95,6 +95,14 @@
                             <span class='error-message'><?= isset($_SESSION['errors']['loai_bia']) ? $_SESSION['errors']['loai_bia'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
+                            <label for="xoa-mem" class="form-label">Xoá mềm:*</label>
+                            <select style="width: 30%;" name="xoa-mem" id="xoa-mem" class="form-control">
+                                <option <?= $book['s_xoa_mem'] == 1 ? 'selected' : null ?> value="1">Có</option>
+                                <option <?= $book['s_xoa_mem'] == 0 ? 'selected' : null ?> value="0">Không</option>
+                            </select>
+                            <span class='error-message'><?= isset($_SESSION['errors']['loai_bia']) ? $_SESSION['errors']['loai_bia'] : '' ?></span>
+                        </div>
+                        <div class="mb-3 mt-3">
                             <label for="id-tac-gia" class="form-label">Tác giả:*</label>
                             <select style="width: 50%;" class="form-control" id="id-tac-gia" name="id-tac-gia[]" multiple>
                                 <?php foreach ($authors as $author) : ?>

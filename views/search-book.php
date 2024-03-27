@@ -11,7 +11,7 @@
                         <h3 class="sidebar-title">Thể loại</h3>
                         <ul class="sidebar-menu--shop">
                             <?php foreach ($categories as $category) : ?>
-                                <li><a href="<?= BASE_URL . '?act=filter-book-by-category&id=' . $category['id'] . '&search-keyword=' . $_SESSION['search-keyword'] ?>"><?= $category['ten_the_loai'] ?> (<?= getQuantityRow($category['id']) ?>)</a></li>
+                                <li><a href="<?= BASE_URL . '?act=filter-book-by-category&id=' . $category['id'] . '&search-keyword=' . $_SESSION['search-keyword'] ?>"><?= $category['ten_the_loai'] ?> (<?= getQuantityRow($category['id'], $_SESSION['search-keyword']) ?>)</a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>

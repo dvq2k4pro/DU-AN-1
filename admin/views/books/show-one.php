@@ -37,6 +37,10 @@
                     <td><?= $book['s_loai_bia'] ? 'Bìa cứng' : 'Bìa mềm' ?></td>
                 </tr>
                 <tr>
+                    <td>Xoá mềm</td>
+                    <td><?= $book['s_xoa_mem'] ? '<span class="badge badge-success">Có</span>' : '<span class="badge badge-warning">Không</span>' ?></td>
+                </tr>
+                <tr>
                     <td>Số trang</td>
                     <td><?= $book['s_so_trang'] ?></td>
                 </tr>
