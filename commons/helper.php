@@ -90,3 +90,22 @@ if (!function_exists('getDateFromDatabase')) {
         return $date->format("Y-m-d");;
     }
 }
+
+if (!function_exists('calculatorTotalOrder')) {
+    function calculatorTotalOrder()
+    {
+        if (isset($_SESSION['cart'])) {
+            $total = 0;
+            foreach ($_SESSION['cart'] as $cart) {
+                $price = $cart['gia'];
+                $quantity = $cart['quantity'];
+
+                $total += $price * $quantity;
+            }
+
+            return $total;
+        }
+
+        return 0;
+    }
+}

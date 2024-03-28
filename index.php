@@ -22,6 +22,9 @@ $arrRouteNeedAuth = [
     'cart-inc',
     'cart-desc',
     'cart-delete',
+    'order-checkout',
+    'order-purchase',
+    'order-complete'
 ];
 
 // Kiểm tra xem user đã đăng nhập chưa
@@ -50,6 +53,10 @@ match ($act) {
     'cart-inc' => cartInc($_GET['bookId']),
     'cart-desc' => cartDesc($_GET['bookId']),
     'cart-delete' => cartDelete($_GET['bookId']),
+
+    'order-checkout' => orderCheckout(),
+    'order-purchase' => orderPurchase(),
+    'order-complete' => orderComplete(),
 };
 
 require_once './commons/disconnect-db.php';

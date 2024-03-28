@@ -39,8 +39,6 @@ function cartList()
     $view = 'cart-list';
     $title = 'Giỏ hàng';
 
-    $carts = $_SESSION['cart'];
-
     require_once PATH_VIEW . 'layouts/master.php';
 }
 

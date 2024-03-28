@@ -38,10 +38,9 @@
                                 <tbody>
                                     <!-- Product Row -->
                                     <?php
-
                                     if (!empty($_SESSION['cart'])) :
 
-                                        foreach ($carts as $cart) : ?>
+                                        foreach ($_SESSION['cart'] as $cart) : ?>
                                             <tr>
                                                 <td class="pro-remove"><a href="<?= BASE_URL . '?act=cart-delete&bookId=' . $cart['id'] ?>" onclick="return confirm('Bạn có chắc chắng muốn xoá không?')"><i class="far fa-trash-alt"></i></a>
                                                 </td>
@@ -80,12 +79,10 @@
                     <div class="cart-summary">
                         <div class="cart-summary-wrap">
                             <h4><span>Tóm tắt giỏ hàng</span></h4>
-                            <p>Sub Total <span class="text-primary">$1250.00</span></p>
-                            <p>Shipping Cost <span class="text-primary">$00.00</span></p>
-                            <h2>Grand Total <span class="text-primary">$1250.00</span></h2>
+                            <h2>Tổng tiền giỏ hàng <span class="text-primary"><?= formatCurrencyToVND(calculatorTotalOrder()) ?></span></h2>
                         </div>
                         <div class="cart-summary-button">
-                            <a href="checkout.html" class="checkout-btn c-btn btn--primary">Thanh toán</a>
+                            <a href="<?= BASE_URL . '?act=order-checkout' ?>" class="checkout-btn c-btn btn--primary">Đặt hàng</a>
                         </div>
                     </div>
 
