@@ -118,7 +118,7 @@
                                     </div>
                                     <div class=" single-cart-block ">
                                         <div class="btn-block">
-                                            <a href="cart.html" class="btn">Xem giỏ hàng <i class="fas fa-chevron-right"></i></a>
+                                            <a href="<?= BASE_URL . '?act=cart-list' ?>" class="btn">Xem giỏ hàng <i class="fas fa-chevron-right"></i></a>
                                             <a href="checkout.html" class="btn btn--primary">Thanh toán <i class="fas fa-chevron-right"></i></a>
                                         </div>
                                     </div>

@@ -71,11 +71,11 @@
                     </article>
                     <div class="add-to-cart-row">
                         <div class="count-input-block">
-                            <span class="widget-label">Qty</span>
+                            <span class="widget-label">Số lượng</span>
                             <input type="number" class="form-control text-center" value="1">
                         </div>
                         <div class="add-cart-btn">
-                            <a href="#!" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Thêm vào giỏ hàng</a>
+                            <a href="<?= BASE_URL . '?act=cart-add&bookId=' . $book['s_id'] . '&quantity=1' ?>" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Thêm vào giỏ hàng</a>
                         </div>
                     </div>
                 </div>

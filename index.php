@@ -16,7 +16,13 @@ requireFile(PATH_MODEL);
 $act = $_GET['act'] ?? '/';
 
 // Biến này cần khai báo được link cần đăng nhập mới vào được
-$arrRouteNeedAuth = [];
+$arrRouteNeedAuth = [
+    'cart-add',
+    'cart-list',
+    'cart-inc',
+    'cart-desc',
+    'cart-delete',
+];
 
 // Kiểm tra xem user đã đăng nhập chưa
 middlewareAuthCheckClient($act, $arrRouteNeedAuth);
@@ -37,6 +43,13 @@ match ($act) {
     'book-search' => searchBook(),
     'filter-book-by-category' => filterBookByCategory($_GET['id'], $_GET['search-keyword']),
     'filter-book-by-price' => filterBookByPrice($_GET['search-keyword']),
+
+    // Cart
+    'cart-add' => cartAdd($_GET['bookId'], $_GET['quantity']),
+    'cart-list' => cartList(),
+    'cart-inc' => cartInc($_GET['bookId']),
+    'cart-desc' => cartDesc($_GET['bookId']),
+    'cart-delete' => cartDelete($_GET['bookId']),
 };
 
 require_once './commons/disconnect-db.php';
