@@ -29,6 +29,7 @@
                             <th>Giá</th>
                             <th>Loại bìa</th>
                             <th>Số trang</th>
+                            <th>Số lượng tồn kho</th>
                             <th>Mô tả</th>
                             <th>Lượt xem</th>
                             <th>Xoá mềm</th>
@@ -49,6 +50,7 @@
                             <th>Giá</th>
                             <th>Loại bìa</th>
                             <th>Số trang</th>
+                            <th>Số lượng tồn kho</th>
                             <th>Mô tả</th>
                             <th>Lượt xem</th>
                             <th>Xoá mềm</th>
@@ -73,6 +75,7 @@
                                 <td><?= $book['s_gia'] ?></td>
                                 <td><?= $book['s_loai_bia'] ? '<span class="badge badge-success">Bìa cứng</span>' : '<span class="badge badge-warning">Bìa mềm</span>' ?></td>
                                 <td><?= $book['s_so_trang'] ?></td>
+                                <td><?= $book['s_so_luong_ton_kho'] ?></td>
                                 <td><?= $book['s_mo_ta'] ?></td>
                                 <td><?= $book['s_luot_xem'] ?></td>
                                 <td><?= $book['s_xoa_mem'] ? '<span class="badge badge-success">Có</span>' : '<span class="badge badge-warning">Không</span>' ?></td>

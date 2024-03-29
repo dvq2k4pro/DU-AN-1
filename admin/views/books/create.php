@@ -35,6 +35,11 @@
                             <span class='error-message'><?= isset($_SESSION['errors']['so_trang']) ? $_SESSION['errors']['so_trang'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
+                            <label for="so-luong-ton-kho" class="form-label">Số lượng tồn kho:*</label>
+                            <input type="text" class="form-control" id="so-luong-ton-kho" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['so_luong_ton_kho'] : null ?>" placeholder="Vui lòng nhập số lượng tồn kho" name="so-luong-ton-kho">
+                            <span class='error-message'><?= isset($_SESSION['errors']['so_luong_ton_kho']) ? $_SESSION['errors']['so_luong_ton_kho'] : '' ?></span>
+                        </div>
+                        <div class="mb-3 mt-3">
                             <label for="id_nha_xuat_ban" class="form-label">Nhà xuất bản:*</label>
                             <select style="width: 50%;" class="form-control" id="id_nha_xuat_ban" name="id-nha-xuat-ban">
                                 <?php foreach ($publishers as $publisher) : ?>

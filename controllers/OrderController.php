@@ -3,6 +3,7 @@ function orderCheckout()
 {
     $view = 'order';
     $title = 'Đặt hàng';
+    $categories = listAll('the_loai');
 
     require_once PATH_VIEW . 'layouts/master.php';
 }
@@ -28,6 +29,7 @@ function orderPurchase()
             ];
 
             insert('chi_tiet_don_hang', $orderItem);
+            decreaseQuantity($bookId, $item['quantity']);
         }
 
         // Xử lý hậu điều kiện
@@ -48,6 +50,7 @@ function orderComplete()
 {
     $view = 'order-complete';
     $title = 'Đặt hàng thành công';
+    $categories = listAll('the_loai');
 
     require_once PATH_VIEW . 'layouts/master.php';
 }

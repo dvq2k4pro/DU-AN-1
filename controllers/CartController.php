@@ -5,8 +5,19 @@ function cartAdd($bookId, $quantity = 0)
 {
     // Kiểm tra xem là có sách với cái Id kia không
     $book = showOne('sach', $bookId);
+
     if (empty($book)) {
         debug('404 Not found');
+    }
+
+    if ($quantity < 1) {
+        $_SESSION['error-quantity'] = 'Số lượng mua phải lớn hơn 0!';
+        header('location: ' . BASE_URL . '?act=book-detail&id=' . $bookId);
+        exit();
+    } else if ($quantity > $book['so_luong_ton_kho']) {
+        $_SESSION['error-quantity'] = 'Số lượng mua không thể lớn hơn số lượng tồn kho!';
+        header('location: ' . BASE_URL . '?act=book-detail&id=' . $bookId);
+        exit();
     }
 
     // Kiểm tra xem trong bảng gio_hang đã có bản ghi nào của người dùng đang đăng nhập chưa
@@ -38,6 +49,7 @@ function cartList()
 {
     $view = 'cart-list';
     $title = 'Giỏ hàng';
+    $categories = listAll('the_loai');
 
     require_once PATH_VIEW . 'layouts/master.php';
 }

@@ -75,6 +75,7 @@
                                         </button>
                                         <ul class='dropdown-menu'>
                                             <li><a class='dropdown-item' href='<?= BASE_URL . '?act=user-detail&id=' . $_SESSION['user']['id'] ?>'>Hồ sơ</a></li>
+                                            <li><a class='dropdown-item' href='<?= BASE_URL . '?act=cart-list' ?>'>Giỏ hàng</a></li>
                                             <?= ($_SESSION['user']['vai_tro'] == 1) ? "<li><a class='dropdown-item' href=" . BASE_URL_ADMIN . ">Quản trị Admin</a></li>" : null ?>
                                             <li>
                                                 <hr class='dropdown-divider'>
@@ -83,46 +84,10 @@
                                         </ul>
                                     </div>
                                 <?php else : ?>
-                                    <a href='<?= BASE_URL . '?act=login' ?>' class='font-weight-bold'>Đăng nhập</a> <br>
-                                    <span>hoặc</span><a href='<?= BASE_URL . '?act=login' ?>'>Đăng ký</a>
+                                    <a href='<?= BASE_URL . '?act=login' ?>' class='font-weight-bold'>Đăng nhập</a>
+                                    /<a href='<?= BASE_URL . '?act=login' ?>'>Đăng ký</a>
                                 <?php endif ?>
 
-                            </div>
-                            <div class="cart-block">
-                                <div class="cart-total">
-                                    <span class="text-number">
-                                        1
-                                    </span>
-                                    <span class="text-item">
-                                        Giỏ hàng
-                                    </span>
-                                    <span class="price">
-                                        £0.00
-                                        <i class="fas fa-chevron-down"></i>
-                                    </span>
-                                </div>
-                                <div class="cart-dropdown-block">
-                                    <div class=" single-cart-block ">
-                                        <div class="cart-product">
-                                            <a href="product-details.html" class="image">
-                                                <img src="<?= BASE_URL ?>/assets/client/image/products/cart-product-1.jpg" alt="">
-                                            </a>
-                                            <div class="content">
-                                                <h3 class="title"><a href="product-details.html">Kodak PIXPRO
-                                                        Astro Zoom AZ421 16 MP</a>
-                                                </h3>
-                                                <p class="price"><span class="qty">1 ×</span> £87.34</p>
-                                                <button class="cross-btn"><i class="fas fa-times"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class=" single-cart-block ">
-                                        <div class="btn-block">
-                                            <a href="<?= BASE_URL . '?act=cart-list' ?>" class="btn">Xem giỏ hàng <i class="fas fa-chevron-right"></i></a>
-                                            <a href="checkout.html" class="btn btn--primary">Thanh toán <i class="fas fa-chevron-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -55,7 +55,7 @@ if (!function_exists('showOneBook')) {
     function showOneBook($id)
     {
         try {
-            $sql = "SELECT *, s.id as s_id, s.so_trang as s_so_trang, s.loai_bia as s_loai_bia, s.ngay_ra_mat as s_ngay_ra_mat, s.luot_xem as s_luot_xem, 
+            $sql = "SELECT *, s.id as s_id, s.so_trang as s_so_trang, s.loai_bia as s_loai_bia, s.ngay_ra_mat as s_ngay_ra_mat, s.luot_xem as s_luot_xem, s.so_luong_ton_kho as s_so_luong_ton_kho,
             nxb.ten_nha_xuat_ban as nxb_ten_nha_xuat_ban, tl.ten_the_loai as tl_ten_the_loai , ctph.ten_cong_ty_phat_hanh as ctph_ten_cong_ty_phat_hanh,
             kt.ten_kich_thuoc as kt_ten_kich_thuoc
             

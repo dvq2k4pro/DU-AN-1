@@ -51,6 +51,7 @@ function bookCreate()
             "id_kich_thuoc" => $_POST['id-kich-thuoc'] ?? null,
             "hinh_nen" => getFileUpload('hinh-nen'),
             "so_trang" => $_POST['so-trang'] ?? null,
+            "so_luong_ton_kho" => $_POST['so-luong-ton-kho'] ?? null,
             "loai_bia" => $_POST['loai-bia'] ?? null,
             "gia" => $_POST['gia'] ?? null,
             "mo_ta" => $_POST['mo-ta'] ?? null,
@@ -113,6 +114,12 @@ function bookCreate()
 function validateBookCreate($data)
 {
     $errors = [];
+
+    if (isset($data['so_luong_ton_kho']) && $data['so_luong_ton_kho'] == '') {
+        $errors['so_luong_ton_kho'] = 'Số lượng tồn kho không được để trống!';
+    } else if ($data['so_luong_ton_kho'] < 0) {
+        $errors['so_luong_ton_kho'] = 'Số lượng tồn kho không hợp lệ!';
+    }
 
     if (empty($data['ten_sach'])) {
         $errors['ten_sach'] = 'Tên sách không được để trống!';
@@ -208,6 +215,7 @@ function bookUpdate($id)
             "id_kich_thuoc" => $_POST['id-kich-thuoc'] ?? $book['s_id_kich_thuoc'],
             "hinh_nen" => getFileUpload('hinh-nen', $book['s_hinh_nen']),
             "so_trang" => $_POST['so-trang'] ?? $book['so_trang'],
+            "so_luong_ton_kho" => $_POST['so-luong-ton-kho'] ?? $book['so_luong_ton_kho'],
             "xoa_mem" => $_POST['xoa-mem'] ?? $book['xoa_mem'],
             "loai_bia" => $_POST['loai-bia'] ?? $book['loai_bia'],
             "gia" => $_POST['gia'] ?? $book['s_gia'],
@@ -310,6 +318,12 @@ function validateBookUpdate($id, $data)
         $errors['so_trang'] = 'Số trang không được để trống!';
     } else if ($data['so_trang'] < 0) {
         $errors['so_trang'] = 'Số trang không hợp lệ!';
+    }
+
+    if (isset($data['so_luong_ton_kho']) && $data['so_luong_ton_kho'] == '') {
+        $errors['so_luong_ton_kho'] = 'Số lượng tồn kho không được để trống!';
+    } else if ($data['so_luong_ton_kho'] < 0) {
+        $errors['so_luong_ton_kho'] = 'Số lượng tồn kho không hợp lệ!';
     }
 
     if ($data['san_pham_dac_sac'] === null) {

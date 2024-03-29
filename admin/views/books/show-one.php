@@ -45,6 +45,10 @@
                     <td><?= $book['s_so_trang'] ?></td>
                 </tr>
                 <tr>
+                    <td>Số lượng tồn kho</td>
+                    <td><?= $book['s_so_luong_ton_kho'] ?></td>
+                </tr>
+                <tr>
                     <td>Mô tả</td>
                     <td><?= $book['s_mo_ta'] ?></td>
                 </tr>

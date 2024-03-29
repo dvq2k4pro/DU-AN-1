@@ -353,3 +353,24 @@ if (!function_exists('getUserByAccountAndPasswordClient')) {
         }
     }
 }
+
+if (!function_exists('decreaseQuantity')) {
+    function decreaseQuantity($bookId, $quantity)
+    {
+        try {
+            $sql = "
+                UPDATE sach
+                SET so_luong_ton_kho = so_luong_ton_kho - :quantity WHERE id = :id
+            ";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(':id', $bookId);
+            $stmt->bindParam(':quantity', $quantity);
+
+            $stmt->execute();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}

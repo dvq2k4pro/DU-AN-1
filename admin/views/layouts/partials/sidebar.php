@@ -131,7 +131,17 @@
         </div>
     </li>
 
-
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse10" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-shopping-bag"></i>
+            <span>Quản lý đơn hàng</span>
+        </a>
+        <div id="collapse10" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="<?= BASE_URL_ADMIN ?>?act=orders">Danh sách</a>
+            </div>
+        </div>
+    </li>
 
 
     <!-- Divider -->
