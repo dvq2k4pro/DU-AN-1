@@ -64,17 +64,9 @@
                                                 ?>
                                             </ul>
                                             <h4>Tổng tiền đơn hàng <span><?= formatCurrencyToVND(calculatorTotalOrder()) ?></span></h4>
-                                            <div class="method-notice mt--25">
-                                                <article>
-                                                    <h3 class="d-none sr-only">blog-article</h3>
-                                                    Sorry, it seems that there are no available payment methods for
-                                                    your state. Please contact us if you
-                                                    require
-                                                    assistance
-                                                    or wish to make alternate arrangements.
-                                                </article>
-                                            </div>
-                                            <button type="submit" class="place-order w-100">Đặt hàng</button>
+                                            <button type="submit" style="margin: 8px 0; background-color: #d82d8b;" class="place-order w-100" name="payUrl">Thanh toán MoMo</button>
+
+                                            <button type="submit" name="cash-payment" class="place-order w-100">Đặt hàng</button>
                                         </div>
                                     </div>
                                 </div>
