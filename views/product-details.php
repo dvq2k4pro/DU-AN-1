@@ -59,7 +59,7 @@
                         <li>Kích thước: <span class="list-value"> <?= $book['kt_ten_kich_thuoc'] ?></span></li>
                         <li>Ngày ra mắt: <span class="list-value"> <?= getDateFromDatabase($book['s_ngay_ra_mat']) ?></span></li>
                         <li>Lượt xem: <span class="list-value"> <?= $book['s_luot_xem'] ?></span></li>
-                        <li>Số lượng tồn kho: <span class="list-value"> <?= $book['s_so_luong_ton_kho'] ?></span></li>
+                        <li>Số lượng tồn kho: <span class="list-value"> <?= $book['s_so_luong_ton_kho'] != 0 ? $book['s_so_luong_ton_kho'] : 'Hết hàng' ?></span></li>
                         <li>Nhà xuất bản: <a href="#!" class="list-value font-weight-bold"> <?= $book['nxb_ten_nha_xuat_ban'] ?></a></li>
                         <li>Công ty phát hành: <a href="#" class="list-value font-weight-bold"> <?= $book['ctph_ten_cong_ty_phat_hanh'] ?></a></li>
 
@@ -76,7 +76,7 @@
                             <input type="number" id="quantityInput" class="form-control text-center" value="1">
                         </div>
                         <div class="add-cart-btn">
-                            <a id="addToCartBtn" href="<?= BASE_URL . '?act=cart-add&bookId=' . $book['s_id'] . '&quantity=1' ?>" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Thêm vào giỏ hàng</a>
+                            <a id="addToCartBtn" href="<?= BASE_URL . '?act=cart-add&bookId=' . $book['s_id'] . '&quantity=1' ?>" class="btn btn-outlined--primary <?= $book['s_so_luong_ton_kho'] == 0 ? 'disabled' : null ?>"><span class="plus-icon">+</span>Thêm vào giỏ hàng</a>
                         </div>
                     </div>
                     <span style="margin-top: 8px;"><?= isset($_SESSION['error-quantity']) ? $_SESSION['error-quantity'] : null ?></span>
