@@ -14,6 +14,44 @@
             <p><b class="h5" style="color: #333;">Email:</b> <span><?= $order['email'] ?></span></p>
             <p><b class="h5" style="color: #333;">Số điện thoại:</b> <span><?= $order['so_dien_thoai'] ?></span></p>
             <p><b class="h5" style="color: #333;">Địa chỉ:</b> <span><?= $order['dia_chi'] ?></span></p>
+            <p><b class="h5" style="color: #333;">Trạng thái vận chuyển:</b> <span><?php
+                                                                                    switch ($order['trang_thai_van_chuyen']) {
+                                                                                        case '0':
+                                                                                            echo '<span class="badge badge-primary">Chờ xác nhận</span>';
+                                                                                            break;
+                                                                                        case '1':
+                                                                                            echo '<span class="badge badge-secondary">Chờ lấy hàng</span>';
+                                                                                            break;
+                                                                                        case '2':
+                                                                                            echo '<span class="badge badge-warning">Chờ giao hàng</span>';
+                                                                                            break;
+                                                                                        case '3':
+                                                                                            echo '<span class="badge badge-success">Đã giao</span>';
+                                                                                            break;
+                                                                                        case '-1':
+                                                                                            echo '<span class="badge badge-danger">Đã huỷ</span>';
+                                                                                            break;
+                                                                                        default:
+                                                                                            echo '<span class="badge badge-primary">Chờ xác nhận</span>';
+                                                                                            break;
+                                                                                    }
+                                                                                    ?></span></p>
+            <p><b class="h5" style="color: #333;">Trạng thái thanh toán:</b> <span><?php
+                                                                                    switch ($order['trang_thai_thanh_toan']) {
+                                                                                        case '0':
+                                                                                            echo '<span class="badge badge-warning">Chưa thanh toán</span>';
+                                                                                            break;
+                                                                                        case '1':
+                                                                                            echo '<span class="badge badge-success">Đã thanh toán</span>';
+                                                                                            break;
+                                                                                        case '-1':
+                                                                                            echo '<span class="badge badge-danger">Đã huỷ</span>';
+                                                                                            break;
+                                                                                        default:
+                                                                                            echo '<span class="badge badge-warning">Chưa thanh toán</span>';
+                                                                                            break;
+                                                                                    }
+                                                                                    ?></span></p>
             <p><b class="h5" style="color: #333;">Tổng tiền đơn hàng:</b> <span><?= formatCurrencyToVND($order['tong_tien']) ?></span></p>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -53,6 +91,7 @@
                     </tbody>
                 </table>
                 <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=orders">Back to list</a>
+                <a class="btn btn-warning" href="<?= BASE_URL_ADMIN ?>?act=order-update&id=<?= $order['id'] ?>">Update</a>
             </div>
         </div>
     </div>

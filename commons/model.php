@@ -374,3 +374,39 @@ if (!function_exists('decreaseQuantity')) {
         }
     }
 }
+
+if (!function_exists('loadOrdersByUserId')) {
+    function loadOrdersByUserId($userId)
+    {
+        try {
+            $sql = "
+                SELECT
+                s.ten_sach as s_ten_sach,
+                dh.ngay_cap_nhat_cuoi_cung as dh_ngay_cap_nhat_cuoi_cung,
+                dh.trang_thai_thanh_toan as dh_trang_thai_thanh_toan,
+                ctdh.so_luong as ctdh_so_luong,
+                ctdh.gia as ctdh_gia
+                FROM
+                don_hang dh
+                INNER JOIN
+                chi_tiet_don_hang ctdh
+                ON ctdh.id_don_hang = dh.id
+                INNER JOIN
+                sach s
+                ON s.id = ctdh.id_sach
+                WHERE dh.id_nguoi_dung = :userId
+                ORDER BY dh.ngay_cap_nhat_cuoi_cung DESC
+            ";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(':userId', $userId);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}

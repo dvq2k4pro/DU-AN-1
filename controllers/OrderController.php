@@ -149,7 +149,9 @@ function orderPurchase()
         $jsonResult = json_decode($result, true);  // decode json
         //Just a example, please check more in there
 
-        updatePaymentStatus($orderId2);
+        if ($jsonResult) {
+            updatePaymentStatus($orderId2);
+        }
         header('Location: ' . $jsonResult['payUrl']);
 
         // Xử lý hậu điều kiện

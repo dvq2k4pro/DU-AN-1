@@ -65,44 +65,47 @@
                             </div>
                             <div class="tab-pane fade" id="don-hang" role="tabpanel">
                                 <div class="myaccount-content">
-                                    <h3>Orders</h3>
+                                    <h3>Đơn hàng</h3>
                                     <div class="myaccount-table table-responsive text-center">
                                         <table class="table table-bordered">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th>No</th>
-                                                    <th>Name</th>
-                                                    <th>Date</th>
-                                                    <th>Status</th>
-                                                    <th>Total</th>
-                                                    <th>Action</th>
+                                                    <th>STT</th>
+                                                    <th>Tên sách</th>
+                                                    <th>Ngày đặt hàng</th>
+                                                    <th>Trạng thái thanh toán</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giá</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Mostarizing Oil</td>
-                                                    <td>Aug 22, 2018</td>
-                                                    <td>Pending</td>
-                                                    <td>$45</td>
-                                                    <td><a href="cart.html" class="btn">View</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Katopeno Altuni</td>
-                                                    <td>July 22, 2018</td>
-                                                    <td>Approved</td>
-                                                    <td>$100</td>
-                                                    <td><a href="cart.html" class="btn">View</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Murikhete Paris</td>
-                                                    <td>June 12, 2017</td>
-                                                    <td>On Hold</td>
-                                                    <td>$99</td>
-                                                    <td><a href="cart.html" class="btn">View</a></td>
-                                                </tr>
+                                                <?php for ($i = 0; $i < count($orderInfo); $i++) : ?>
+                                                    <tr>
+                                                        <td><?= $i + 1 ?></td>
+                                                        <td><?= $orderInfo[$i]['s_ten_sach'] ?></td>
+                                                        <td><?= getDateFromDatabase($orderInfo[$i]['dh_ngay_cap_nhat_cuoi_cung']) ?></td>
+                                                        <td>
+                                                            <?php
+                                                            switch ($orderInfo[$i]['dh_trang_thai_thanh_toan']) {
+                                                                case '0':
+                                                                    echo 'Chưa thanh toán';
+                                                                    break;
+                                                                case '1':
+                                                                    echo 'Đã thanh toán';
+                                                                    break;
+                                                                case '-1':
+                                                                    echo 'Đã huỷ';
+                                                                    break;
+                                                                default:
+                                                                    echo 'Chưa thanh toán';
+                                                                    break;
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                        <td><?= $orderInfo[$i]['ctdh_so_luong'] ?></td>
+                                                        <td><?= formatCurrencyToVND($orderInfo[$i]['ctdh_gia']) ?></td>
+                                                    </tr>
+                                                <?php endfor; ?>
                                             </tbody>
                                         </table>
                                     </div>

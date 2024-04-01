@@ -101,7 +101,6 @@
 
                                 <td>
                                     <a class="btn btn-info mb-2" href="<?= BASE_URL_ADMIN ?>?act=order-detail&id=<?= $order['id'] ?>">Show</a>
-                                    <a class="btn btn-warning" href="<?= BASE_URL_ADMIN ?>?act=order-update&id=<?= $order['id'] ?>">Update</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

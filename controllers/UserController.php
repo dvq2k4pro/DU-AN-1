@@ -124,6 +124,7 @@ function userDetail($id)
     $view = 'users/user-detail';
     $title = $userInfo['tai_khoan'];
     $categories = listAll('the_loai');
+    $orderInfo = loadOrdersByUserId($_SESSION['user']['id']);
 
     if (!empty($_POST)) {
         $data = [

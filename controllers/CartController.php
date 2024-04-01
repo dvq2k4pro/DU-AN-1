@@ -63,9 +63,9 @@ function cartInc($bookId)
     }
 
     // Tăng số lượng lên 1
-    if (isset($_SESSION['cart'][$bookId])) {
+    if (isset($_SESSION['cart'][$bookId]) && ($_SESSION['cart'][$bookId]['quantity'] < $_SESSION['cart'][$bookId]['so_luong_ton_kho'])) {
         $_SESSION['cart'][$bookId]['quantity'] += 1;
-        updateQuantityByCartIdAndBookId($_SESSION['cart-id'], $bookId, $_SESSION['cart'][$bookId]['quantity']);
+        updateQuantityByCartIdAndBookId($_SESSION['cart-id'], $bookId, $_SESSION['cart'][$bookId]['so_luong_ton_kho']);
     }
 
     // Chuyển hướng qua trang list cart

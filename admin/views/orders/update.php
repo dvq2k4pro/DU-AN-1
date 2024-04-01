@@ -42,7 +42,7 @@
                     </div>
                 <?php endif; ?>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=orders">Back to list</a>
+                <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=order-detail&id=<?= $order['id'] ?>">Back</a>
             </form>
         </div>
     </div>
