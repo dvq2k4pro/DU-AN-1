@@ -73,9 +73,10 @@
                                                     <th>STT</th>
                                                     <th>Tên sách</th>
                                                     <th>Ngày đặt hàng</th>
-                                                    <th>Trạng thái thanh toán</th>
+                                                    <th>Trạng thái</th>
                                                     <th>Số lượng</th>
                                                     <th>Giá</th>
+                                                    <th>Thao tác</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -104,6 +105,13 @@
                                                         </td>
                                                         <td><?= $orderInfo[$i]['ctdh_so_luong'] ?></td>
                                                         <td><?= formatCurrencyToVND($orderInfo[$i]['ctdh_gia']) ?></td>
+                                                        <td>
+                                                            <?php if ($orderInfo[$i]['dh_trang_thai_van_chuyen'] == 0) : ?>
+                                                                <a href="<?= BASE_URL . '?act=destroy-order&id=' . $orderInfo[$i]['dh_id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn huỷ đơn hàng này không không?')">
+                                                                    Huỷ đơn
+                                                                </a>
+                                                            <?php endif; ?>
+                                                        </td>
                                                     </tr>
                                                 <?php endfor; ?>
                                             </tbody>

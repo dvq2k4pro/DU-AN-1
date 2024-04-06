@@ -23,7 +23,7 @@
                                     De Vengeance</h1>
                                 <h2>Che mặt trước của cuốn sách và để lại phần tóm tắt</h2>
                                 <a href="#!" class="btn btn-outlined--primary">
-                                    $78.09 - Mua ngay!
+                                    <?= formatCurrencyToVND(78000) ?> - Mua ngay!
                                 </a>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                                     De Vengeance</h1>
                                 <h2>Che mặt trước của cuốn sách và để lại phần tóm tắt</h2>
                                 <a href="#!" class="btn btn-outlined--primary">
-                                    $78.09 - Tìm hiểu thêm
+                                    <?= formatCurrencyToVND(89000) ?> - Tìm hiểu thêm
                                 </a>
                             </div>
                         </div>
@@ -301,7 +301,7 @@
                     <div class="col-lg-7">
                         <h2>Tôi thích ý tưởng này!</h2>
                         <h3>Che mặt trước của cuốn sách và để lại phần tóm tắt</h3>
-                        <a href="#!" class="btn btn--yellow">$78.09 - Tìm hiểu thêm</a>
+                        <a href="#!" class="btn btn--yellow"><?= formatCurrencyToVND(46800) ?> - Tìm hiểu thêm</a>
                     </div>
                 </div>
             </div>

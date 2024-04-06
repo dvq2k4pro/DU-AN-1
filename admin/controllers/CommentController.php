@@ -6,16 +6,15 @@ function commentListAll()
     $script = 'datatable';
     $script2 = 'comments/script';
     $style = 'datatable';
-
-    $comments = listCommentsForAdmin();
+    $getBooksWithComments = getBooksWithComments();
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
 function commentShowOne($id)
 {
-    $comment = showCommentById($id);
-    if (empty($comment)) {
+    $comments = listCommentsForAdmin($id);
+    if (empty($comments)) {
         e404();
     }
 

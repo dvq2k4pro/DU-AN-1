@@ -382,7 +382,9 @@ if (!function_exists('loadOrdersByUserId')) {
             $sql = "
                 SELECT
                 s.ten_sach as s_ten_sach,
+                dh.id as dh_id,
                 dh.ngay_cap_nhat_cuoi_cung as dh_ngay_cap_nhat_cuoi_cung,
+                dh.trang_thai_van_chuyen as dh_trang_thai_van_chuyen,
                 dh.trang_thai_thanh_toan as dh_trang_thai_thanh_toan,
                 ctdh.so_luong as ctdh_so_luong,
                 ctdh.gia as ctdh_gia
@@ -395,6 +397,7 @@ if (!function_exists('loadOrdersByUserId')) {
                 sach s
                 ON s.id = ctdh.id_sach
                 WHERE dh.id_nguoi_dung = :userId
+                AND dh.trang_thai_thanh_toan != -1
                 ORDER BY dh.ngay_cap_nhat_cuoi_cung DESC
             ";
 

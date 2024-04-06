@@ -42,7 +42,7 @@
 
                                         foreach ($_SESSION['cart'] as $cart) : ?>
                                             <tr>
-                                                <td class="pro-remove"><a href="<?= BASE_URL . '?act=cart-delete&bookId=' . $cart['id'] ?>" onclick="return confirm('Bạn có chắc chắng muốn xoá không?')"><i class="far fa-trash-alt"></i></a>
+                                                <td class="pro-remove"><a href="<?= BASE_URL . '?act=cart-delete&bookId=' . $cart['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')"><i class="far fa-trash-alt"></i></a>
                                                 </td>
                                                 <td class="pro-thumbnail"><a href="<?= BASE_URL . '?act=book-detail&id=' . $cart['id'] ?>"><img src="<?= BASE_URL . $cart['hinh_nen'] ?>" alt="Product"></a></td>
                                                 <td class="pro-title"><a href="<?= BASE_URL . '?act=book-detail&id=' . $cart['id'] ?>"><?= $cart['ten_sach'] ?></a></td>

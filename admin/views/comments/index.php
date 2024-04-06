@@ -17,43 +17,46 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nội dung</th>
-                            <th>Đánh giá</th>
-                            <th>Xoá mềm</th>
-                            <th>Ngày bình luận</th>
+                            <th>Thể loại</th>
                             <th>Tên sách</th>
-                            <th>Người bình luận</th>
+                            <th>Hình ảnh</th>
+                            <th>Số lượng bình luận</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Nội dung</th>
-                            <th>Đánh giá</th>
-                            <th>Xoá mềm</th>
-                            <th>Ngày bình luận</th>
+                            <th>Thể loại</th>
                             <th>Tên sách</th>
-                            <th>Người bình luận</th>
+                            <th>Hình ảnh</th>
+                            <th>Số lượng bình luận</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
 
-                        <?php foreach ($comments as $comment) : ?>
+                        <?php foreach ($getBooksWithComments as $item) : ?>
                             <tr>
-                                <td><?= $comment['bl_id'] ?></td>
-                                <td><?= $comment['bl_noi_dung'] ?></td>
-                                <td><?= $comment['bl_danh_gia'] ?> sao</td>
-                                <td><?= $comment['bl_xoa_mem'] ? '<span class="badge badge-success">Có</span>' : '<span class="badge badge-warning">Không</span>' ?></td>
-                                <td><?= getDateFromDatabase($comment['bl_ngay_binh_luan']) ?></td>
-                                <td><?= $comment['s_ten_sach'] ?></td>
-                                <td><?= $comment['nd_tai_khoan'] ?></td>
-
+                                <td>
+                                    <?= $item['s_id'] ?>
+                                </td>
+                                <td>
+                                    <?= $item['tl_ten_the_loai'] ?>
+                                </td>
+                                <td>
+                                    <?= $item['s_ten_sach'] ?>
+                                </td>
+                                <td>
+                                    <img src="<?= BASE_URL . $item['s_hinh_nen'] ?>" alt="" width="100px">
+                                </td>
+                                <td>
+                                    <?= getQuantityRowForCommentAdmin($item['s_id']) ?>
+                                </td>
 
                                 <td>
-                                    <a class="btn btn-info mb-1" href="<?= BASE_URL_ADMIN ?>?act=comment-detail&id=<?= $comment['bl_id'] ?>">Show</a>
-                                    <a class="btn btn-warning mb-1" href="<?= BASE_URL_ADMIN ?>?act=comment-update&id=<?= $comment['bl_id'] ?>">Update</a>
+                                    <a class="btn btn-info mb-1" href="<?= BASE_URL_ADMIN ?>?act=comment-detail&id=<?= $item['s_id'] ?>">Show</a>
+                                    <!-- <a class="btn btn-warning mb-1" href="<?= BASE_URL_ADMIN ?>?act=comment-update&id=<?= $comment['bl_id'] ?>">Update</a> -->
                                 </td>
                             </tr>
                         <?php endforeach; ?>

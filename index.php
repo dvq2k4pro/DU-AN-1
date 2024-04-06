@@ -57,6 +57,7 @@ match ($act) {
     'order-checkout' => orderCheckout(),
     'order-purchase' => orderPurchase(),
     'order-complete' => orderComplete(),
+    'destroy-order' => destroyOrder($_GET['id']),
 };
 
 require_once './commons/disconnect-db.php';

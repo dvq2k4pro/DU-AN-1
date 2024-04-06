@@ -10,39 +10,56 @@
             </h6>
         </div>
         <div class="card-body">
-            <table class="table">
-                <tr>
-                    <th>Trường dữ liệu</th>
-                    <th>Dữ liệu</th>
-                </tr>
-                <tr>
-                    <td>Id</td>
-                    <td><?= $comment['bl_id'] ?></td>
-                </tr>
-                <tr>
-                    <td>Nội dung</td>
-                    <td><?= $comment['bl_noi_dung'] ?></td>
-                </tr>
-                <tr>
-                    <td>Đánh giá</td>
-                    <td><?= $comment['bl_danh_gia'] ?> sao</td>
-                </tr>
-                <tr>
-                    <td>Xoá mềm</td>
-                    <td><?= $comment['bl_xoa_mem'] ? '<span class="badge badge-success">Có</span>' : '<span class="badge badge-warning">Không</span>' ?></td>
-                </tr>
-                <tr>
-                    <td>Ngày bình luận</td>
-                    <td><?= getDateFromDatabase($comment['bl_ngay_binh_luan']) ?></td>
-                </tr>
-                <tr>
-                    <td>Tên sách</td>
-                    <td><?= $comment['s_ten_sach'] ?></td>
-                </tr>
-                <tr>
-                    <td>Người bình luận</td>
-                    <td><?= $comment['nd_tai_khoan'] ?></td>
-                </tr>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nội dung</th>
+                        <th>Đánh giá</th>
+                        <th>Ngày bình luận</th>
+                        <th>Người bình luận</th>
+                        <th>Xoá mềm</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nội dung</th>
+                        <th>Đánh giá</th>
+                        <th>Ngày bình luận</th>
+                        <th>Người bình luận</th>
+                        <th>Xoá mềm</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+
+                    <?php for ($i = 0; $i < count($comments); $i++) : ?>
+                        <tr>
+                            <td>
+                                <?= $i + 1 ?>
+                            </td>
+                            <td>
+                                <?= $comments[$i]['bl_noi_dung'] ?>
+                            </td>
+                            <td>
+                                <?= $comments[$i]['bl_danh_gia'] ?> sao
+                            </td>
+                            <td>
+                                <?= $comments[$i]['bl_ngay_binh_luan'] ?>
+                            </td>
+                            <td>
+                                <?= $comments[$i]['nd_tai_khoan'] ?>
+                            </td>
+                            <td><?= $comments[$i]['bl_xoa_mem'] ? '<span class="badge badge-success">Có</span>' : '<span class="badge badge-warning">Không</span>' ?></td>
+                            <td>
+                                <a class="btn btn-warning mb-1" href="<?= BASE_URL_ADMIN ?>?act=comment-update&id=<?= $comments[$i]['bl_id'] ?>">Update</a>
+                            </td>
+                        </tr>
+                    <?php endfor; ?>
+
+                </tbody>
             </table>
 
             <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=comments">Back to list</a>

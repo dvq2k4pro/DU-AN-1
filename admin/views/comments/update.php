@@ -29,7 +29,7 @@
                     </div>
                 <?php endif; ?>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=comments">Back to list</a>
+                <a class="btn btn-danger" href="<?= BASE_URL_ADMIN . '?act=comment-detail&id=' . $comment['bl_id_sach'] ?>">Back</a>
             </form>
         </div>
     </div>

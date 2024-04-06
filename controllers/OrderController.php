@@ -150,7 +150,7 @@ function orderPurchase()
         //Just a example, please check more in there
 
         if ($jsonResult) {
-            updatePaymentStatus($orderId2);
+            updatePaymentStatus($orderId2, STATUS_PAYMENT_PAID);
         }
         header('Location: ' . $jsonResult['payUrl']);
 
@@ -173,4 +173,17 @@ function orderComplete()
     $categories = listAll('the_loai');
 
     require_once PATH_VIEW . 'layouts/master.php';
+}
+
+function destroyOrder($id)
+{
+    $order = showOne('don_hang', $id);
+
+    if (empty($order)) {
+        debug('404 Not found');
+    }
+
+    updatePaymentStatus($order['id'], STATUS_PAYMENT_CANCELED);
+
+    header('location: ' . BASE_URL . '?act=user-detail&id=' . $_SESSION['user']['id']);
 }
