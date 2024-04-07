@@ -10,9 +10,9 @@
     <title><?= $title ?? 'Book store' ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Use Minified Plugins Version For Fast Page Load -->
-    <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL ?>/assets/client/css/plugins.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL ?>/assets/client/css/main.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/client/image/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL ?>assets/client/css/plugins.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL ?>assets/client/css/main.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?= BASE_URL ?>assets/client/image/favicon.ico">
 </head>
 
 <body>
