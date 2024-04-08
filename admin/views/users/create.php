@@ -16,7 +16,7 @@
                         <div class="mb-3 mt-3">
                             <label for="ho_ten" class="form-label">Họ tên:</label>
                             <input type="text" class="form-control" id="ho_ten" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['ho_ten'] : null ?>" placeholder="VD: Trần Văn A" name="ho_ten">
-                            <span class='error-message'></span>
+                            <span class='error-message'><?= isset($_SESSION['errors']['ho_ten']) ? $_SESSION['errors']['ho_ten'] : '' ?></span>
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="tai_khoan" class="form-label">Tài khoản:*</label>

@@ -4,8 +4,8 @@
         <div class="breadcrumb-contents">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Product Details</li>
+                    <li class="breadcrumb-item"><a href="<?= BASE_URL ?>">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
                 </ol>
             </nav>
         </div>
@@ -19,83 +19,67 @@
                 <div class="product-details-slider sb-slick-slider arrow-type-two" data-slick-setting='{
               "slidesToShow": 1,
               "arrows": false,
-              "fade": true,
+              "fade": false,
               "draggable": false,
               "swipe": false,
-              "asNavFor": ".product-slider-nav"
               }'>
                     <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-1.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-2.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-3.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-4.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-5.jpg" alt="">
-                    </div>
-                </div>
-                <!-- Product Details Slider Nav -->
-                <div class="mt--30 product-slider-nav sb-slick-slider arrow-type-two" data-slick-setting='{
-            "infinite":true,
-              "autoplay": true,
-              "autoplaySpeed": 8000,
-              "slidesToShow": 4,
-              "arrows": true,
-              "prevArrow":{"buttonClass": "slick-prev","iconClass":"fa fa-chevron-left"},
-              "nextArrow":{"buttonClass": "slick-next","iconClass":"fa fa-chevron-right"},
-              "asNavFor": ".product-details-slider",
-              "focusOnSelect": true
-              }'>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-1.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-2.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-3.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-4.jpg" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-5.jpg" alt="">
+                        <img src="<?= BASE_URL . $book['hinh_nen'] ?>" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-lg-7">
                 <div class="product-details-info pl-lg--30 ">
-                    <h3 class="product-title">Beats EP Wired On-Ear Headphone-Black</h3>
+                    <h3 class="product-title"><?= $book['ten_sach'] ?></h3>
                     <ul class="list-unstyled">
-                        <li>Mã sách: <span class="list-value"> book-1</span></li>
-                        <li>Thể loại: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
-                        <li>Tác giả: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
+                        <li>Mã sách: <span class="list-value"> book-<?= $book['s_id'] ?></span></li>
+                        <li>Thể loại: <a href="#!" class="list-value font-weight-bold"> <?= $book['tl_ten_the_loai'] ?></a></li>
+                        <li>Tác giả: <a href="#!" class="list-value font-weight-bold">
+                                <?php
+                                if (empty($authors)) {
+                                    echo 'Không có tác giả';
+                                } else {
+                                    // Đếm số lượng phần tử trong mảng
+                                    $totalAuthors = count($authors);
+                                    $i = 0; // Biến để theo dõi vị trí của phần tử
+
+                                    foreach ($authors as $author) {
+                                        echo $author['tg_ten_tac_gia'];
+
+                                        if (++$i !== $totalAuthors) {
+                                            echo ', ';
+                                        }
+                                    }
+                                }
+
+                                ?>
+                            </a></li>
+                        <li>Số trang: <span class="list-value"> <?= $book['s_so_trang'] ?></span></li>
+                        <li>Loại bìa: <span class="list-value"> <?= $book['s_loai_bia'] ? 'Bìa cứng' : 'Bìa mềm' ?></span></li>
+                        <li>Kích thước: <span class="list-value"> <?= $book['kt_ten_kich_thuoc'] ?></span></li>
+                        <li>Ngày ra mắt: <span class="list-value"> <?= getDateFromDatabase($book['s_ngay_ra_mat']) ?></span></li>
+                        <li>Lượt xem: <span class="list-value"> <?= $book['s_luot_xem'] ?></span></li>
+                        <li>Số lượng tồn kho: <span class="list-value"> <?= $book['s_so_luong_ton_kho'] != 0 ? $book['s_so_luong_ton_kho'] : 'Hết hàng' ?></span></li>
+                        <li>Nhà xuất bản: <a href="#!" class="list-value font-weight-bold"> <?= $book['nxb_ten_nha_xuat_ban'] ?></a></li>
+                        <li>Công ty phát hành: <a href="#" class="list-value font-weight-bold"> <?= $book['ctph_ten_cong_ty_phat_hanh'] ?></a></li>
+
                     </ul>
                     <div class="price-block">
-                        <span class="price-new">£73.79</span>
+                        <span class="price-new"><?= formatCurrencyToVND($book['gia']) ?></span>
                     </div>
                     <article class="product-details-article">
                         <h4 class="sr-only">Product Summery</h4>
-                        <p>Long printed dress with thin adjustable straps. V-neckline and wiring under the Dust
-                            with ruffles at the bottom of the
-                            dress.</p>
                     </article>
                     <div class="add-to-cart-row">
                         <div class="count-input-block">
-                            <span class="widget-label">Qty</span>
-                            <input type="number" class="form-control text-center" value="1">
+                            <span class="widget-label">Số lượng</span>
+                            <input type="number" id="quantityInput" class="form-control text-center" value="1">
                         </div>
                         <div class="add-cart-btn">
-                            <a href="#" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Add to
-                                Cart</a>
+                            <a id="addToCartBtn" href="<?= BASE_URL . '?act=cart-add&bookId=' . $book['s_id'] . '&quantity=1' ?>" class="btn btn-outlined--primary <?= $book['s_so_luong_ton_kho'] == 0 ? 'disabled' : null ?>"><span class="plus-icon">+</span>Thêm vào giỏ hàng</a>
                         </div>
                     </div>
+                    <span style="margin-top: 8px;"><?= isset($_SESSION['error-quantity']) ? $_SESSION['error-quantity'] : null ?></span>
                 </div>
             </div>
         </div>
@@ -103,12 +87,12 @@
             <ul class="nav nav-tabs nav-style-2" id="myTab2" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="tab1" data-bs-toggle="tab" href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true">
-                        DESCRIPTION
+                        Mô tả
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="tab2" data-bs-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="true">
-                        REVIEWS (1)
+                        Đánh giá (<?= getQuantityRowForComment($book['s_id']) ?>)
                     </a>
                 </li>
             </ul>
@@ -116,89 +100,71 @@
                 <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab1">
                     <article class="review-article">
                         <h1 class="sr-only">Tab Article</h1>
-                        <p>Fashion has been creating well-designed collections since 2010. The brand offers
-                            feminine designs delivering
-                            stylish
-                            separates and statement dresses which have since evolved into a full ready-to-wear
-                            collection in which every
-                            item is
-                            a
-                            vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful
-                            elegance and unmistakable
-                            signature
-                            style. All the beautiful pieces are made in Italy and manufactured with the greatest
-                            attention. Now Fashion
-                            extends
-                            to
-                            a range of accessories including shoes, hats, belts and more!</p>
+                        <p><?= $book['mo_ta'] ?></p>
                     </article>
                 </div>
                 <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="tab2">
                     <div class="review-wrapper">
-                        <h2 class="title-lg mb--20">1 REVIEW FOR AUCTOR GRAVIDA ENIM</h2>
-                        <div class="review-comment mb--20">
-                            <div class="avatar">
-                                <img src="<?= BASE_URL ?>/assets/client/image/icon/author-logo.png" alt="">
-                            </div>
-                            <div class="text">
-                                <div class="rating-block mb--15">
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline star_on"></span>
-                                    <span class="ion-android-star-outline"></span>
-                                    <span class="ion-android-star-outline"></span>
+                        <?php foreach ($listComments as $comment) : ?>
+                            <div class="review-comment mb--20">
+                                <div class="avatar">
+                                    <img src="<?= BASE_URL ?>/assets/client/image/icon/author-logo.png" alt="">
                                 </div>
-                                <h6 class="author">ADMIN – <span class="font-weight-400">March 23, 2015</span>
-                                </h6>
-                                <p>Lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio
-                                    quis mi.</p>
+                                <div class="text">
+                                    <div class="rating-block mb--15">
+                                        <?php
+                                        for ($i = 0; $i < 5; ++$i) {
+                                            if ($i < $comment['bl_danh_gia']) {
+                                                echo "<span class='ion-android-star-outline star_on'></span>";
+                                            } else {
+                                                echo "<span class='ion-android-star-outline'></span>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                    <h6 class="author"><?= $comment['nd_ho_ten'] ?> –– <span class="font-weight-400"><?= getDateFromDatabase($comment['bl_ngay_binh_luan']) ?></span>
+                                    </h6>
+                                    <p><?= $comment['bl_noi_dung'] ?></p>
+                                </div>
                             </div>
-                        </div>
-                        <h2 class="title-lg mb--20 pt--15">ADD A REVIEW</h2>
-                        <div class="rating-row pt-2">
-                            <p class="d-block">Your Rating</p>
-                            <span class="rating-widget-block">
-                                <input type="radio" name="star" id="star1">
-                                <label for="star1"></label>
-                                <input type="radio" name="star" id="star2">
-                                <label for="star2"></label>
-                                <input type="radio" name="star" id="star3">
-                                <label for="star3"></label>
-                                <input type="radio" name="star" id="star4">
-                                <label for="star4"></label>
-                                <input type="radio" name="star" id="star5">
-                                <label for="star5"></label>
-                            </span>
-                            <form action="https://htmldemo.net/pustok/pustok/" class="mt--15 site-form ">
+                        <?php endforeach; ?>
+                        <h2 class="title-lg mb--20 pt--15">Viết bình luận</h2>
+                        <div class="rating-row pt-2" id='comment-form'>
+                            <form action="" method="post">
+                                <input type="hidden" name="id-sach" value="<?= $book['id'] ?>">
+                                <div class="rating-row pt-2">
+                                    <p class="d-block">Đánh giá của bạn</p>
+                                    <span class="rating-widget-block">
+                                        <input type="radio" name="star" value='5' id="star1">
+                                        <label for="star1"></label>
+                                        <input type="radio" name="star" value='4' id="star2">
+                                        <label for="star2"></label>
+                                        <input type="radio" name="star" value='3' id="star3">
+                                        <label for="star3"></label>
+                                        <input type="radio" name="star" value='2' id="star4">
+                                        <label for="star4"></label>
+                                        <input type="radio" name="star" value='1' id="star5">
+                                        <label for="star5"></label>
+                                    </span>
+                                </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="message">Comment</label>
-                                            <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                                            <label for="message">Nội dung</label>
+                                            <textarea name="message" id="message" cols="30" rows="5" class="form-control"></textarea>
+                                            <?= isset($_SESSION['errors']['noi_dung']) ? "<span class='error-message'>{$_SESSION['errors']['noi_dung']}</span>" : null ?>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="name">Name *</label>
-                                            <input type="text" id="name" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="email">Email *</label>
-                                            <input type="text" id="email" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label for="website">Website</label>
-                                            <input type="text" id="website" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="submit-btn">
-                                            <a href="#" class="btn btn-black">Post Comment</a>
-                                        </div>
+                                        <?php if (isset($_SESSION['user'])) : ?>
+                                            <div class="submit-btn">
+                                                <button type="submit" class="btn btn-black">Đăng</button>
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="submit-btn">
+                                                <a href="<?= BASE_URL . '?act=login' ?>" class="btn btn-black">Bạn phải đăng nhập để sử dụng chức năng này</a>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </form>
@@ -207,24 +173,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="tab-product-details">
-  <div class="brand">
-    <img src="<?= BASE_URL ?>/assets/client/image/others/review-tab-product-details.jpg" alt="">
-  </div>
-  <h5 class="meta">Reference <span class="small-text">demo_5</span></h5>
-  <h5 class="meta">In stock <span class="small-text">297 Items</span></h5>
-  <section class="product-features">
-    <h3 class="title">Data sheet</h3>
-    <dl class="data-sheet">
-      <dt class="name">Compositions</dt>
-      <dd class="value">Viscose</dd>
-      <dt class="name">Styles</dt>
-      <dd class="value">Casual</dd>
-      <dt class="name">Properties</dt>
-      <dd class="value">Maxi Dress</dd>
-    </dl>
-  </section>
-</div> -->
     </div>
     <!--=================================
     RELATED PRODUCTS BOOKS
@@ -232,7 +180,7 @@
     <section class="">
         <div class="container">
             <div class="section-title section-title--bordered">
-                <h2>RELATED PRODUCTS</h2>
+                <h2>Sản phẩm tương tự</h2>
             </div>
             <div class="product-slider sb-slick-slider slider-border-single-row" data-slick-setting='{
                 "autoplay": true,
@@ -245,378 +193,53 @@
                 {"breakpoint":768, "settings": {"slidesToShow": 2} },
                 {"breakpoint":480, "settings": {"slidesToShow": 1} }
             ]'>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Lpple
-                            </a>
-                            <h3><a href="product-details.html">Revolutionize Your BOOK With</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="<?= BASE_URL ?>/assets/client/image/products/product-10.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-1.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+                <?php foreach ($listBookCungTheLoai as $bookCungTheLoai) : ?>
+                    <div class="single-slide">
+                        <div class="product-card">
+                            <div class="product-header">
+                                <h3><a href="<?= BASE_URL . '?act=book-detail&id=' . $bookCungTheLoai['id'] ?>"><?= $bookCungTheLoai['ten_sach'] ?></a></h3>
+                            </div>
+                            <div class="product-card--body">
+                                <div class="card-image">
+                                    <img src="<?= BASE_URL . $bookCungTheLoai['hinh_nen'] ?>" alt="">
+                                    <div class="hover-contents">
+                                        <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id=' . $bookCungTheLoai['id'] ?>" class="hover-image">
+                                            <a href="<?= BASE_URL . '?act=book-detail&id=' . $bookCungTheLoai['id'] ?>" class="hover-image">
+                                                <img src="<?= BASE_URL . $bookCungTheLoai['hinh_nen'] ?>" alt="">
+                                            </a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
+                                <div class="price-block">
+                                    <span class="price"><?= formatCurrencyToVND($bookCungTheLoai['gia']) ?></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Jpple
-                            </a>
-                            <h3><a href="product-details.html">Turn Your BOOK Into High Machine</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="<?= BASE_URL ?>/assets/client/image/products/product-2.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-1.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Wpple
-                            </a>
-                            <h3><a href="product-details.html">3 Ways Create Better BOOK With</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="<?= BASE_URL ?>/assets/client/image/products/product-3.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-2.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Epple
-                            </a>
-                            <h3><a href="product-details.html">What You Can Learn From Bill Gates</a>
-                            </h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="<?= BASE_URL ?>/assets/client/image/products/product-5.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-4.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-slide">
-                    <div class="product-card">
-                        <div class="product-header">
-                            <a href="#" class="author">
-                                Hpple
-                            </a>
-                            <h3><a href="product-details.html">a Half Very Simple Things You To</a></h3>
-                        </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img src="<?= BASE_URL ?>/assets/client/image/products/product-6.jpg" alt="">
-                                <div class="hover-contents">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="<?= BASE_URL ?>/assets/client/image/products/product-4.jpg" alt="">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quickModal" class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="price-block">
-                                <span class="price">£51.20</span>
-                                <del class="price-old">£51.20</del>
-                                <span class="price-discount">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
-    <!-- Modal -->
-    <div class="modal fade modal-quick-view" id="quickModal" tabindex="-1" role="dialog" aria-labelledby="quickModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="product-details-modal">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <!-- Product Details Slider Big Image-->
-                            <div class="product-details-slider sb-slick-slider arrow-type-two" data-slick-setting='{
-                                "slidesToShow": 1,
-                                "arrows": false,
-                                "fade": true,
-                                "draggable": false,
-                                "swipe": false,
-                                "asNavFor": ".product-slider-nav"
-                                }'>
-                                <div class="single-slide">
-                                    <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-1.jpg" alt="">
-                                </div>
-                                <div class="single-slide">
-                                    <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-2.jpg" alt="">
-                                </div>
-                                <div class="single-slide">
-                                    <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-3.jpg" alt="">
-                                </div>
-                                <div class="single-slide">
-                                    <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-4.jpg" alt="">
-                                </div>
-                                <div class="single-slide">
-                                    <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-5.jpg" alt="">
-                                </div>
-                            </div>
-                            <!-- Product Details Slider Nav -->
-                            <div class="mt--30 product-slider-nav sb-slick-slider arrow-type-two" data-slick-setting='{
-        "infinite":true,
-          "autoplay": true,
-          "autoplaySpeed": 8000,
-          "slidesToShow": 4,
-          "arrows": true,
-          "prevArrow":{"buttonClass": "slick-prev","iconClass":"fa fa-chevron-left"},
-          "nextArrow":{"buttonClass": "slick-next","iconClass":"fa fa-chevron-right"},
-          "asNavFor": ".product-details-slider",
-          "focusOnSelect": true
-          }'>
-                                <div class="single-slide">
-                                    <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-1.jpg" alt="">
-                                </div>
-                                <div class="single-slide">
-                                    <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-2.jpg" alt="">
-                                </div>
-                                <div class="single-slide">
-                                    <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-3.jpg" alt="">
-                                </div>
-                                <div class="single-slide">
-                                    <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-4.jpg" alt="">
-                                </div>
-                                <div class="single-slide">
-                                    <img src="<?= BASE_URL ?>/assets/client/image/products/product-details-5.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 mt--30 mt-lg--30">
-                            <div class="product-details-info pl-lg--30 ">
-                                <p class="tag-block">Tags: <a href="#">Movado</a>, <a href="#">Omega</a></p>
-                                <h3 class="product-title">Beats EP Wired On-Ear Headphone-Black</h3>
-                                <ul class="list-unstyled">
-                                    <li>Ex Tax: <span class="list-value"> £60.24</span></li>
-                                    <li>Brands: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
-                                    <li>Product Code: <span class="list-value"> model1</span></li>
-                                    <li>Reward Points: <span class="list-value"> 200</span></li>
-                                    <li>Availability: <span class="list-value"> In Stock</span></li>
-                                </ul>
-                                <div class="price-block">
-                                    <span class="price-new">£73.79</span>
-                                    <del class="price-old">£91.86</del>
-                                </div>
-                                <div class="rating-widget">
-                                    <div class="rating-block">
-                                        <span class="fas fa-star star_on"></span>
-                                        <span class="fas fa-star star_on"></span>
-                                        <span class="fas fa-star star_on"></span>
-                                        <span class="fas fa-star star_on"></span>
-                                        <span class="fas fa-star "></span>
-                                    </div>
-                                    <div class="review-widget">
-                                        <a href="#">(1 Reviews)</a> <span>|</span>
-                                        <a href="#">Write a review</a>
-                                    </div>
-                                </div>
-                                <article class="product-details-article">
-                                    <h4 class="sr-only">Product Summery</h4>
-                                    <p>Long printed dress with thin adjustable straps. V-neckline and wiring under
-                                        the Dust with ruffles
-                                        at the bottom
-                                        of the
-                                        dress.</p>
-                                </article>
-                                <div class="add-to-cart-row">
-                                    <div class="count-input-block">
-                                        <span class="widget-label">Qty</span>
-                                        <input type="number" class="form-control text-center" value="1">
-                                    </div>
-                                    <div class="add-cart-btn">
-                                        <a href="#" class="btn btn-outlined--primary"><span class="plus-icon">+</span>Add to Cart</a>
-                                    </div>
-                                </div>
-                                <div class="compare-wishlist-row">
-                                    <a href="#" class="add-link"><i class="fas fa-heart"></i>Add to Wish List</a>
-                                    <a href="#" class="add-link"><i class="fas fa-random"></i>Add to Compare</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="widget-social-share">
-                        <span class="widget-label">Share:</span>
-                        <div class="modal-social-share">
-                            <a href="#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="single-icon"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="single-icon"><i class="fab fa-youtube"></i></a>
-                            <a href="#" class="single-icon"><i class="fab fa-google-plus-g"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </main>
 </div>
-<!--=================================
-  Brands Slider
-===================================== -->
-<section class="section-margin">
-    <h2 class="sr-only">Brand Slider</h2>
-    <div class="container">
-        <div class="brand-slider sb-slick-slider border-top border-bottom" data-slick-setting='{
-                                            "autoplay": true,
-                                            "autoplaySpeed": 8000,
-                                            "slidesToShow": 6
-                                            }' data-slick-responsive='[
-                {"breakpoint":992, "settings": {"slidesToShow": 4} },
-                {"breakpoint":768, "settings": {"slidesToShow": 3} },
-                {"breakpoint":575, "settings": {"slidesToShow": 3} },
-                {"breakpoint":480, "settings": {"slidesToShow": 2} },
-                {"breakpoint":320, "settings": {"slidesToShow": 1} }
-            ]'>
-            <div class="single-slide">
-                <img src="<?= BASE_URL ?>/assets/client/image/others/brand-1.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="<?= BASE_URL ?>/assets/client/image/others/brand-2.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="<?= BASE_URL ?>/assets/client/image/others/brand-3.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="<?= BASE_URL ?>/assets/client/image/others/brand-4.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="<?= BASE_URL ?>/assets/client/image/others/brand-5.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="<?= BASE_URL ?>/assets/client/image/others/brand-6.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="<?= BASE_URL ?>/assets/client/image/others/brand-1.jpg" alt="">
-            </div>
-            <div class="single-slide">
-                <img src="<?= BASE_URL ?>/assets/client/image/others/brand-2.jpg" alt="">
-            </div>
-        </div>
-    </div>
-</section>
+<?php
+if (isset($_SESSION['errors'])) {
+    unset($_SESSION['errors']);
+}
+
+if (isset($_SESSION['error-quantity'])) {
+    unset($_SESSION['error-quantity']);
+}
+?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const quantityInput = document.getElementById('quantityInput');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+
+        quantityInput.addEventListener('change', function() {
+            let quantity = this.value;
+            let bookId = <?= $book['s_id'] ?>;
+            let baseUrl = '<?= BASE_URL ?>';
+            addToCartBtn.href = baseUrl + '?act=cart-add&bookId=' + bookId + '&quantity=' + quantity;
+        });
+    });
+</script>

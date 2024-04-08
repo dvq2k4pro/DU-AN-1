@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3 mt-3">
-                            <label for="ten_tac_gia" class="form-label">ten_tac_gia:</label>
+                            <label for="ten_tac_gia" class="form-label">Tên tác giả:</label>
                             <input type="text" class="form-control" id="ten_tac_gia" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['ten_tac_gia'] : null ?>" placeholder="VD: Elmi Fukada" name="ten_tac_gia">
                             <span class='error-message'><?= isset($_SESSION['errors']['ten_tac_gia']) ? $_SESSION['errors']['ten_tac_gia'] : '' ?></span>
                         </div>

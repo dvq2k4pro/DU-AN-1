@@ -2,7 +2,7 @@
 
 function authorListAll()
 {
-    $title = 'Tác giả';
+    $title = 'Danh sách tác giả';
     $view = 'authors/index';
     $script = 'datatable';
     $script2 = 'authors/script';
@@ -20,7 +20,7 @@ function authorShowOne($id)
         e404();
     }
 
-    $title = 'Chi tiết tác_giả: ' . $author['ten_tac_gia'];
+    $title = 'Chi tiết tác giả: ' . $author['ten_tac_gia'];
     $view = 'authors/show-one';
 
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
@@ -28,7 +28,7 @@ function authorShowOne($id)
 
 function authorCreate()
 {
-    $title = 'Thêm mới tác_giả';
+    $title = 'Thêm mới tác giả';
     $view = 'authors/create';
 
     if (!empty($_POST)) {
@@ -61,11 +61,11 @@ function validateAuthorCreate($data)
     $errors = [];
 
     if (empty($data['ten_tac_gia'])) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả không được để trống!';
+        $errors['ten_tac_gia'] = 'Tên tác giả không được để trống!';
     } else if (strlen($data['ten_tac_gia']) > 50) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả độ dài tối đa 50 ký tự!';
-    } else if (!checkUniqueNameTheLoai($data['ten_tac_gia'])) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả đã được sử dụng!';
+        $errors['ten_tac_gia'] = 'Tên tác giả độ dài tối đa 50 ký tự!';
+    } else if (!checkUniqueName('tac_gia', 'ten_tac_gia', $data['ten_tac_gia'])) {
+        $errors['ten_tac_gia'] = 'Tên tác giả đã được sử dụng!';
     }
 
     return $errors;
@@ -79,12 +79,12 @@ function authorUpdate($id)
         e404();
     }
 
-    $title = 'Cập nhật thông tin tác_giả: ' . $author['ten_tac_gia'];
+    $title = 'Cập nhật thông tin tác giả: ' . $author['ten_tac_gia'];
     $view = 'authors/update';
 
     if (!empty($_POST)) {
         $data = [
-            "ten_tac_gia" => $_POST['ten_tac_gia'] ?? null,
+            "ten_tac_gia" => $_POST['ten_tac_gia'] ?? $author['ten_tac_gia'],
 
         ];
 
@@ -104,17 +104,17 @@ function authorUpdate($id)
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
-function validateauthorUpdate($id, $data)
+function validateAuthorUpdate($id, $data)
 {
     // ten_tac_gia - bắt buộc, độ dài tối đa 50 ký tự, không được trùng
     $errors = [];
 
     if (empty($data['ten_tac_gia'])) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả không được để trống!';
+        $errors['ten_tac_gia'] = 'Tên tác giả không được để trống!';
     } else if (strlen($data['ten_tac_gia']) > 50) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả độ dài tối đa 50 ký tự!';
-    } else if (!checkUniqueNameTheLoaiForUpdate($id, $data['ten_tac_gia'])) {
-        $errors['ten_tac_gia'] = 'Tên tác_giả đã được sử dụng!';
+        $errors['ten_tac_gia'] = 'Tên tác giả độ dài tối đa 50 ký tự!';
+    } else if (!checkUniqueNameForUpdate('tac_gia', $id, 'ten_tac_gia', $data['ten_tac_gia'])) {
+        $errors['ten_tac_gia'] = 'Tên tác giả đã được sử dụng!';
     }
 
     return $errors;
@@ -122,7 +122,20 @@ function validateauthorUpdate($id, $data)
 
 function authorDelete($id)
 {
-    delete('tac_gia', $id);
+    $author = showOne('tac_gia', $id);
+
+    try {
+        $GLOBALS['conn']->beginTransaction();
+
+        deleteBookByAuthorId($id);
+
+        delete('tac_gia', $id);
+        $GLOBALS['conn']->commit();
+    } catch (Exception $e) {
+        $GLOBALS['conn']->rollBack();
+
+        debug($e);
+    }
 
     $_SESSION['success'] = 'Xoá thành công!';
 

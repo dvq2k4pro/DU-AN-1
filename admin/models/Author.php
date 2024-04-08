@@ -1,46 +1,17 @@
 <?php
-
-if (!function_exists('checkUniqueNameTacGia')) {
-    // Nếu không trùng thì trả về True
-    // Nếu trùng thì trả về False
-    function checkUniqueNameTacGia($name)
+if (!function_exists('deleteBookByAuthorId')) {
+    function deleteBookByAuthorId($authorId)
     {
         try {
-            $sql = "SELECT * FROM tac_gia WHERE ten_tac_gia = :name LIMIT 1";
+            $sql = "DELETE FROM sach_tac_gia WHERE id_tac_gia = :id_tac_gia";
 
             $stmt = $GLOBALS['conn']->prepare($sql);
 
-            $stmt->bindParam(":name", $name);
+            $stmt->bindParam(':id_tac_gia', $authorId);
 
             $stmt->execute();
 
-            $data = $stmt->fetch();
-
-            return empty($data) ? true : false;
-        } catch (\Exception $e) {
-            debug($e);
-        }
-    }
-}
-
-if (!function_exists('checkUniqueNameForUpdate')) {
-    // Nếu không trùng thì trả về True
-    // Nếu trùng thì trả về False
-    function checkUniqueNameTacGiaForUpdate($id, $name)
-    {
-        try {
-            $sql = "SELECT * FROM tac_gia WHERE ten_tac_gia = :name AND id <> :id LIMIT 1";
-
-            $stmt = $GLOBALS['conn']->prepare($sql);
-
-            $stmt->bindParam(":name", $name);
-            $stmt->bindParam(":id", $id);
-
-            $stmt->execute();
-
-            $data = $stmt->fetch();
-
-            return empty($data) ? true : false;
+            return $stmt->fetchAll();
         } catch (\Exception $e) {
             debug($e);
         }

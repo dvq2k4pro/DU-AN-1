@@ -58,3 +58,54 @@ if (!function_exists('middlewareAuthCheck')) {
         }
     }
 }
+
+if (!function_exists('getFileUpload')) {
+    function getFileUpload($field, $default = null)
+    {
+        if (isset($_FILES[$field]) && $_FILES[$field]['size'] > 0) {
+            return $_FILES[$field];
+        }
+
+        if (file_exists(PATH_UPLOAD . $default)) {
+            return $default;
+        }
+
+        return null;
+    }
+}
+
+if (!function_exists('formatCurrencyToVND')) {
+    function formatCurrencyToVND($amount)
+    {
+        $formattedAmount = number_format($amount, 0, '.', ',');
+        return $formattedAmount . ' ₫';
+    }
+}
+
+if (!function_exists('getDateFromDatabase')) {
+    function getDateFromDatabase($dateTimeFromDatabase)
+    {
+        $date = new DateTime($dateTimeFromDatabase);
+
+        return $date->format("Y-m-d");;
+    }
+}
+
+if (!function_exists('calculatorTotalOrder')) {
+    function calculatorTotalOrder()
+    {
+        if (isset($_SESSION['cart'])) {
+            $total = 0;
+            foreach ($_SESSION['cart'] as $cart) {
+                $price = $cart['gia'];
+                $quantity = $cart['quantity'];
+
+                $total += $price * $quantity;
+            }
+
+            return $total;
+        }
+
+        return 0;
+    }
+}

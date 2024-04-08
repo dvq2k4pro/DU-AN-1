@@ -15,29 +15,40 @@
                     <th>Trường dữ liệu</th>
                     <th>Dữ liệu</th>
                 </tr>
-
-                <?php foreach ($user as $fieldName => $value) : ?>
-                    <tr>
-                        <td><?= ucfirst($fieldName) ?></td>
-                        <td>
-                            <?php
-                            switch ($fieldName) {
-                                case 'mat_khau':
-                                    for ($i = 0; $i < strlen($user['mat_khau']); $i++) {
-                                        echo '*';
-                                    }
-                                    break;
-                                case 'vai_tro':
-                                    echo $value ? '<span class="badge badge-success">Admin</span>' : '<span class="badge badge-warning">Member</span>';
-                                    break;
-                                default:
-                                    echo $value;
-                                    break;
-                            }
-                            ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+                <tr>
+                    <td>Họ tên</td>
+                    <td><?= $user['ho_ten'] ?></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><?= $user['email'] ?></td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại</td>
+                    <td><?= $user['so_dien_thoai'] ?></td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ</td>
+                    <td><?= $user['dia_chi'] ?></td>
+                </tr>
+                <tr>
+                    <td>Tài khoản</td>
+                    <td><?= $user['tai_khoan'] ?></td>
+                </tr>
+                <tr>
+                    <td>Mật khẩu</td>
+                    <td>
+                        <?php
+                        for ($i = 0; $i < strlen($user['mat_khau']); $i++) {
+                            echo '*';
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vai trò</td>
+                    <td><?= $user['vai_tro'] ? '<span class="badge badge-success">Admin</span>' : '<span class="badge badge-warning">Member</span>' ?></td>
+                </tr>
 
             </table>
 

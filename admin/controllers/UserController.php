@@ -26,6 +26,19 @@ function userShowOne($id)
     require_once PATH_VIEW_ADMIN . 'layouts/master.php';
 }
 
+function userShowOne1($id)
+{
+    $user = showOne('nguoi_dung', $id);
+    if (empty($user)) {
+        e404();
+    }
+
+    $title = 'Chi tiết người dùng: ' . $user['tai_khoan'];
+    $view = 'users/show-one1';
+
+    require_once PATH_VIEW_ADMIN . 'layouts/master.php';
+}
+
 function userCreate()
 {
     $title = 'Thêm mới người dùng';
@@ -74,6 +87,10 @@ function validateUserCreate($data)
         $errors['tai_khoan'] = 'Trường tài khoản độ dài tối đa 50 ký tự!';
     }
 
+    if (empty($data['ho_ten'])) {
+        $errors['ho_ten'] = 'Trường họ tên không được để trống!';
+    }
+
     if (empty($data['email'])) {
         $errors['email'] = 'Trường email không được để trống!';
     } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
@@ -85,7 +102,7 @@ function validateUserCreate($data)
     if (empty($data['mat_khau'])) {
         $errors['mat_khau'] = 'Trường mật khẩu không được để trống!';
     } else if (strlen($data['mat_khau']) < 8 || strlen($data['mat_khau']) > 20) {
-        $errors['mat_khau'] = 'Trường mật khẩu độ dài nhỏ nhất là 8, lớn nhất là 20!';
+        $errors['mat_khau'] = 'Trường mật khẩu có độ dài nhỏ nhất là 8, lớn nhất là 20!';
     }
 
     if ($data['vai_tro'] === null) {
@@ -110,13 +127,7 @@ function userUpdate($id)
 
     if (!empty($_POST)) {
         $data = [
-            "ho_ten" => $_POST['ho_ten'] ?? null,
-            "tai_khoan" => $_POST['tai_khoan'] ?? null,
-            "dia_chi" => $_POST['dia_chi'] ?? null,
-            "so_dien_thoai" => $_POST['so_dien_thoai'] ?? null,
-            "email" => $_POST['email'] ?? null,
-            "mat_khau" => $_POST['mat_khau'] ?? null,
-            "vai_tro" => $_POST['vai_tro'] ?? null,
+            "vai_tro" => $_POST['vai_tro'] ?? $user['vai_tro']
         ];
 
         $errors = validateUserUpdate($id, $data);
@@ -137,31 +148,8 @@ function userUpdate($id)
 
 function validateUserUpdate($id, $data)
 {
-    // tai_khoan - bắt buộc, độ dài tối đa 50 ký tự
-    // email - bắt buộc, phải là email, không được trùng
-    // mat_khau - bắt buộc, độ dài nhỏ nhất là 8, lớn nhất là 20
     // vai_trò - bắt buộc, phải là 0 hoặc 1
     $errors = [];
-
-    if (empty($data['tai_khoan'])) {
-        $errors['tai_khoan'] = 'Trường tài khoản không được để trống!';
-    } else if (strlen($data['tai_khoan']) > 50) {
-        $errors['tai_khoan'] = 'Trường tài khoản độ dài tối đa 50 ký tự!';
-    }
-
-    if (empty($data['email'])) {
-        $errors['email'] = 'Trường email không được để trống!';
-    } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = 'Trường email không hợp lệ!';
-    } else if (!checkUniqueEmailForUpdate('nguoi_dung', $id, $data['email'])) {
-        $errors['email'] = 'Trường email đã được sử dụng!';
-    }
-
-    if (empty($data['mat_khau'])) {
-        $errors['mat_khau'] = 'Trường mật khẩu không được để trống!';
-    } else if (strlen($data['mat_khau']) < 8 || strlen($data['mat_khau']) > 20) {
-        $errors['mat_khau'] = 'Trường mật khẩu độ dài nhỏ nhất là 8, lớn nhất là 20!';
-    }
 
     if ($data['vai_tro'] === null) {
         $errors['vai_tro'] = 'Trường vai trò không được để trống!';

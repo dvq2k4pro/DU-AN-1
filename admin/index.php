@@ -26,6 +26,7 @@ match ($act) {
     // CRUD User
     'users' => userListAll(),
     'user-detail' => userShowOne($_GET['id']),
+    'user-detail1' => userShowOne1($_GET['id']),
     'user-create' => userCreate(),
     'user-update' => userUpdate($_GET['id']),
     'user-delete' => userDelete($_GET['id']),
@@ -36,6 +37,51 @@ match ($act) {
     'category-create' => categoryCreate(),
     'category-update' => categoryUpdate($_GET['id']),
     'category-delete' => categoryDelete($_GET['id']),
+
+    // CRUD Author
+    'authors' => authorListAll(),
+    'author-detail' => authorShowOne($_GET['id']),
+    'author-create' => authorCreate(),
+    'author-update' => authorUpdate($_GET['id']),
+    'author-delete' => authorDelete($_GET['id']),
+
+    // CRUD Book
+    'books' => bookListAll(),
+    'book-detail' => bookShowOne($_GET['id']),
+    'book-create' => bookCreate(),
+    'book-update' => bookUpdate($_GET['id']),
+    'book-delete' => bookDelete($_GET['id']),
+
+    // CRUD Publisher
+    'publishers' => publisherListAll(),
+    'publisher-detail' => publisherShowOne($_GET['id']),
+    'publisher-create' => publisherCreate(),
+    'publisher-update' => publisherUpdate($_GET['id']),
+    'publisher-delete' => publisherDelete($_GET['id']),
+
+    // CRUD Company
+    'companies' => companyListAll(),
+    'company-detail' => companyShowOne($_GET['id']),
+    'company-create' => companyCreate(),
+    'company-update' => companyUpdate($_GET['id']),
+    'company-delete' => companyDelete($_GET['id']),
+
+    // CRUD Size
+    'sizes' => sizeListAll(),
+    'size-detail' => sizeShowOne($_GET['id']),
+    'size-create' => sizeCreate(),
+    'size-update' => sizeUpdate($_GET['id']),
+    'size-delete' => sizeDelete($_GET['id']),
+
+    // CRUD Size
+    'comments' => commentListAll(),
+    'comment-detail' => commentShowOne($_GET['id']),
+    'comment-update' => commentUpdate($_GET['id']),
+
+    // CRUD Order
+    'orders' => orderListAll(),
+    'order-detail' => orderShowOne($_GET['id']),
+    'order-update' => orderUpdate($_GET['id'])
 };
 
 require_once '../commons/disconnect-db.php';

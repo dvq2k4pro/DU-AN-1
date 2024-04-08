@@ -9,10 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?= $title ?? 'Book store' ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Use Minified Plugins Version For Fast Page Load -->
-    <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL ?>assets/client/css/plugins.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL ?>assets/client/css/main.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="<?= BASE_URL ?>assets/client/image/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL ?>/assets/client/css/plugins.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL ?>/assets/client/css/main.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?= BASE_URL ?>/assets/client/image/favicon.ico">
 </head>
 
 <body>
@@ -24,6 +25,14 @@
         <!-- Content -->
         <?php
         require_once PATH_VIEW . $view . '.php';
+        ?>
+        <!-- Modal -->
+        <?php
+        require_once PATH_VIEW . 'components/modal.php';
+        ?>
+        <!-- Brands Slider -->
+        <?php
+        require_once PATH_VIEW . 'components/brands-slider.php';
         ?>
         <!-- Footer -->
         <?php
