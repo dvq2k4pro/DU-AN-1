@@ -366,6 +366,7 @@ function bookDelete($id)
         deleteAuthorsByBookId($id);
         deleteBooksInCartsBookId($id);
         deleteBooksInOrdersBookId($id);
+        deleteCommentsByBookId($id);
 
         delete('sach', $id);
         $GLOBALS['conn']->commit();
