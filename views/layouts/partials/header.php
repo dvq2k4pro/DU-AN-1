@@ -25,13 +25,13 @@
                                 <a href="<?= BASE_URL ?>">Trang chủ</a>
                             </li>
                             <li class="menu-item">
-                                <a href="contact.html">Giới thiệu</a>
+                                <a href="<?= BASE_URL . '?act=introduce' ?>">Giới thiệu</a>
                             </li>
                             <li class="menu-item">
-                                <a href="contact.html">Liên hệ</a>
+                                <a href="<?= BASE_URL . '?act=contact' ?>">Liên hệ</a>
                             </li>
                             <li class="menu-item">
-                                <a href="contact.html">Tin tức</a>
+                                <a href="#!">Tin tức</a>
                             </li>
                         </ul>
                     </div>

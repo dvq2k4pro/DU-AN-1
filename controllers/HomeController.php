@@ -103,3 +103,19 @@ function validatePrice($minPrice, $maxPrice)
 
     return $errors;
 }
+
+function introduce()
+{
+    $view = 'introduce';
+    $title = 'Giới thiệu';
+
+    require_once PATH_VIEW . 'layouts/master.php';
+}
+
+function contact()
+{
+    $view = 'contact';
+    $title = 'Giới thiệu';
+
+    require_once PATH_VIEW . 'layouts/master.php';
+}

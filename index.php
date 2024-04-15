@@ -32,6 +32,8 @@ middlewareAuthCheckClient($act, $arrRouteNeedAuth);
 
 match ($act) {
     '/' => homeIndex(),
+    'introduce' => introduce(),
+    'contact' => contact(),
 
     // Authen
     'login' => authenShowFormLoginClient(),
