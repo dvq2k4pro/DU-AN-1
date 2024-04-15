@@ -41,12 +41,12 @@
                             </div>
                             <div class="col-lg-6 mb--20">
                                 <label for="mat-khau">Mật khẩu:*</label>
-                                <input class="mb-0 form-control" type="text" name="mat-khau" id="mat-khau" placeholder="Vui lòng nhập mật khẩu" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['mat_khau'] : null ?>">
+                                <input class="mb-0 form-control" type="password" name="mat-khau" id="mat-khau" placeholder="Vui lòng nhập mật khẩu" value="<?= isset($_SESSION['data']) ? $_SESSION['data']['mat_khau'] : null ?>">
                                 <?= isset($_SESSION['errors']['mat_khau']) ? "<span class='error-message'>{$_SESSION['errors']['mat_khau']}</span>" : null ?>
                             </div>
                             <div class="col-lg-6 mb--20">
                                 <label for="nhap-lai-mat-khau">Nhập lại mật khẩu:*</label>
-                                <input class="mb-0 form-control" type="text" name="nhap-lai-mat-khau" id="nhap-lai-mat-khau" placeholder="Nhập lại mật khẩu" value="<?= isset($_SESSION['repeatPassword']) ? $_SESSION['repeatPassword'] : null ?>">
+                                <input class="mb-0 form-control" type="password" name="nhap-lai-mat-khau" id="nhap-lai-mat-khau" placeholder="Nhập lại mật khẩu" value="<?= isset($_SESSION['repeatPassword']) ? $_SESSION['repeatPassword'] : null ?>">
                                 <?= isset($_SESSION['errors']['nhap_lai_mat_khau']) ? "<span class='error-message'>{$_SESSION['errors']['nhap_lai_mat_khau']}</span>" : null ?>
                             </div>
                             <div class="col-md-12">

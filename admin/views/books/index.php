@@ -89,7 +89,7 @@
                                 <td>
                                     <a class="btn btn-info mb-1" href="<?= BASE_URL_ADMIN ?>?act=book-detail&id=<?= $book['s_id'] ?>">Show</a>
                                     <a class="btn btn-warning mb-1" href="<?= BASE_URL_ADMIN ?>?act=book-update&id=<?= $book['s_id'] ?>">Update</a>
-                                    <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=book-delete&id=<?= $book['s_id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xoá không?')">Delete</a>
+                                    <a class="btn btn-danger" href="<?= BASE_URL_ADMIN ?>?act=book-delete&id=<?= $book['s_id'] ?>" onclick="return confirm('Khi xoá sản phẩm, dữ liệu trong giỏ hàng và đơn hàng có thể bị thay đổi, bạn vẫn muốn tiếp tục xoá chứ?')">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -109,6 +109,63 @@ if (!function_exists('deleteAuthorsByBookId')) {
     }
 }
 
+if (!function_exists('deleteBooksInCartsBookId')) {
+    function deleteBooksInCartsBookId($bookId)
+    {
+        try {
+            $sql = "DELETE FROM chi_tiet_gio_hang WHERE id_sach = :id_sach;";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(':id_sach', $bookId);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('deleteBooksInOrdersBookId')) {
+    function deleteBooksInOrdersBookId($bookId)
+    {
+        try {
+            $sql = "DELETE FROM chi_tiet_don_hang WHERE id_sach = :id_sach;";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(':id_sach', $bookId);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
+if (!function_exists('deleteCommentsByBookId')) {
+    function deleteCommentsByBookId($bookId)
+    {
+        try {
+            $sql = "DELETE FROM binh_luan WHERE id_sach = :id_sach;";
+
+            $stmt = $GLOBALS['conn']->prepare($sql);
+
+            $stmt->bindParam(':id_sach', $bookId);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        } catch (\Exception $e) {
+            debug($e);
+        }
+    }
+}
+
 if (!function_exists('checkUniqueNameBookByCategory')) {
     // Nếu không trùng thì trả về True
     // Nếu trùng thì trả về False
